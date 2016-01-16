@@ -28,7 +28,7 @@
         <!--Tutions-->
         <scene sceneID="Wdm-0e-Ov0">
             <objects>
-                <viewControllerPlaceholder storyboardName="Tutions" id="yNN-qn-2Q1" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Tuitions" id="yNN-qn-2Q1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="STf-9R-sT0"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVh-1V-8cC" userLabel="First Responder" sceneMemberID="firstResponder"/>
