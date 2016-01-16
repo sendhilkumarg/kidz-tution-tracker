@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
+import CoreData
 class AttendanceViewController: UIViewController {
-
+let managedObjectContext = TutionTrackerDataController().managedObjectContext
   
     @IBOutlet weak var containerView: UIView!
      weak var currentViewController: UIViewController?
@@ -22,7 +22,35 @@ class AttendanceViewController: UIViewController {
         self.addSubview(self.currentViewController!.view, toView: self.containerView)
         super.viewDidLoad()
         
+        fetch()
+        
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    func savedata(){
+        
+        let tution = NSEntityDescription.insertNewObjectForEntityForName("Tution", inManagedObjectContext: managedObjectContext) as! Tution
+        tution.setValue("Music1", forKey: "name")
+        
+        do {
+            try  managedObjectContext.save()
+            // print("saved the data")
+            
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+
+    }
+    
+    func fetch(){
+        var tutionFetch =  NSFetchRequest(entityName: "Tution")
+        do{
+            let fectchedTutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tution]
+            print(fectchedTutions.first!.name!)
+        }catch {
+             fatalError("Failure to read from context: \(error)")
+        }
+        
     }
     
     func addSubview(subView:UIView, toView parentView:UIView) {
