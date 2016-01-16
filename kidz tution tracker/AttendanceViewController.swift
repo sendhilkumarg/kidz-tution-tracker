@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 class AttendanceViewController: UIViewController {
-let managedObjectContext = TutionTrackerDataController().managedObjectContext
+let managedObjectContext = TuitionTrackerDataController().managedObjectContext
   
     @IBOutlet weak var containerView: UIView!
      weak var currentViewController: UIViewController?
@@ -21,15 +21,15 @@ let managedObjectContext = TutionTrackerDataController().managedObjectContext
         self.addChildViewController(self.currentViewController!)
         self.addSubview(self.currentViewController!.view, toView: self.containerView)
         super.viewDidLoad()
-        
-        fetch()
+        //savedata()
+        //fetch()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     func savedata(){
         
-        let tution = NSEntityDescription.insertNewObjectForEntityForName("Tution", inManagedObjectContext: managedObjectContext) as! Tution
+        let tution = NSEntityDescription.insertNewObjectForEntityForName("Tuition", inManagedObjectContext: managedObjectContext) as! Tution
         tution.setValue("Music1", forKey: "name")
         
         do {
@@ -43,7 +43,7 @@ let managedObjectContext = TutionTrackerDataController().managedObjectContext
     }
     
     func fetch(){
-        var tutionFetch =  NSFetchRequest(entityName: "Tution")
+        var tutionFetch =  NSFetchRequest(entityName: "Tuition")
         do{
             let fectchedTutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tution]
             print(fectchedTutions.first!.name!)

@@ -7,14 +7,14 @@
         <!--Tuitions-->
         <scene sceneID="aUy-Ot-M6v">
             <objects>
-                <tableViewController id="PpB-IY-3YX" customClass="TutionsTableViewController" customModule="kidz_tution_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="PpB-IY-3YX" customClass="TuitionsTableViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gvf-pN-f3L">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TutionsTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TutionsTableViewCell" rowHeight="63" id="E48-Ph-PMb" customClass="TutionsTableViewCell" customModule="kidz_tution_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TuitionsTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TuitionsTableViewCell" rowHeight="63" id="E48-Ph-PMb" customClass="TuitionsTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E48-Ph-PMb" id="1Te-as-pRD">

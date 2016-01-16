@@ -11,7 +11,7 @@ import CoreData
 
 class TuitionsTableViewController: UITableViewController {
     
-    let managedObjectContext = TutionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     var tutions = [Tution]()
     
     override func viewDidLoad() {
@@ -25,7 +25,7 @@ class TuitionsTableViewController: UITableViewController {
     }
 
     func loadTutions(){
-        var tutionFetch =  NSFetchRequest(entityName: "Tution")
+        var tutionFetch =  NSFetchRequest(entityName: "Tuition")
         do{
             tutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tution]
             print(tutions.first!.name!)
@@ -52,7 +52,7 @@ class TuitionsTableViewController: UITableViewController {
         //let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
 
         // Configure the cell...
-        let cellIdentifier = "TutionsTableViewCell"
+        let cellIdentifier = "TuitionsTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TuitionsTableViewCell
         
         let tution = tutions[indexPath.row]
