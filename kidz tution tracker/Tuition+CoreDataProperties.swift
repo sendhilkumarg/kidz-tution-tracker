@@ -1,5 +1,5 @@
 //
-//  Tution+CoreDataProperties.swift
+//  Tuition+CoreDataProperties.swift
 //  kidz tuition tracker
 //
 //  Created by Sendhil kumar Gurunathan on 1/16/16.
@@ -12,7 +12,7 @@
 import Foundation
 import CoreData
 
-extension Tution {
+extension Tuition {
 
     @NSManaged var name: String?
 

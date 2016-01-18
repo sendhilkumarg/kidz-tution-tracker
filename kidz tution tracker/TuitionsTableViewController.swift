@@ -12,10 +12,11 @@ import CoreData
 class TuitionsTableViewController: UITableViewController {
     
     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-    var tutions = [Tution]()
+    var tuitions = [Tuition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = editButtonItem()
         loadTutions()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -27,8 +28,8 @@ class TuitionsTableViewController: UITableViewController {
     func loadTutions(){
         var tutionFetch =  NSFetchRequest(entityName: "Tuition")
         do{
-            tutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tution]
-            print(tutions.first!.name!)
+            tuitions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tuition]
+           // print(tuitions.first!.name!)
         }catch {
             fatalError("Failure to read from context: \(error)")
         }
@@ -44,7 +45,7 @@ class TuitionsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-               return tutions.count
+               return tuitions.count
     }
 
     
@@ -55,33 +56,50 @@ class TuitionsTableViewController: UITableViewController {
         let cellIdentifier = "TuitionsTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TuitionsTableViewCell
         
-        let tution = tutions[indexPath.row]
+        let tution = tuitions[indexPath.row]
         
         cell.lblTutionName.text = tution.name
        
         return cell
     }
 
-
-    /*
+    @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? TuitionsViewController, tuition = sourceViewController.tuition {
+            
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                // Update
+                tuitions[selectedIndexPath.row] = tuition
+                tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+            }
+            else {
+            // Add
+            let newIndexPath = NSIndexPath(forRow: tuitions.count, inSection: 0)
+            tuitions.append(tuition)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+            }
+        }
+    }
+    
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+   
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            // tuitions.removeAtIndex(indexPath.row)
+          //  tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -98,14 +116,23 @@ class TuitionsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail" {
+            let tutionViewController = segue.destinationViewController as! TuitionsViewController
+            
+            // Get the cell that generated this segue.
+            if let selectedTuitionCell = sender as? TuitionsTableViewCell {
+                let indexPath = tableView.indexPathForCell(selectedTuitionCell)!
+                let selectedTuition = tuitions[indexPath.row]
+                tutionViewController.tuition = selectedTuition
+            }
+        }
+        else if segue.identifier == "AddItem" {
+            print("Adding new Tution.")
+        }
     }
-    */
 
 }

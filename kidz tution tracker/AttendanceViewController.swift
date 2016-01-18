@@ -29,7 +29,7 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     
     func savedata(){
         
-        let tution = NSEntityDescription.insertNewObjectForEntityForName("Tuition", inManagedObjectContext: managedObjectContext) as! Tution
+        let tution = NSEntityDescription.insertNewObjectForEntityForName("Tuition", inManagedObjectContext: managedObjectContext) as! Tuition
         tution.setValue("Music1", forKey: "name")
         
         do {
@@ -45,7 +45,7 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     func fetch(){
         var tutionFetch =  NSFetchRequest(entityName: "Tuition")
         do{
-            let fectchedTutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tution]
+            let fectchedTutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tuition]
             print(fectchedTutions.first!.name!)
         }catch {
              fatalError("Failure to read from context: \(error)")

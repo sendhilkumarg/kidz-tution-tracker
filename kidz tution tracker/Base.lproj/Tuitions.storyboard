@@ -34,6 +34,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="lblTutionName" destination="rcS-F9-0Hg" id="prZ-im-NNi"/>
+                                    <segue destination="VF8-P3-MuY" kind="show" identifier="ShowDetail" id="RER-yV-vVu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -57,7 +58,7 @@
         <!--Add Tuition-->
         <scene sceneID="mZf-a8-Myo">
             <objects>
-                <viewController id="VF8-P3-MuY" sceneMemberID="viewController">
+                <viewController id="VF8-P3-MuY" customClass="TuitionsViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2cz-0f-4zA"/>
                         <viewControllerLayoutGuide type="bottom" id="dYk-1d-UOe"/>
@@ -84,13 +85,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Tuition" id="A7T-l8-YYX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Y26-gO-miZ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gll-4q-qiX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Y26-gO-miZ">
+                            <connections>
+                                <action selector="cancelAction:" destination="VF8-P3-MuY" id="tx3-Bj-Kjp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="gll-4q-qiX">
+                            <connections>
+                                <segue destination="LoA-HW-EDh" kind="unwind" unwindAction="unwindToMealList:" id="0Se-LS-39F"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="cancelButton" destination="Y26-gO-miZ" id="Wrc-Ga-qhD"/>
+                        <outlet property="saveButton" destination="gll-4q-qiX" id="fUi-we-MxN"/>
+                        <outlet property="txtTution" destination="HhK-tg-Om7" id="bwg-pl-cuG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6P-wK-4ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="LoA-HW-EDh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2417" y="787"/>
+            <point key="canvasLocation" x="2489" y="787"/>
         </scene>
         <!--Tutions-->
         <scene sceneID="zLC-kr-qfA">
@@ -130,7 +145,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1As-Ud-wZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1605" y="787"/>
+            <point key="canvasLocation" x="1643" y="1347"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RER-yV-vVu"/>
+    </inferredMetricsTieBreakers>
 </document>

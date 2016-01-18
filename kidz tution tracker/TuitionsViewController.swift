@@ -7,13 +7,23 @@
 //
 
 import UIKit
+import CoreData
+class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigationControllerDelegate {
+    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
 
-class TuitionsViewController: UIViewController {
-
+    var tuition : Tuition?
+        @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    @IBOutlet weak var txtTution: UITextField!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     override func viewDidLoad() {
+       
         super.viewDidLoad()
+        txtTution.delegate = self
 
-        // Do any additional setup after loading the view.
+        if let tuitionToEdit = tuition {
+            txtTution.text = tuitionToEdit.name
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +31,65 @@ class TuitionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        txtTution.resignFirstResponder()
+        return true
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        //saveButton.enabled = true;
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        //lblText1.text = textField.text;
+        //saveButton.enabled = false
+       // checkValidMealName()
+        navigationItem.title = textField.text;
+    }
+    
+    func checkValidMealName(){
+        let name = txtTution.text ?? ""
+        saveButton.enabled =  !name.isEmpty
+    }
 
-    /*
+
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if sender === saveButton{
+             tuition = NSEntityDescription.insertNewObjectForEntityForName("Tuition", inManagedObjectContext: managedObjectContext) as! Tuition
+            
+           // tuition = Tuition()
+            tuition!.setValue(txtTution.text, forKey: "name")
+            do {
+                try  managedObjectContext.save()
+                
+                
+            } catch {
+                fatalError("Failure to save context: \(error)")
+            }
+        }
     }
-    */
+
+    @IBAction func cancelAction(sender: UIBarButtonItem) {
+       // dismissViewControllerAnimated(true, completion: nil)
+
+       // var x = presentingViewController
+       // let isPresentingInAddMode = presentingViewController is UINavigationController;
+        if(presentingViewController != nil){
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+        else
+        {
+            navigationController!.popViewControllerAnimated(true)
+        }
+
+
+    }
 
 }

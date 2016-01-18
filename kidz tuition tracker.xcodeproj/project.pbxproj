@@ -23,8 +23,8 @@
 		BC6905E61C4A29BB00B00E35 /* TuitionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905E51C4A29BB00B00E35 /* TuitionsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905EC1C4A3B4500B00E35 /* TuitionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905EB1C4A3B4500B00E35 /* TuitionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		BC6905EF1C4A3D5000B00E35 /* Tution+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905ED1C4A3D5000B00E35 /* Tution+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		BC6905F01C4A3D5000B00E35 /* Tution.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905EE1C4A3D5000B00E35 /* Tution.swift */; settings = {ASSET_TAGS = (); }; };
+		BC6905F51C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F31C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		BC6905F61C4A48FF00B00E35 /* Tuition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F41C4A48FF00B00E35 /* Tuition.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +67,8 @@
 		BC6905E51C4A29BB00B00E35 /* TuitionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsTableViewController.swift; sourceTree = "<group>"; };
 		BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsTableViewCell.swift; sourceTree = "<group>"; };
 		BC6905EB1C4A3B4500B00E35 /* TuitionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsViewController.swift; sourceTree = "<group>"; };
-		BC6905ED1C4A3D5000B00E35 /* Tution+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tution+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BC6905EE1C4A3D5000B00E35 /* Tution.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tution.swift; sourceTree = "<group>"; };
+		BC6905F31C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tuition+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BC6905F41C4A48FF00B00E35 /* Tuition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +170,8 @@
 		BC6905EA1C4A2DBD00B00E35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC6905ED1C4A3D5000B00E35 /* Tution+CoreDataProperties.swift */,
-				BC6905EE1C4A3D5000B00E35 /* Tution.swift */,
+				BC6905F31C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift */,
+				BC6905F41C4A48FF00B00E35 /* Tuition.swift */,
 				BC6905DC1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld */,
 			);
 			name = Model;
@@ -310,9 +310,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC6905F61C4A48FF00B00E35 /* Tuition.swift in Sources */,
 				BC6905E61C4A29BB00B00E35 /* TuitionsTableViewController.swift in Sources */,
-				BC6905EF1C4A3D5000B00E35 /* Tution+CoreDataProperties.swift in Sources */,
-				BC6905F01C4A3D5000B00E35 /* Tution.swift in Sources */,
+				BC6905F51C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift in Sources */,
 				BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */,
 				BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */,
 				BC6905DE1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld in Sources */,
