@@ -4,56 +4,75 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Tuitions-->
-        <scene sceneID="aUy-Ot-M6v">
+        <!--Tutions List View Controller-->
+        <scene sceneID="dgj-Tn-9QT">
             <objects>
-                <tableViewController id="PpB-IY-3YX" customClass="TuitionsTableViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gvf-pN-f3L">
+                <viewController id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3IQ-eI-if4"/>
+                        <viewControllerLayoutGuide type="bottom" id="kY7-8P-enX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LEr-1F-uaH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tlb-xm-dKl">
+                                <rect key="frame" x="27" y="80" width="545" height="471"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EdV-Gj-zWN">
+                                        <rect key="frame" x="8" y="24" width="516" height="414"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" rowHeight="78" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="28" width="516" height="78"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krY-jg-Idq" id="K5V-G1-8Ql">
+                                                    <rect key="frame" x="0.0" y="0.0" width="516" height="77.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp6-Ff-zo7">
+                                                            <rect key="frame" x="32" y="8" width="90" height="21"/>
+                                                            <animations/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <animations/>
+                                                </tableViewCellContentView>
+                                                <animations/>
+                                                <connections>
+                                                    <outlet property="tuitionNameLabel" destination="Hp6-Ff-zo7" id="uU4-wh-iCk"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="AUO-A1-Apg" id="YaI-UK-qM0"/>
+                                            <outlet property="delegate" destination="AUO-A1-Apg" id="1w4-lb-g0v"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <animations/>
+                            </scrollView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TuitionsTableViewCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TuitionsTableViewCell" rowHeight="63" id="E48-Ph-PMb" customClass="TuitionsTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="63"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E48-Ph-PMb" id="1Te-as-pRD">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="62.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rcS-F9-0Hg">
-                                            <rect key="frame" x="61" y="14" width="227" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <outlet property="lblTutionName" destination="rcS-F9-0Hg" id="prZ-im-NNi"/>
-                                    <segue destination="VF8-P3-MuY" kind="show" identifier="ShowDetail" id="RER-yV-vVu"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="PpB-IY-3YX" id="4vS-Gh-1fa"/>
-                            <outlet property="delegate" destination="PpB-IY-3YX" id="Mz2-hS-R1S"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Tuitions" id="n5Y-8P-oGi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="slQ-hu-cod">
+                    </view>
+                    <navigationItem key="navigationItem" id="dUT-Hh-Wzf">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iX9-sH-7NO">
                             <connections>
-                                <segue destination="ZyU-ne-8aU" kind="presentation" identifier="AddItem" id="eW8-Kf-wKs"/>
+                                <segue destination="UjF-rF-7qs" kind="presentation" identifier="SegueAddTuitionsViewController" id="A1q-dP-Ebz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i4t-XY-lTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="tuitionsTableView" destination="EdV-Gj-zWN" id="Fw1-km-jpq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nbA-8e-vyg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="808" y="782"/>
+            <point key="canvasLocation" x="892" y="1065"/>
         </scene>
         <!--Add Tuition-->
         <scene sceneID="mZf-a8-Myo">
@@ -92,7 +111,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="gll-4q-qiX">
                             <connections>
-                                <segue destination="LoA-HW-EDh" kind="unwind" unwindAction="unwindToMealList:" id="0Se-LS-39F"/>
+                                <action selector="saveAction:" destination="VF8-P3-MuY" id="Pd0-f7-5dG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -103,9 +122,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j6P-wK-4ya" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="LoA-HW-EDh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2489" y="787"/>
+            <point key="canvasLocation" x="2633" y="1007"/>
         </scene>
         <!--Tutions-->
         <scene sceneID="zLC-kr-qfA">
@@ -121,7 +139,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="PpB-IY-3YX" kind="relationship" relationship="rootViewController" id="fZ3-HP-BUa"/>
+                        <segue destination="AUO-A1-Apg" kind="relationship" relationship="rootViewController" id="xzD-T1-bYd"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnD-e3-XYb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -129,26 +147,23 @@
             <point key="canvasLocation" x="114" y="761"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="o3g-aB-eLz">
+        <scene sceneID="V6y-Qu-abh">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZyU-ne-8aU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UjF-rF-7qs" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P4Z-2U-mok">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gR2-Qe-bRF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="VF8-P3-MuY" kind="relationship" relationship="rootViewController" id="dlX-ZM-aUx"/>
+                        <segue destination="VF8-P3-MuY" kind="relationship" relationship="rootViewController" id="NCy-qO-F39"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1As-Ud-wZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3NM-tf-kg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1643" y="1347"/>
+            <point key="canvasLocation" x="1821" y="1007"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="RER-yV-vVu"/>
-    </inferredMetricsTieBreakers>
 </document>

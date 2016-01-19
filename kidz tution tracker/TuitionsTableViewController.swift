@@ -58,7 +58,7 @@ class TuitionsTableViewController: UITableViewController {
         
         let tution = tuitions[indexPath.row]
         
-        cell.lblTutionName.text = tution.name
+      //  cell.lblTutionName.text = tution.name //todo: enable it when required
        
         return cell
     }

@@ -9,8 +9,10 @@
 import UIKit
 import CoreData
 class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigationControllerDelegate {
+   /*
     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-
+*/
+    var managedObjectContext: NSManagedObjectContext!
     var tuition : Tuition?
         @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -56,7 +58,7 @@ class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigat
 
     
     // MARK: - Navigation
-
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -75,10 +77,46 @@ class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigat
             }
         }
     }
-
+*/
+    
+    @IBAction func saveAction(sender: UIBarButtonItem) {
+        let name = txtTution.text
+        
+        if let isEmpty = name?.isEmpty where isEmpty == false {
+            // Create Entity
+            let entity = NSEntityDescription.entityForName("Tuition", inManagedObjectContext: self.managedObjectContext)
+            
+            // Initialize Record
+            let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
+            
+            // Populate Record
+            record.setValue(name, forKey: "name")
+            //record.setValue(NSDate(), forKey: "createdAt")
+            
+            do {
+                // Save Record
+                try record.managedObjectContext?.save()
+                
+                // Dismiss View Controller
+                dismissViewControllerAnimated(true, completion: nil)
+                
+            } catch {
+                let saveError = error as NSError
+                print("\(saveError), \(saveError.userInfo)")
+                
+                // Show Alert View
+                showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
+            }
+            
+        } else {
+            // Show Alert View
+            showAlertWithTitle("Warning", message: "Your to-do needs a name.", cancelButtonTitle: "OK")
+        }
+    }
+    
     @IBAction func cancelAction(sender: UIBarButtonItem) {
-       // dismissViewControllerAnimated(true, completion: nil)
-
+        dismissViewControllerAnimated(true, completion: nil)
+/*
        // var x = presentingViewController
        // let isPresentingInAddMode = presentingViewController is UINavigationController;
         if(presentingViewController != nil){
@@ -88,8 +126,20 @@ class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigat
         {
             navigationController!.popViewControllerAnimated(true)
         }
-
+*/
 
     }
 
+    // MARK: -
+    // MARK: Helper Methods
+    private func showAlertWithTitle(title: String, message: String, cancelButtonTitle: String) {
+        // Initialize Alert Controller
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        // Configure Alert Controller
+        alertController.addAction(UIAlertAction(title: cancelButtonTitle, style: .Default, handler: nil))
+        
+        // Present Alert Controller
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }

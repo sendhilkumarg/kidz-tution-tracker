@@ -10,9 +10,10 @@ import UIKit
 
 class TuitionsTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var lblTutionName: UILabel!
-   // @IBOutlet weak var tutionNameLabel: UILabel!
+  //  @IBOutlet weak var lblTutionName: UILabel!
+  
     
+    @IBOutlet weak var tuitionNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
