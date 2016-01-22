@@ -8,12 +8,12 @@
 
 import UIKit
 import CoreData
-class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigationControllerDelegate {
+class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavigationControllerDelegate {
    /*
     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
 */
     var managedObjectContext: NSManagedObjectContext!
-    var tuition : Tuition?
+    //var tuition : Tuition?
         @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var txtTution: UITextField!
@@ -23,9 +23,9 @@ class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigat
         super.viewDidLoad()
         txtTution.delegate = self
 
-        if let tuitionToEdit = tuition {
-            txtTution.text = tuitionToEdit.name
-        }
+        //if let tuitionToEdit = tuition {
+         //   txtTution.text = tuitionToEdit.name
+        //}
     }
 
     override func didReceiveMemoryWarning() {
@@ -91,7 +91,15 @@ class TuitionsViewController: UIViewController , UITextFieldDelegate , UINavigat
             
             // Populate Record
             record.setValue(name, forKey: "name")
-            //record.setValue(NSDate(), forKey: "createdAt")
+            record.setValue([1,2], forKey: "frequency")
+            record.setValue(7, forKey: "hours")
+            record.setValue(15, forKey: "payon")
+            record.setValue("Mirnaali", forKey: "personname")
+            record.setValue(0, forKey: "minutes")
+            record.setValue(10, forKey: "amount")
+            record.setValue(true, forKey: "am")
+        
+            record.setValue(NSDate(), forKey: "startdate")
             
             do {
                 // Save Record

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15B42" minimumToolsVersion="Xcode 7.0">
     <entity name="Tuition" representedClassName=".Tuition" syncable="YES">
+        <attribute name="am" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="amount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="frequency" attributeType="Transformable" syncable="YES"/>
+        <attribute name="hours" attributeType="Integer 32" minValueString="1" maxValueString="12" defaultValueString="1" syncable="YES"/>
+        <attribute name="minutes" attributeType="Integer 32" minValueString="0" maxValueString="55" defaultValueString="0" syncable="YES"/>
         <attribute name="name" attributeType="String" maxValueString="50" syncable="YES"/>
+        <attribute name="payon" attributeType="Integer 32" minValueString="1" maxValueString="31" defaultValueString="1" syncable="YES"/>
+        <attribute name="personname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startdate" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Tuition" positionX="-54" positionY="-9" width="128" height="60"/>
+        <element name="Tuition" positionX="-54" positionY="-9" width="128" height="180"/>
     </elements>
 </model>

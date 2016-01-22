@@ -14,10 +14,12 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     @IBOutlet weak var tuitionsTableView: UITableView!
     
     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-    //var tuitions = [Tuition]()
+    var deleteTutionsIndexPath: NSIndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tuitionsTableView.tableFooterView = UIView(frame: .zero)
+        tuitionsTableView.tableFooterView?.hidden = true;
       // var a = TuitionTrackerDataController().loadTutions()
         do {
             try self.fetchedResultsController.performFetch()
@@ -103,9 +105,45 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         return true
     }
     
-    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            deleteTutionsIndexPath = indexPath
+            confirmDelete()
+            /*
+            // Fetch Record
+            let record = fetchedResultsController.objectAtIndexPath(indexPath) as! NSManagedObject
+            
+            // Delete Record
+            managedObjectContext.deleteObject(record)
+            do {
+                try  managedObjectContext.save()
+            }
+                catch {
+                    let saveError = error as NSError
+                    print("\(saveError), \(saveError.userInfo)")
+                    
+                    // Show Alert View
+                    showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
+                }
+            */
+           
+        }
+    }
   
+    // MARK: Table View Delegate Methods
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    /*
+    func tableView(tableView: UITableView, accessoryTypeForRowWithIndexPath indexPath: NSIndexPath) -> UITableViewCellAccessoryType {
+        <#code#>
+    }
+
     
+    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        print("click")
+    }
+*/
     // MARK: Fetched Results Controller Delegate Methods
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tuitionsTableView.beginUpdates()
@@ -147,12 +185,106 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     
     // MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SegueAddTuitionsViewController" {
+        if segue.identifier == "segueAddTutions" {
             if let navigationController = segue.destinationViewController as? UINavigationController {
-                if let viewController = navigationController.topViewController as? TuitionsViewController {
+                if let viewController = navigationController.topViewController as? TuitionsAddViewController {
                     viewController.managedObjectContext = managedObjectContext
                 }
             }
         }
+        else if segue.identifier == "SegueEditTuitions" {
+           /* if let viewController = segue.destinationViewController as? TuitionsEditViewController {
+                if let indexPath = tuitionsTableView.indexPathForSelectedRow {
+                    // Fetch Record
+                    let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+                    
+                    // Configure View Controller
+                    viewController.tuition = record
+                    viewController.managedObjectContext = managedObjectContext
+                }
+            }
+            */
+
+            if let navigationController = segue.destinationViewController as? UINavigationController {
+                if let viewController = navigationController.topViewController as? TuitionsEditViewController {
+                     if let indexPath = tuitionsTableView.indexPathForSelectedRow {
+                    // Fetch Record
+                    let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+                    
+                    viewController.tuition = record
+                    viewController.managedObjectContext = managedObjectContext
+                }
+                }
+            }
+           
+        }
+
+    }
+    
+    // MARK: Helper Methods
+    private func showAlertWithTitle(title: String, message: String, cancelButtonTitle: String) {
+        // Initialize Alert Controller
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        
+        // Configure Alert Controller
+        alertController.addAction(UIAlertAction(title: cancelButtonTitle, style: .Default, handler: nil))
+        
+        // Present Alert Controller
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func confirmDelete() {
+        let record = fetchedResultsController.objectAtIndexPath(deleteTutionsIndexPath! ) as! Tuition
+        let alert = UIAlertController(title: "Delete Tuition", message: "Are you sure you want to permanently delete \(record.name!)", preferredStyle: .ActionSheet)
+        
+        let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDeletePlanet)
+        let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDeletePlanet)
+        
+        alert.addAction(DeleteAction)
+        alert.addAction(CancelAction)
+        
+        // Support display in iPad
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRectMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0, 1.0, 1.0)
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func handleDeletePlanet(alertAction: UIAlertAction!) -> Void {
+        // Fetch Record
+        let record = fetchedResultsController.objectAtIndexPath(deleteTutionsIndexPath! ) as! Tuition
+        
+        // Delete Record
+        managedObjectContext.deleteObject(record)
+        do {
+            try  managedObjectContext.save()
+        }
+        catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
+        }
+        deleteTutionsIndexPath = nil
+        /*
+        if let indexPath = deletePlanetIndexPath {
+            tableView.beginUpdates()
+            
+            planets.removeAtIndex(indexPath.row)
+            
+            // Note that indexPath is wrapped in an array:  [indexPath]
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+            
+            deletePlanetIndexPath = nil
+            
+            tableView.endUpdates()
+        }
+        */
+    }
+    
+    func cancelDeletePlanet(alertAction: UIAlertAction!) {
+        deleteTutionsIndexPath  = nil
+        
     }
 }

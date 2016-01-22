@@ -63,8 +63,9 @@ class TuitionsTableViewController: UITableViewController {
         return cell
     }
 
+    /*
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TuitionsViewController, tuition = sourceViewController.tuition {
+        if let sourceViewController = sender.sourceViewController as? TuitionsAddViewController, tuition = sourceViewController.tuition {
             
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
                 // Update
@@ -79,7 +80,7 @@ class TuitionsTableViewController: UITableViewController {
             }
         }
     }
-    
+    */
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -121,13 +122,13 @@ class TuitionsTableViewController: UITableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowDetail" {
-            let tutionViewController = segue.destinationViewController as! TuitionsViewController
+            let tutionViewController = segue.destinationViewController as! TuitionsAddViewController
             
             // Get the cell that generated this segue.
             if let selectedTuitionCell = sender as? TuitionsTableViewCell {
                 let indexPath = tableView.indexPathForCell(selectedTuitionCell)!
                 let selectedTuition = tuitions[indexPath.row]
-                tutionViewController.tuition = selectedTuition
+               // tutionViewController.tuition = selectedTuition
             }
         }
         else if segue.identifier == "AddItem" {
