@@ -30,15 +30,13 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
         [1,2,3,4,5,6,7,8,9,10,11,12,
             13,14,15,16,16,18 ,19,20,21,22,23,24,25,26,27,28,29,30,31]
     ]
-    var hours : Int32?
-    var minute : Int32?
-    var isAm : Bool?
-    var payDay : Int32?
+   
 
     override func viewDidLoad() {
        
         super.viewDidLoad()
         txtTution.delegate = self
+        personNameText.delegate = self
         payPerClassText.delegate = self
         //payPerClassText.keyboardType = .NumberPad
         
@@ -80,7 +78,7 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
         }
         else
         {
-            
+            payPerClassText.resignFirstResponder()
         }
       
         

@@ -9,18 +9,44 @@
 import UIKit
 import CoreData
 
-class TuitionsEditViewController: UIViewController , UITextFieldDelegate   {
+class TuitionsEditViewController: UIViewController , UITextFieldDelegate ,
+UIPickerViewDataSource , UIPickerViewDelegate  {
 var managedObjectContext: NSManagedObjectContext!
     var tuition : Tuition?
+   
     @IBOutlet weak var txtTution: UITextField!
+
+    @IBOutlet weak var personNameText: UITextField!
     
+    @IBOutlet weak var tutionDayPicker: DayPickerControl!
+    
+    @IBOutlet weak var tutionTimePicker: UIDatePicker!
+    
+    @IBOutlet weak var payPerClassText: UITextField!
+    @IBOutlet weak var payDayPicker: UIPickerView!
+    
+    let dayPickerData = [
+        [1,2,3,4,5,6,7,8,9,10,11,12,
+            13,14,15,16,16,18 ,19,20,21,22,23,24,25,26,27,28,29,30,31]
+    ]
     override func viewDidLoad() {
         super.viewDidLoad()
-       // txtTution.delegate = self
-
+        txtTution.delegate = self
+ personNameText.delegate = self
+        payPerClassText.delegate = self
         if let tutionToEdit = tuition {
-            //print(tutionToEdit)
             txtTution.text = tutionToEdit.name
+            personNameText.text = tutionToEdit.personname
+            payPerClassText.text = String( tutionToEdit.amount!)
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat =  "HH:mm"
+            
+            if let date = dateFormatter.dateFromString(tutionToEdit.time!) {
+                tutionTimePicker.date = date
+                           
+            }
+
             
         }
         // Do any additional setup after loading the view.
@@ -32,9 +58,10 @@ var managedObjectContext: NSManagedObjectContext!
     }
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
-        let name = txtTution.text
+        /*
+        var name : string? /txtTution.text
         
-        if let isEmpty = name?.isEmpty where isEmpty == false {
+        if let isEmpty = name.isEmpty where isEmpty == false {
             // Update Record
             tuition!.setValue(name, forKey: "name")
             
@@ -58,6 +85,7 @@ var managedObjectContext: NSManagedObjectContext!
             // Show Alert View
             showAlertWithTitle("Warning", message: "Your Tution needs a name.", cancelButtonTitle: "OK")
         }
+        */
     }
 
     @IBAction func cancelAction(sender: UIBarButtonItem) {
@@ -78,9 +106,22 @@ var managedObjectContext: NSManagedObjectContext!
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        txtTution.resignFirstResponder()
-        return true
+    
+        if(textField == txtTution)
+        {
+            txtTution.resignFirstResponder()
+        }
+        else if textField == personNameText
+        {
+            payPerClassText.resignFirstResponder()
+        }
+        else
+        {
+             payPerClassText.resignFirstResponder()
+        }
+          return true
     }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         //saveButton.enabled = true;
     }
@@ -92,9 +133,72 @@ var managedObjectContext: NSManagedObjectContext!
     }
     
     func checkValidMealName(){
-        let name = txtTution.text ?? ""
+      //  let name = txtTution.text ?? ""
        // saveButton.enabled =  !name.isEmpty
     }
+    
+    //MARK: Picker
+    // returns the number of 'columns' to display.
+    //refer http://makeapppie.com/tag/uipickerview-in-swift/ for good sample
+    @available(iOS 2.0, *)
+    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+        if pickerView == payDayPicker{
+            return dayPickerData.count
+        }
+        
+        return 0
+        
+    }
+    
+    // returns the # of rows in each component..
+    @available(iOS 2.0, *)
+    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        
+        if pickerView == payDayPicker{
+            return dayPickerData[component].count
+        }
+        
+        return 0
+        
+    }
+    
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        //let titleData = pickerData[row]
+        let myAttribute = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: 18.0)! ]
+        /*  if pickerView == timePicker{
+        let result = NSAttributedString(string:  timePickerData[component][row] , attributes: myAttribute);
+        return result
+        }
+        else{ */
+        let result = NSAttributedString(string: String( dayPickerData[component][row]) , attributes: myAttribute);
+        return result
+        // }
+    }
+    
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if pickerView == payDayPicker
+        {
+            let day = dayPickerData[0][payDayPicker.selectedRowInComponent(0)]
+            print(day)
+            
+        }
+        
+        
+        /*      if pickerView == timePicker{
+        //hours = timePickerData[0][timePicker.selectedRowInComponent(0)]
+        
+        // let selectedminute = timePickerData[1][timePicker.selectedRowInComponent(1)]
+        //let period = timePickerData[2][timePicker.selectedRowInComponent(2)]
+        // print ("time: \(hour)  : \(minute) \(period)")
+        
+        // print(row.description)
+        }
+        else
+        {*/
+        // }
+    }
+
     
     // MARK: -
     // MARK: Helper Methods

@@ -105,21 +105,62 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         
         }
         
-        if let days = tuition.frequency{
-            var daysToDisplay : String = ""
-            for day in days{
-                daysToDisplay = daysToDisplay + "| \(day)"
+      
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat =  "HH:mm"
+        
+        if let  tutionTime = tuition.time , time = dateFormatter.dateFromString(tutionTime) {
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "h:mm a" //"h:mm a 'on' MMMM dd, yyyy"
+            formatter.AMSymbol = "AM"
+            formatter.PMSymbol = "PM"
+            
+            let dateString = formatter.stringFromDate(time)
+            cell.timeLabel.text = dateString;
+            //print(dateString)
+        }
+        else
+        {
+          cell.timeLabel.text = "";
+        }
+        
+       
+        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
+            
+             var days = [String]()
+             var dayText = "S"
+            
+            for frequency in tuition.frequency!
+            {
+                
+                switch frequency
+                {
+                case 0 :
+                    dayText = "S"
+                case 1 :
+                    dayText = "M"
+                case 2 :
+                    dayText = "T"
+                case 3 :
+                    dayText = "W"
+                case 4 :
+                    dayText = "T"
+                case 5 :
+                    dayText = "F"
+                case 6 :
+                    dayText = "S"
+                default:
+                    dayText = "S"
+                }
+
+                days.append(dayText)
             }
-            cell.daysLabel.text = daysToDisplay
+            
+            cell.daysLabel.text  = "Days : " + days.joinWithSeparator("|")
         }
-        /*
-        if let am = tuition.am {
-            cell.timeLabel.text = "\(tuition.hours!) : \(tuition.minutes!) AM"
-        }
-        else{
-            cell.timeLabel.text = "\(tuition.hours!) : \(tuition.minutes!) PM"
-        }
-       */
+      
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
