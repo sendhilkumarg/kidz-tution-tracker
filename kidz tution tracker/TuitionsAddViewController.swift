@@ -43,19 +43,9 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
         
-        if let date = dateFormatter.dateFromString("17:00") {
+        if let date = dateFormatter.dateFromString("07:00") {
             tutionTimePicker.date = date
-            
-            /*
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "h:mm a" //"h:mm a 'on' MMMM dd, yyyy"
-            formatter.AMSymbol = "AM"
-            formatter.PMSymbol = "PM"
-            
-            let dateString = formatter.stringFromDate(date)
-            print(dateString)
-            */
-
+          
         }
         
     }
@@ -89,18 +79,9 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
-        //lblText1.text = textField.text;
-        //saveButton.enabled = false
-       // checkValidMealName()
         navigationItem.title = textField.text;
     }
-    
-    func checkValidMealName(){
-        let name = txtTution.text ?? ""
-        saveButton.enabled =  !name.isEmpty
-    }
-
-
+   
     
     // MARK: - Navigation
 /*
@@ -150,16 +131,10 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
     }
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        //let titleData = pickerData[row]
         let myAttribute = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: 18.0)! ]
-       /*  if pickerView == timePicker{
-        let result = NSAttributedString(string:  timePickerData[component][row] , attributes: myAttribute);
+
+        let result = NSAttributedString(string: String( dayPickerData[component][row]) , attributes: myAttribute);
         return result
-        }
-         else{ */
-            let result = NSAttributedString(string: String( dayPickerData[component][row]) , attributes: myAttribute);
-            return result
-       // }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
@@ -170,26 +145,14 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             print(day)
 
         }
-      
-        
-   /*      if pickerView == timePicker{
-            //hours = timePickerData[0][timePicker.selectedRowInComponent(0)]
-           
-            // let selectedminute = timePickerData[1][timePicker.selectedRowInComponent(1)]
-             //let period = timePickerData[2][timePicker.selectedRowInComponent(2)]
-           // print ("time: \(hour)  : \(minute) \(period)")
-            
-           // print(row.description)
-        }
-        else
-         {*/
-                    // }
+
     }
 
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
         let name = txtTution.text
         let personName = personNameText.text
+        let amount =  payPerClassText.text
         
         let selectedDays = tutionDayPicker.selectedDays;
         
@@ -209,6 +172,20 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             return
         }
         
+        if let isEmpty = amount?.isEmpty where isEmpty == true {
+            showAlertWithTitle("Error", message: "Please enter the fee amount", cancelButtonTitle: "OK")
+            return
+        }
+        else
+        {
+            let decimalAmount = NSDecimalNumber(string: amount)
+            
+            if decimalAmount == NSDecimalNumber.notANumber() {
+                showAlertWithTitle("Error", message: "Please enter a valid fee amount", cancelButtonTitle: "OK")
+                return
+            }
+        }
+
         let formatter = NSDateFormatter()
         formatter.dateFormat =  "HH:mm"
         let time = formatter.stringFromDate(tutionTimePicker.date)
@@ -221,6 +198,10 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             // Initialize Record
             let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
         
+        
+        //let decimalFormatter = NSNumberFormatter()
+       // decimalFormatter.numberStyle = NSNumberFormatter.st
+        //var paymentAmount : NSNumber? = decimalFormatter.numberFromString(amount!)
             
             // Populate Record
             record.setValue(name, forKey: "name")
@@ -228,7 +209,7 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             record.setValue(time, forKey: "time")
             record.setValue(day, forKey: "payon")
             record.setValue(personName, forKey: "personname")
-            record.setValue(10, forKey: "amount")
+            record.setValue( NSDecimalNumber(string: amount), forKey: "amount")
   
         
             record.setValue(NSDate(), forKey: "startdate")
@@ -273,9 +254,6 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
          formatter.dateFormat =  "HH:mm"
        // formatter.timeStyle = .ShortStyle
         print(formatter.stringFromDate(tutionTimePicker.date))
-        
-        //let dateFormatter = NSDateFormatter()
-       
     }
 
     // MARK: -

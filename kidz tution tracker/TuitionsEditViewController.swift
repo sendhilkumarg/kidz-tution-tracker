@@ -46,7 +46,14 @@ var managedObjectContext: NSManagedObjectContext!
                 tutionTimePicker.date = date
                            
             }
+            
+            if let frequency = tutionToEdit.frequency {
+                tutionDayPicker.selectedDays = frequency
+            }
 
+            if let payOn = tutionToEdit.payon{
+                payDayPicker.selectRow(Int( payOn)-1, inComponent: 0, animated: true)
+            }
             
         }
         // Do any additional setup after loading the view.
@@ -58,6 +65,59 @@ var managedObjectContext: NSManagedObjectContext!
     }
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
+        
+        let name = txtTution.text
+        let personName = personNameText.text
+        
+        let selectedDays = tutionDayPicker.selectedDays;
+        
+        if let isEmpty = name?.isEmpty where isEmpty == true {
+            showAlertWithTitle("Error", message: "Please enter the tution name", cancelButtonTitle: "OK")
+            return
+        }
+        if let isEmpty = personName?.isEmpty where isEmpty == true {
+            showAlertWithTitle("Error", message: "Please enter who attends the tution ", cancelButtonTitle: "OK")
+            return
+        }
+        
+        
+        if selectedDays.isEmpty
+        {
+            showAlertWithTitle("Error", message: "Please select the tution days", cancelButtonTitle: "OK")
+            return
+        }
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat =  "HH:mm"
+        let time = formatter.stringFromDate(tutionTimePicker.date)
+        
+        let day = dayPickerData[0][payDayPicker.selectedRowInComponent(0)]
+        
+        if let tutionToEdit = tuition {
+            tutionToEdit.setValue(name, forKey: "name")
+            tutionToEdit.setValue(selectedDays, forKey: "frequency")
+            tutionToEdit.setValue(time, forKey: "time")
+            tutionToEdit.setValue(day, forKey: "payon")
+            tutionToEdit.setValue(personName, forKey: "personname")
+            tutionToEdit.setValue(10, forKey: "amount")
+
+        
+        
+        do {
+            // Save Record
+            try tutionToEdit.managedObjectContext?.save()
+
+            dismissViewControllerAnimated(true, completion: nil)
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            showAlertWithTitle("Warning", message: "Your Tution could not be saved.", cancelButtonTitle: "OK")
+        }
+        }
+
         /*
         var name : string? /txtTution.text
         

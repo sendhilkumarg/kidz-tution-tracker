@@ -53,8 +53,7 @@ class DayPickerControl: UIView {
             addSubview(button)
             
             dayButtons.append(button)
-            
-            //ratingButtons += [button]
+
         }
         
     }
@@ -70,6 +69,7 @@ class DayPickerControl: UIView {
             buttonFrame.origin.x = CGFloat(index * (buttonSize + 5))
             button.frame = buttonFrame
         }
+        setSelectedDays()
       //  updateButtonSelectionStates()
         
     }
@@ -89,9 +89,19 @@ class DayPickerControl: UIView {
             selectedDays.append(btnIndex)
             button.backgroundColor = UIColor.greenColor()
         }
-        
-        
-        
     }
+    
+    private func setSelectedDays(){
+    
+    if !selectedDays.isEmpty
+    {
+        for frequency in selectedDays
+        {
+            dayButtons[frequency].backgroundColor = UIColor.greenColor()
+        }
+    }
+    
+    }
+    
     
 }
