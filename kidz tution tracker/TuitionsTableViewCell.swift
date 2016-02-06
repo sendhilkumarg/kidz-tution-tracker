@@ -14,6 +14,9 @@ class TuitionsTableViewCell: UITableViewCell {
   
     
     @IBOutlet weak var tuitionNameLabel: UILabel!
+    
+    @IBOutlet weak var daysLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

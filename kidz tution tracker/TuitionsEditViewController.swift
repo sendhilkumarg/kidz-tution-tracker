@@ -16,10 +16,10 @@ var managedObjectContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtTution.delegate = self
+       // txtTution.delegate = self
 
         if let tutionToEdit = tuition {
-            print(tutionToEdit)
+            //print(tutionToEdit)
             txtTution.text = tutionToEdit.name
             
         }

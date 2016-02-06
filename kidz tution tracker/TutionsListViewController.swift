@@ -91,14 +91,35 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     
     func configureCell(cell: TuitionsTableViewCell, atIndexPath indexPath: NSIndexPath) {
         // Fetch Record
-        let record = fetchedResultsController.objectAtIndexPath(indexPath)
+        let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
         
         // Update Cell
-        if let name = record.valueForKey("name") as? String {
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
+            }
+            else{
             cell.tuitionNameLabel.text = name
+            
+            }
+        
         }
         
-       
+        if let days = tuition.frequency{
+            var daysToDisplay : String = ""
+            for day in days{
+                daysToDisplay = daysToDisplay + "| \(day)"
+            }
+            cell.daysLabel.text = daysToDisplay
+        }
+        /*
+        if let am = tuition.am {
+            cell.timeLabel.text = "\(tuition.hours!) : \(tuition.minutes!) AM"
+        }
+        else{
+            cell.timeLabel.text = "\(tuition.hours!) : \(tuition.minutes!) PM"
+        }
+       */
     }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

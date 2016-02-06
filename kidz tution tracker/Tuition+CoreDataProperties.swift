@@ -2,7 +2,7 @@
 //  Tuition+CoreDataProperties.swift
 //  kidz tuition tracker
 //
-//  Created by Sendhil kumar Gurunathan on 1/22/16.
+//  Created by Sendhil kumar Gurunathan on 2/5/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,14 +14,12 @@ import CoreData
 
 extension Tuition {
 
+    @NSManaged var amount: NSDecimalNumber?
+    @NSManaged var frequency: [NSInteger]? // updated insted of NSObject?
+    @NSManaged var time: String?
     @NSManaged var name: String?
-    @NSManaged var frequency: [NSInteger]?
-    @NSManaged var hours: NSNumber?
     @NSManaged var payon: NSNumber?
     @NSManaged var personname: String?
-    @NSManaged var minutes: NSNumber?
-    @NSManaged var amount: NSDecimalNumber?
-    @NSManaged var am: NSNumber?
     @NSManaged var startdate: NSDate?
 
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC57D4801C6431320096EC00 /* Tuition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57D47E1C6431320096EC00 /* Tuition+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		BC57D4811C6431320096EC00 /* Tuition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC57D47F1C6431320096EC00 /* Tuition.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905A61C45A94F00B00E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905A51C45A94F00B00E35 /* AppDelegate.swift */; };
 		BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905A71C45A94F00B00E35 /* AttendanceViewController.swift */; };
 		BC6905AA1C45A94F00B00E35 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905A91C45A94F00B00E35 /* SecondViewController.swift */; };
@@ -22,10 +24,9 @@
 		BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905EC1C4A3B4500B00E35 /* TuitionsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905EB1C4A3B4500B00E35 /* TuitionsAddViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		BC6905F51C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F31C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
-		BC6905F61C4A48FF00B00E35 /* Tuition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F41C4A48FF00B00E35 /* Tuition.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		BC6905FA1C4EE84800B00E35 /* TuitionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F91C4EE84800B00E35 /* TuitionsEditViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC57D47E1C6431320096EC00 /* Tuition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tuition+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BC57D47F1C6431320096EC00 /* Tuition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuition.swift; sourceTree = "<group>"; };
 		BC6905A21C45A94F00B00E35 /* kidz tuition tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kidz tuition tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6905A51C45A94F00B00E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC6905A71C45A94F00B00E35 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
@@ -67,10 +70,9 @@
 		BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutiionTrackerDataController.swift; sourceTree = "<group>"; };
 		BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsTableViewCell.swift; sourceTree = "<group>"; };
 		BC6905EB1C4A3B4500B00E35 /* TuitionsAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsAddViewController.swift; sourceTree = "<group>"; };
-		BC6905F31C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tuition+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		BC6905F41C4A48FF00B00E35 /* Tuition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuition.swift; sourceTree = "<group>"; };
 		BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutionsListViewController.swift; sourceTree = "<group>"; };
 		BC6905F91C4EE84800B00E35 /* TuitionsEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsEditViewController.swift; sourceTree = "<group>"; };
+		BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPickerControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		BC6905A41C45A94F00B00E35 /* kidz tuition tracker */ = {
 			isa = PBXGroup;
 			children = (
+				BC6F1E881C6551600001FE6C /* utils */,
 				BC6905EA1C4A2DBD00B00E35 /* Model */,
 				BC6905E71C4A2B0D00B00E35 /* Tuitions */,
 				BC6905A51C45A94F00B00E35 /* AppDelegate.swift */,
@@ -173,11 +176,19 @@
 		BC6905EA1C4A2DBD00B00E35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC6905F31C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift */,
-				BC6905F41C4A48FF00B00E35 /* Tuition.swift */,
+				BC57D47E1C6431320096EC00 /* Tuition+CoreDataProperties.swift */,
+				BC57D47F1C6431320096EC00 /* Tuition.swift */,
 				BC6905DC1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		BC6F1E881C6551600001FE6C /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */,
+			);
+			name = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,9 +324,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6905F61C4A48FF00B00E35 /* Tuition.swift in Sources */,
 				BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */,
-				BC6905F51C4A48FF00B00E35 /* Tuition+CoreDataProperties.swift in Sources */,
+				BC57D4811C6431320096EC00 /* Tuition.swift in Sources */,
 				BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */,
 				BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */,
 				BC6905FA1C4EE84800B00E35 /* TuitionsEditViewController.swift in Sources */,
@@ -323,6 +333,8 @@
 				BC6905AA1C45A94F00B00E35 /* SecondViewController.swift in Sources */,
 				BC6905A61C45A94F00B00E35 /* AppDelegate.swift in Sources */,
 				BC6905EC1C4A3B4500B00E35 /* TuitionsAddViewController.swift in Sources */,
+				BC57D4801C6431320096EC00 /* Tuition+CoreDataProperties.swift in Sources */,
+				BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */,
 				BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
