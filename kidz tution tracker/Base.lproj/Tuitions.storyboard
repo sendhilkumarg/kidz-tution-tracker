@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rws-2s-1jK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rws-2s-1jK">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -19,7 +19,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EdV-Gj-zWN">
                                 <rect key="frame" x="20" y="68" width="560" height="479"/>
-                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" rowHeight="78" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
@@ -37,39 +36,32 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp6-Ff-zo7">
                                                                     <rect key="frame" x="0.0" y="0.0" width="497" height="24"/>
-                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <animations/>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="g7f-Gd-XFc">
                                                             <rect key="frame" x="0.0" y="27" width="497" height="21"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Ff0-KC-4oD">
                                                                     <rect key="frame" x="0.0" y="0.0" width="449" height="21"/>
-                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEn-Aj-BUS">
                                                                     <rect key="frame" x="455" y="0.0" width="42" height="21"/>
-                                                                    <animations/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <animations/>
                                                         </stackView>
                                                     </subviews>
-                                                    <animations/>
                                                 </stackView>
                                             </subviews>
-                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="CkF-zM-swY" firstAttribute="leading" secondItem="K5V-G1-8Ql" secondAttribute="leadingMargin" constant="7" id="Gzn-uw-wcT"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="CkF-zM-swY" secondAttribute="trailing" constant="7" id="UEh-y0-Dww"/>
@@ -80,7 +72,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="CkF-zM-swY" secondAttribute="bottom" constant="7" id="q7u-Ov-YE8"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="daysLabel" destination="Ff0-KC-4oD" id="zPV-xO-L2b"/>
@@ -96,7 +87,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EdV-Gj-zWN" firstAttribute="trailing" secondItem="LEr-1F-uaH" secondAttribute="trailingMargin" id="MSl-60-6Te"/>
@@ -140,7 +130,6 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-7m-txf">
                                                 <rect key="frame" x="0.0" y="5" width="100" height="20.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="ZtU-uc-3e2"/>
                                                 </constraints>
@@ -150,7 +139,6 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HhK-tg-Om7">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="30"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -158,14 +146,12 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o9P-w1-bY3">
                                         <rect key="frame" x="0.0" y="37" width="560" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SX2-6a-9ry">
                                                 <rect key="frame" x="0.0" y="5" width="100" height="20.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="EDc-Td-yG2"/>
                                                 </constraints>
@@ -175,7 +161,6 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="42Q-0C-KfO">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="30"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -183,14 +168,12 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gmq-mH-Ci8">
                                         <rect key="frame" x="0.0" y="74" width="560" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Every Week On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXH-pa-KRb">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="N77-XV-0dT"/>
                                                     <constraint firstAttribute="height" constant="50" id="pNH-oc-iDM"/>
@@ -201,7 +184,6 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUT-Yx-UaJ" customClass="DayPickerControl" customModule="kidz_tuition_tracker" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="10" width="450" height="30"/>
-                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="450" id="1QF-Tn-6bM"/>
@@ -209,14 +191,12 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CbU-5q-4vu">
                                         <rect key="frame" x="0.0" y="131" width="560" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDx-f6-ySY">
                                                 <rect key="frame" x="0.0" y="40" width="100" height="20.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="fbl-ta-O7G"/>
                                                 </constraints>
@@ -226,7 +206,6 @@
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="LxR-yR-OGx">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="100"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="we5-gM-Z2x"/>
                                                 </constraints>
@@ -238,14 +217,12 @@
                                                 </connections>
                                             </datePicker>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fo4-I6-v8U">
                                         <rect key="frame" x="0.0" y="238" width="560" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay ( Per Class) " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUM-8N-JOg">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="m4g-dl-Wtn"/>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="tl7-WI-a4Q"/>
@@ -256,7 +233,6 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c1J-h3-r9Q">
                                                 <rect key="frame" x="110" y="10" width="450" height="30"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="CFL-bh-G33"/>
                                                 </constraints>
@@ -267,7 +243,6 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="jmK-7X-5lL"/>
                                         </constraints>
@@ -277,7 +252,6 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every Month On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9F-Mt-aPn">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="aqZ-it-Pse"/>
                                                     <constraint firstAttribute="height" constant="50" id="f0U-7f-0Xh"/>
@@ -288,7 +262,6 @@
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Kx-ZM-V5b">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="YV7-xF-cJ9"/>
                                                 </constraints>
@@ -297,13 +270,10 @@
                                                 </connections>
                                             </pickerView>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                 </subviews>
-                                <animations/>
                             </stackView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2wi-1r-J1m" firstAttribute="top" secondItem="2cz-0f-4zA" secondAttribute="bottom" constant="10" id="Sfg-yB-Ib2"/>
@@ -348,7 +318,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="91G-5v-VUv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -367,7 +336,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="gR2-Qe-bRF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -398,7 +366,6 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-lZ-SBg">
                                                 <rect key="frame" x="0.0" y="5" width="100" height="20.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="iYa-Bx-DOx"/>
                                                 </constraints>
@@ -408,7 +375,6 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TkC-QR-toG">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="30"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -416,14 +382,12 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Zgc-af-jlg">
                                         <rect key="frame" x="0.0" y="37" width="560" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENI-1z-XAu">
                                                 <rect key="frame" x="0.0" y="5" width="100" height="20.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="fzN-rd-npV"/>
                                                 </constraints>
@@ -433,7 +397,6 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C33-of-8fX">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="30"/>
-                                                <animations/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -441,14 +404,12 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xLd-kX-Quz">
                                         <rect key="frame" x="0.0" y="74" width="560" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Every Week On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lje-gj-1Ge">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="3Lm-Yo-4t2"/>
                                                     <constraint firstAttribute="width" constant="100" id="Bj5-ak-kCW"/>
@@ -459,7 +420,6 @@
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reA-wZ-Rsq" customClass="DayPickerControl" customModule="kidz_tuition_tracker" customModuleProvider="target">
                                                 <rect key="frame" x="110" y="10" width="450" height="30"/>
-                                                <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="Foh-KI-dgW"/>
@@ -467,14 +427,12 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bpw-8W-oBa">
                                         <rect key="frame" x="0.0" y="131" width="560" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIE-rJ-c7p">
                                                 <rect key="frame" x="0.0" y="40" width="100" height="20.5"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="PnR-8q-S8h"/>
                                                 </constraints>
@@ -484,7 +442,6 @@
                                             </label>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="RIB-Pz-MiB">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="100"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="uIg-7X-PUk"/>
                                                 </constraints>
@@ -493,14 +450,12 @@
                                                 </date>
                                             </datePicker>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SCD-yu-0Sh">
                                         <rect key="frame" x="0.0" y="238" width="560" height="50"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay ( Per Class) " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lJI-0W-hBa">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="QA3-wT-rN4"/>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="bOA-I1-hZa"/>
@@ -511,7 +466,6 @@
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KDY-BP-hlG">
                                                 <rect key="frame" x="110" y="10" width="450" height="30"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="oH9-cx-vUB"/>
                                                 </constraints>
@@ -522,7 +476,6 @@
                                                 </connections>
                                             </textField>
                                         </subviews>
-                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="dZJ-Cr-lao"/>
                                         </constraints>
@@ -532,7 +485,6 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every Month On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iq-UE-m6Z">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="Bpt-g0-Hnb"/>
                                                     <constraint firstAttribute="height" constant="50" id="Mry-os-Sk4"/>
@@ -543,7 +495,6 @@
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-TE-pYg">
                                                 <rect key="frame" x="110" y="0.0" width="450" height="50"/>
-                                                <animations/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="0QZ-3X-sLW"/>
                                                 </constraints>
@@ -552,13 +503,10 @@
                                                 </connections>
                                             </pickerView>
                                         </subviews>
-                                        <animations/>
                                     </stackView>
                                 </subviews>
-                                <animations/>
                             </stackView>
                         </subviews>
-                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RMf-1L-2Xa" firstAttribute="top" secondItem="YrA-KY-byx" secondAttribute="bottom" constant="10" id="5j9-ys-znH"/>
@@ -601,7 +549,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="d7Q-R9-x0F">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

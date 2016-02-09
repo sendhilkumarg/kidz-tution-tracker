@@ -20,7 +20,6 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         super.viewDidLoad()
         tuitionsTableView.tableFooterView = UIView(frame: .zero)
         tuitionsTableView.tableFooterView?.hidden = true;
-      // var a = TuitionTrackerDataController().loadTutions()
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
@@ -198,7 +197,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     }
     /*
     func tableView(tableView: UITableView, accessoryTypeForRowWithIndexPath indexPath: NSIndexPath) -> UITableViewCellAccessoryType {
-        <#code#>
+        code
     }
 
     
@@ -329,20 +328,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
             showAlertWithTitle("Warning", message: "Your to-do could not be saved.", cancelButtonTitle: "OK")
         }
         deleteTutionsIndexPath = nil
-        /*
-        if let indexPath = deletePlanetIndexPath {
-            tableView.beginUpdates()
-            
-            planets.removeAtIndex(indexPath.row)
-            
-            // Note that indexPath is wrapped in an array:  [indexPath]
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-            
-            deletePlanetIndexPath = nil
-            
-            tableView.endUpdates()
-        }
-        */
+
     }
     
     func cancelDeletePlanet(alertAction: UIAlertAction!) {

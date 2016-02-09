@@ -68,7 +68,7 @@ var managedObjectContext: NSManagedObjectContext!
         
         let name = txtTution.text
         let personName = personNameText.text
-        
+        let amount =  payPerClassText.text
         let selectedDays = tutionDayPicker.selectedDays;
         
         if let isEmpty = name?.isEmpty where isEmpty == true {
@@ -87,6 +87,21 @@ var managedObjectContext: NSManagedObjectContext!
             return
         }
         
+        if let isEmpty = amount?.isEmpty where isEmpty == true {
+            showAlertWithTitle("Error", message: "Please enter the fee amount", cancelButtonTitle: "OK")
+            return
+        }
+        else
+        {
+            let decimalAmount = NSDecimalNumber(string: amount)
+            
+            if decimalAmount == NSDecimalNumber.notANumber() {
+                showAlertWithTitle("Error", message: "Please enter a valid fee amount", cancelButtonTitle: "OK")
+                return
+            }
+        }
+
+        
         let formatter = NSDateFormatter()
         formatter.dateFormat =  "HH:mm"
         let time = formatter.stringFromDate(tutionTimePicker.date)
@@ -99,7 +114,7 @@ var managedObjectContext: NSManagedObjectContext!
             tutionToEdit.setValue(time, forKey: "time")
             tutionToEdit.setValue(day, forKey: "payon")
             tutionToEdit.setValue(personName, forKey: "personname")
-            tutionToEdit.setValue(10, forKey: "amount")
+            tutionToEdit.setValue(NSDecimalNumber(string: amount), forKey: "amount")
 
         
         
