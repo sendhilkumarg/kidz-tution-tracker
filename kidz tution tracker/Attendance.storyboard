@@ -47,12 +47,12 @@
                     <navigationItem key="navigationItem" id="OMP-fD-83I">
                         <nil key="title"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="EGb-0Q-CW9">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="noh-ks-CEa">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="noh-ks-CEa">
                                 <rect key="frame" x="340" y="7" width="240" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Pending"/>
+                                    <segment title="History"/>
                                 </segments>
                                 <connections>
                                     <action selector="showComponent:" destination="9pv-A4-QxB" eventType="valueChanged" id="NKn-n0-zZC"/>
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="-376"/>
+            <point key="canvasLocation" x="1685" y="-452"/>
         </scene>
         <!--Pending Attendance Table View Controller-->
         <scene sceneID="mcm-D1-htJ">
@@ -84,21 +84,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="70.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xj8-1o-iIQ">
-                                            <rect key="frame" x="8" y="32" width="257" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-yH-81M">
-                                            <rect key="frame" x="332" y="20" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="statusChanged:" destination="ddl-f7-Vsp" eventType="valueChanged" id="07o-vx-Led"/>
-                                            </connections>
-                                        </switch>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1Z-sq-ghx">
+                                            <rect key="frame" x="8" y="32" width="584" height="31"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xj8-1o-iIQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="535" height="31"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-yH-81M">
+                                                    <rect key="frame" x="535" y="0.0" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="statusChanged:" destination="ddl-f7-Vsp" eventType="valueChanged" id="07o-vx-Led"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="C1Z-sq-ghx" firstAttribute="top" secondItem="ei4-1S-nEt" secondAttribute="topMargin" constant="24" id="8Dy-Jf-8sO"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="C1Z-sq-ghx" secondAttribute="trailing" id="KOr-f7-4v9"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="C1Z-sq-ghx" secondAttribute="bottom" id="NoE-95-IiQ"/>
+                                        <constraint firstItem="C1Z-sq-ghx" firstAttribute="leading" secondItem="ei4-1S-nEt" secondAttribute="leadingMargin" id="Xa5-B9-OVC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="1" green="0.081942766769999995" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="attendanceSwitch" destination="RNe-yH-81M" id="dEx-iP-JJh"/>
                                     <outlet property="dayLabel" destination="Xj8-1o-iIQ" id="6AI-Ee-kgM"/>

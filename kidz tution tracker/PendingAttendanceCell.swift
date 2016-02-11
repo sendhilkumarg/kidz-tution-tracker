@@ -10,6 +10,7 @@ import UIKit
 
 class PendingAttendanceCell: UITableViewCell {
     var delegate : AttendanceChangeControllerDelegate?
+    var atIndexPath : NSIndexPath?
     @IBOutlet weak var dayLabel: UILabel!
 
     @IBOutlet weak var attendanceSwitch: UISwitch!
@@ -17,7 +18,7 @@ class PendingAttendanceCell: UITableViewCell {
     @IBAction func statusChanged(sender: UISwitch) {
         
         if let delegate1 = delegate {
-            delegate1.StatusChanged( sender.on)
+            delegate1.StatusChanged( atIndexPath!,attended: sender.on)
         }
     }
 }

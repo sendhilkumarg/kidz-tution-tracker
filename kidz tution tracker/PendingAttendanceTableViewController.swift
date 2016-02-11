@@ -34,7 +34,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      /*
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
         
         do {
@@ -56,7 +56,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
         }
 
-      
+      */
  
 
         do {
@@ -78,7 +78,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
         
         record.setValue(NSDate() , forKey: "date")
-        record.setValue(true, forKey: "attended")
+        record.setValue(false, forKey: "attended")
         record.setValue("", forKey: "notes")
         
         // Create Relationship
@@ -107,10 +107,8 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         // Dispose of any resources that can be recreated.
     }
 
-     func StatusChanged(attended : Bool)
-     {
-        print(attended)
-     }
+
+    
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -150,53 +148,15 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
 
     }
 
-    //func tab
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func configureCell(cell : PendingAttendanceCell , atIndexPath indexPath: NSIndexPath){
+        let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
+        cell.atIndexPath = indexPath
+        cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
+        cell.attendanceSwitch.on = attendance.attended!.boolValue
+        cell.delegate = self
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
     // MARK: -  FetchedResultsController Delegate
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
@@ -236,11 +196,34 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         }
     }
     
-    func configureCell(cell : PendingAttendanceCell , atIndexPath indexPath: NSIndexPath){
-         let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
-        cell.dayLabel.text = String( attendance.date!)
-        cell.delegate = self
-    }
 
+
+    //MARK : AttendanceChangeControllerDelegate
+    func StatusChanged(atIndexPath : NSIndexPath ,attended : Bool)
+    {
+        //if let indexPath = tableView.indexPathForSelectedRow {
+        // Fetch Record
+        let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Attendance
+        
+        record.setValue(attended, forKeyPath: "attended")
+        
+        do {
+            // Save Record
+            try record.managedObjectContext?.save()
+            
+            dismissViewControllerAnimated(true, completion: nil)
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+        }
+        
+        
+        
+        // print(attended)
+    }
     
 }

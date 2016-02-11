@@ -158,7 +158,6 @@
 				BC6905AE1C45A94F00B00E35 /* Assets.xcassets */,
 				BC6905B01C45A94F00B00E35 /* LaunchScreen.storyboard */,
 				BC6905B31C45A94F00B00E35 /* Info.plist */,
-				BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */,
 			);
 			name = "kidz tuition tracker";
 			path = "kidz tution tracker";
@@ -187,10 +186,10 @@
 		BC6905E71C4A2B0D00B00E35 /* Tuitions */ = {
 			isa = PBXGroup;
 			children = (
+				BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */,
 				BC6905D51C46FBF700B00E35 /* Tuitions.storyboard */,
 				BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */,
 				BC6905EB1C4A3B4500B00E35 /* TuitionsAddViewController.swift */,
-				BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */,
 				BC6905F91C4EE84800B00E35 /* TuitionsEditViewController.swift */,
 			);
 			name = Tuitions;
@@ -213,6 +212,7 @@
 			children = (
 				BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */,
 				BC044AE51C68961B006A49CE /* UIHelper.swift */,
+				BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
