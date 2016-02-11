@@ -34,30 +34,8 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      /*
-        let fetchRequest = NSFetchRequest(entityName: "Tuition")
-        
-        do {
-            let result = try self.managedObjectContext.executeFetchRequest(fetchRequest)
-            for item in result
-            {
-               let tuition = item as! Tuition
-                CreateNewAttendance(tuition)
-                //print(tuition.name)
-            }
-            //print(result)
-            
-        } catch {
-
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
-        }
-
-      */
- 
+      //CreateTestData()
+       // CreateTestData()
 
         do {
             try self.fetchedResultsController.performFetch()
@@ -68,6 +46,29 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         }
 
     }
+    
+    func CreateTestData(){
+        let fetchRequest = NSFetchRequest(entityName: "Tuition")
+        
+        do {
+            let result = try self.managedObjectContext.executeFetchRequest(fetchRequest)
+            for item in result
+            {
+                let tuition = item as! Tuition
+                CreateNewAttendance(tuition)
+                //print(tuition.name)
+            }
+            //print(result)
+            
+        } catch {
+            
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+        }
+    }
 
     func CreateNewAttendance(tuition : Tuition )
     {
@@ -76,10 +77,20 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         
         // Initialize Record
         let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
+       
+        /*let today = NSDate()
+        let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: 1,
+            toDate: today,
+            options: NSCalendarOptions(rawValue: 0))
+        */
         
         record.setValue(NSDate() , forKey: "date")
         record.setValue(false, forKey: "attended")
         record.setValue("", forKey: "notes")
+        
+        
         
         // Create Relationship
         //let parent = record.mutableSetValueForKey("relTuition")
@@ -133,10 +144,30 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         return sectionData.name
     }
     
+
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? PendingAttenanceHeaderCell
+        if let cell = headerCell {
+            if  let sectionData = fetchedResultsController.sections?[section] {
+                 cell.tuitionLabel.text = sectionData.name
+            }else {
+                cell.tuitionLabel .text = ""
+            }
+           
+
+        }
+        
+       
+        //headerCell.backgroundColor = UIColor.cyanColor()
+        return headerCell
+  
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         //1
-        let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
+       // let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
         //2
         //let cell = tableView.dequeueReusableCellWithIdentifier("movieCell")!
         let cellIdentifier = "pendingAttendanceTableViewCell"

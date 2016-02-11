@@ -33,6 +33,7 @@
 		BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */; };
 		BC6905FA1C4EE84800B00E35 /* TuitionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F91C4EE84800B00E35 /* TuitionsEditViewController.swift */; };
 		BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */; };
+		BCFF26C31C6C953000E2838E /* PendingAttenanceHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutionsListViewController.swift; sourceTree = "<group>"; };
 		BC6905F91C4EE84800B00E35 /* TuitionsEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsEditViewController.swift; sourceTree = "<group>"; };
 		BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPickerControl.swift; sourceTree = "<group>"; };
+		BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingAttenanceHeaderCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				BC044AC31C66F4BE006A49CE /* PendingAttendanceTableViewController.swift */,
 				BC044AE71C68A3E1006A49CE /* PendingAttendanceCell.swift */,
 				BC044AE91C69C638006A49CE /* AttendanceChangeControllerDelegate.swift */,
+				BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */,
 			);
 			name = Attendance;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				BC6905FA1C4EE84800B00E35 /* TuitionsEditViewController.swift in Sources */,
 				BC044AC41C66F4BE006A49CE /* PendingAttendanceTableViewController.swift in Sources */,
 				BC6905DE1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld in Sources */,
+				BCFF26C31C6C953000E2838E /* PendingAttenanceHeaderCell.swift in Sources */,
 				BC044AE61C68961B006A49CE /* UIHelper.swift in Sources */,
 				BC6905AA1C45A94F00B00E35 /* SecondViewController.swift in Sources */,
 				BC6905A61C45A94F00B00E35 /* AppDelegate.swift in Sources */,
