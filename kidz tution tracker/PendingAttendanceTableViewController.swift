@@ -157,13 +157,13 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
            
 
         }
-        
-       
-        //headerCell.backgroundColor = UIColor.cyanColor()
         return headerCell
   
     }
-    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.00
+    }
+        
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         //1
