@@ -17,11 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YM2-g9-Ul7">
-                                <rect key="frame" x="20" y="64" width="560" height="487"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YM2-g9-Ul7">
+                                <rect key="frame" x="20" y="69" width="560" height="477"/>
                                 <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gN-Ip-A97">
-                                        <rect key="frame" x="0.0" y="0.0" width="560" height="487"/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8gN-Ip-A97">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="477"/>
                                     </containerView>
                                 </subviews>
                                 <constraints>
@@ -39,29 +39,36 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YM2-g9-Ul7" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="2VM-du-T9n"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="YM2-g9-Ul7" secondAttribute="bottom" constant="5" id="5nM-Hb-2uE"/>
+                            <constraint firstItem="YM2-g9-Ul7" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="5" id="NBA-NL-PNp"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="YM2-g9-Ul7" secondAttribute="bottom" id="d6a-25-Slr"/>
                             <constraint firstItem="YM2-g9-Ul7" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="fgn-dZ-FLb"/>
                             <constraint firstItem="YM2-g9-Ul7" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="ier-g8-ZXv"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2VM-du-T9n"/>
+                                <exclude reference="d6a-25-Slr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="OMP-fD-83I">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="EGb-0Q-CW9">
-                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="bar" selectedSegmentIndex="0" id="noh-ks-CEa">
-                                <rect key="frame" x="340" y="7" width="240" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Pending"/>
-                                    <segment title="History"/>
-                                </segments>
-                                <connections>
-                                    <action selector="showComponent:" destination="9pv-A4-QxB" eventType="valueChanged" id="NKn-n0-zZC"/>
-                                </connections>
-                            </segmentedControl>
-                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Sz5-C4-DYF">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Pending"/>
+                                <segment title="History"/>
+                            </segments>
+                            <connections>
+                                <action selector="showComponent:" destination="9pv-A4-QxB" eventType="valueChanged" id="wHj-C4-zLl"/>
+                            </connections>
+                        </segmentedControl>
                     </navigationItem>
                     <connections>
                         <outlet property="containerView" destination="8gN-Ip-A97" id="ArW-7j-5bV"/>
+                        <outlet property="segmentedControl" destination="Sz5-C4-DYF" id="8Ur-pg-AlV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

@@ -11,6 +11,8 @@ import CoreData
 class AttendanceViewController: UIViewController {
 let managedObjectContext = TuitionTrackerDataController().managedObjectContext
   
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+ 
     @IBOutlet weak var containerView: UIView!
      weak var currentViewController: UIViewController?
 
@@ -21,9 +23,6 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
         self.addChildViewController(self.currentViewController!)
         self.addSubview(self.currentViewController!.view, toView: self.containerView)
         super.viewDidLoad()
-        //savedata()
-        //fetch()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

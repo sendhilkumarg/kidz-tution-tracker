@@ -18,6 +18,6 @@
     </entity>
     <elements>
         <element name="Attendance" positionX="259" positionY="45" width="128" height="105"/>
-        <element name="Tuition" positionX="-54" positionY="-9" width="128" height="163"/>
+        <element name="Tuition" positionX="-54" positionY="-9" width="128" height="165"/>
     </elements>
 </model>
