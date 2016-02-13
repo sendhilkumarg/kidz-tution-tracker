@@ -18,12 +18,14 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         let fetchRequest = NSFetchRequest(entityName: "Attendance")
         
         // Add Sort Descriptors
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
+        let sortDescriptor2 = NSSortDescriptor(key: "relTuition.name", ascending: true)
+        let sortDescriptor3 = NSSortDescriptor(key: "relTuition.personname", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor2,sortDescriptor3, sortDescriptor1]
         
         // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.name", cacheName: nil)
-        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil)
+        //relTuition.objectID
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
@@ -149,12 +151,35 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? PendingAttenanceHeaderCell
         if let cell = headerCell {
+            cell.tuitionLabel.text = ""
+            cell.timeLabel.text = ""
+            
+            
             if  let sectionData = fetchedResultsController.sections?[section] {
-                 cell.tuitionLabel.text = sectionData.name
-            }else {
-                cell.tuitionLabel .text = ""
+               
+                if sectionData.objects != nil && sectionData.objects!.count > 0 {
+                   if  let atn = sectionData.objects?[0] as? Attendance , tuition = atn.relTuition
+                   {
+                    if let name = tuition.name {
+                        if let personName = tuition.personname {
+                            cell.tuitionLabel.text = "\(personName)'s \(name)"
+                        }
+                        else{
+                            cell.tuitionLabel.text = name
+                            
+                        }
+                        
+                    }
+                    if let time = tuition.time {
+                        cell.timeLabel.text = Utils.ToTimeFromString(time)
+                    }
+                    
+                    }
+                    
+
+                }
+                
             }
-           
 
         }
         return headerCell
