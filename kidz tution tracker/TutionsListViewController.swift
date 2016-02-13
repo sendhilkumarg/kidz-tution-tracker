@@ -84,83 +84,11 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
          let cellIdentifier = "TuitionsTableViewCell"
         let cell = tuitionsTableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TuitionsTableViewCell
-        configureCell(cell, atIndexPath: indexPath)
+         let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+       Utils.configureTuitionsTableViewCellCell(cell,tuition: tuition, atIndexPath: indexPath)
         return cell
     }
     
-    func configureCell(cell: TuitionsTableViewCell, atIndexPath indexPath: NSIndexPath) {
-        // Fetch Record
-        let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-        
-        // Update Cell
-        if let name = tuition.name {
-            if let personName = tuition.personname {
-                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
-            }
-            else{
-            cell.tuitionNameLabel.text = name
-            
-            }
-        
-        }
-        
-      
-        
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat =  "HH:mm"
-        
-        if let  tutionTime = tuition.time , time = dateFormatter.dateFromString(tutionTime) {
-            
-            let formatter = NSDateFormatter()
-            formatter.dateFormat = "h:mm a" //"h:mm a 'on' MMMM dd, yyyy"
-            formatter.AMSymbol = "AM"
-            formatter.PMSymbol = "PM"
-            
-            let dateString = formatter.stringFromDate(time)
-            cell.timeLabel.text = dateString;
-            //print(dateString)
-        }
-        else
-        {
-          cell.timeLabel.text = "";
-        }
-        
-       
-        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
-            
-             var days = [String]()
-             var dayText = "S"
-            
-            for frequency in tuition.frequency!
-            {
-                
-                switch frequency
-                {
-                case 0 :
-                    dayText = "S"
-                case 1 :
-                    dayText = "M"
-                case 2 :
-                    dayText = "T"
-                case 3 :
-                    dayText = "W"
-                case 4 :
-                    dayText = "T"
-                case 5 :
-                    dayText = "F"
-                case 6 :
-                    dayText = "S"
-                default:
-                    dayText = "S"
-                }
-
-                days.append(dayText)
-            }
-            
-            cell.daysLabel.text  = "Days : " + days.joinWithSeparator("|")
-        }
-      
-    }
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -229,7 +157,10 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         case .Update:
             if let indexPath = indexPath {
                 let cell = tuitionsTableView.cellForRowAtIndexPath(indexPath) as! TuitionsTableViewCell
-                configureCell(cell, atIndexPath: indexPath)
+                let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+                Utils.configureTuitionsTableViewCellCell(cell,tuition: tuition, atIndexPath: indexPath)
+
+               // configureCell(cell, atIndexPath: indexPath)
             }
             break;
         case .Move:

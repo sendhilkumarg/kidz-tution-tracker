@@ -25,7 +25,6 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         
         // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil)
-        //relTuition.objectID
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
@@ -37,7 +36,6 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     override func viewDidLoad() {
         super.viewDidLoad()
       //CreateTestData()
-       // CreateTestData()
 
         do {
             try self.fetchedResultsController.performFetch()
@@ -153,10 +151,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         if let cell = headerCell {
             cell.tuitionLabel.text = ""
             cell.timeLabel.text = ""
-            
-            
             if  let sectionData = fetchedResultsController.sections?[section] {
-               
                 if sectionData.objects != nil && sectionData.objects!.count > 0 {
                    if  let atn = sectionData.objects?[0] as? Attendance , tuition = atn.relTuition
                    {
@@ -175,8 +170,6 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
                     }
                     
                     }
-                    
-
                 }
                 
             }
@@ -191,15 +184,9 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
-        //1
-       // let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
-        //2
-        //let cell = tableView.dequeueReusableCellWithIdentifier("movieCell")!
         let cellIdentifier = "pendingAttendanceTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PendingAttendanceCell
-        //3
-         configureCell(cell, atIndexPath: indexPath)
-
+        configureCell(cell, atIndexPath: indexPath)
         return cell
 
     }
@@ -257,7 +244,6 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     //MARK : AttendanceChangeControllerDelegate
     func StatusChanged(atIndexPath : NSIndexPath ,attended : Bool)
     {
-        //if let indexPath = tableView.indexPathForSelectedRow {
         // Fetch Record
         let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Attendance
         
@@ -277,9 +263,6 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
         }
         
-        
-        
-        // print(attended)
     }
     
 }
