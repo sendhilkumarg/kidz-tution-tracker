@@ -238,7 +238,7 @@
                                     <outlet property="daysLabel" destination="rSO-vg-HSH" id="2dd-2u-iqy"/>
                                     <outlet property="timeLabel" destination="aQJ-lt-4z4" id="oHr-dp-mHu"/>
                                     <outlet property="tuitionNameLabel" destination="wl8-Wh-jnA" id="JRE-9d-Yth"/>
-                                    <segue destination="bD3-X8-dGm" kind="show" id="kx6-5K-id5"/>
+                                    <segue destination="bD3-X8-dGm" kind="show" identifier="segueShowAttendance" id="kx6-5K-id5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

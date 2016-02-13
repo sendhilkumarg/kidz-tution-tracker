@@ -9,42 +9,41 @@
 import UIKit
 import CoreData
 
-class HistoryAttendanceTableViewController: UITableViewController , NSFetchedResultsControllerDelegate{
+class HistoryAttendanceTableViewController: UITableViewController {
 
     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-    
-    
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        // Initialize Fetch Request
-        let fetchRequest = NSFetchRequest(entityName: "Attendance")
-        
-        // Add Sort Descriptors
-        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
-        let sortDescriptor2 = NSSortDescriptor(key: "relTuition.name", ascending: true)
-        let sortDescriptor3 = NSSortDescriptor(key: "relTuition.personname", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor2,sortDescriptor3, sortDescriptor1]
-        
-        // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil)
-        // Configure Fetched Results Controller
-        fetchedResultsController.delegate = self
-        
-        return fetchedResultsController
-    }()
+    var tuitionObjectId : NSManagedObjectID?
+    var tuition : Tuition?
+    var attendanceList : [Attendance] = [];
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //CreateTestData()
-        
-        do {
-            try self.fetchedResultsController.performFetch()
-        } catch {
-            let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+        for item in tuition!.relAttendance! {
+          //  print(item)
+            attendanceList.append(item as! Attendance)
         }
+        if let tuition = tuition{
+            var header = ""
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                header = "\(personName)'s \(name)"
+            }
+            else{
+               header = name
+                
+            }
+            
+        }
+        
+        if let  time = tuition.time  {
+            header = header + " " + Utils.ToTimeFromString(time)
+        }
+     self.navigationItem.title = header
+        }
+
         
     }
 
@@ -56,17 +55,13 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        guard let sectionCount = fetchedResultsController.sections?.count else {
-            return 0
-        }
-        return sectionCount
+        return 1
+        
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let sectionData = fetchedResultsController.sections?[section] else {
-            return 0
-        }
-        return sectionData.numberOfObjects
+        return attendanceList.count
+ 
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -84,23 +79,12 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
     }
     
     func configureCell(cell : HistoryAttendanceCell , atIndexPath indexPath: NSIndexPath){
-        let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
+        //let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
+        let attendance = attendanceList[indexPath.row]
 
         cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
         cell.statusLabel.text = attendance.attended!.boolValue ? "Yes" : "No"
 
         
     }
-    
-    
-    // MARK: -  FetchedResultsController Delegate
-    
-    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
     }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
-    }
-
-}

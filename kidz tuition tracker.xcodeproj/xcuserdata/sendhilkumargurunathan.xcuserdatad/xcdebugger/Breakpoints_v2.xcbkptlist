@@ -1510,7 +1510,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/AttendanceTuitionListTableViewController.swift"
-                  timestampString = "477031091.037072"
+                  timestampString = "477044737.888067"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1525,7 +1525,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/AttendanceTuitionListTableViewController.swift"
-                  timestampString = "477031091.037305"
+                  timestampString = "477044737.888184"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1540,7 +1540,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/AttendanceTuitionListTableViewController.swift"
-                  timestampString = "477031091.037468"
+                  timestampString = "477044737.888283"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1555,7 +1555,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/AttendanceTuitionListTableViewController.swift"
-                  timestampString = "477031091.03764"
+                  timestampString = "477044737.888379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1600,7 +1600,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
@@ -1616,7 +1616,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
@@ -1632,7 +1632,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
@@ -1712,7 +1712,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
@@ -1722,6 +1722,304 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
+            timestampString = "477037563.204221"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/HistoryAttendanceTableViewController.swift"
+            timestampString = "477037750.288001"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "HistoryAttendanceTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.__deallocating_deinit"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.89098"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.init (kidz_tuition_tracker.HistoryAttendanceTableViewController.Type)(style : __C.UITableViewStyle) -&gt; kidz_tuition_tracker.HistoryAttendanceTableViewController"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.891086"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.init (kidz_tuition_tracker.HistoryAttendanceTableViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; kidz_tuition_tracker.HistoryAttendanceTableViewController"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.891179"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.init (kidz_tuition_tracker.HistoryAttendanceTableViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;kidz_tuition_tracker.HistoryAttendanceTableViewController&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.891274"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "19">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
+            timestampString = "477039024.197429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
+            timestampString = "477044281.470825"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
+            timestampString = "477037929.824411"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/HistoryAttendanceTableViewController.swift"
+            timestampString = "477044281.470825"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "HistoryAttendanceTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.tuitionObjectId.getter : Swift.Optional&lt;__ObjC.NSManagedObjectID&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.892375"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.tuitionObjectId.setter : Swift.Optional&lt;__ObjC.NSManagedObjectID&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.892493"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.tuitionObjectId.materializeForSet : Swift.Optional&lt;__ObjC.NSManagedObjectID&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.89259"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.init (kidz_tuition_tracker.HistoryAttendanceTableViewController.Type)(style : __C.UITableViewStyle) -&gt; kidz_tuition_tracker.HistoryAttendanceTableViewController"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.892688"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "115">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.init (kidz_tuition_tracker.HistoryAttendanceTableViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; kidz_tuition_tracker.HistoryAttendanceTableViewController"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.892785"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "176">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.HistoryAttendanceTableViewController.init (kidz_tuition_tracker.HistoryAttendanceTableViewController.Type)(coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;kidz_tuition_tracker.HistoryAttendanceTableViewController&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
+                  timestampString = "477044737.892881"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "115">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/AttendanceTuitionListTableViewController.swift"
+            timestampString = "477039082.628243"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "prepareForSegue(_:sender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/HistoryAttendanceTableViewController.swift"
+            timestampString = "477045396.741144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "numberOfSectionsInTableView(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/HistoryAttendanceTableViewController.swift"
+            timestampString = "477045396.741144"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "configureCell(_:atIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
