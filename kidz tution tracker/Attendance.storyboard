@@ -24,33 +24,15 @@
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="477"/>
                                     </containerView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="8gN-Ip-A97" firstAttribute="leading" secondItem="YM2-g9-Ul7" secondAttribute="leading" id="1vx-99-Die"/>
-                                    <constraint firstItem="8gN-Ip-A97" firstAttribute="trailing" secondItem="YM2-g9-Ul7" secondAttribute="trailingMargin" id="6yj-T9-Zta"/>
-                                    <constraint firstItem="8gN-Ip-A97" firstAttribute="bottom" secondItem="YM2-g9-Ul7" secondAttribute="bottomMargin" id="7IZ-B2-56y"/>
-                                    <constraint firstAttribute="trailing" secondItem="8gN-Ip-A97" secondAttribute="trailing" id="HNY-0I-F9V"/>
-                                    <constraint firstItem="8gN-Ip-A97" firstAttribute="top" secondItem="YM2-g9-Ul7" secondAttribute="top" id="gCt-lJ-I2x"/>
-                                    <constraint firstAttribute="bottom" secondItem="8gN-Ip-A97" secondAttribute="bottom" id="hni-S2-Umg"/>
-                                    <constraint firstItem="8gN-Ip-A97" firstAttribute="top" secondItem="YM2-g9-Ul7" secondAttribute="topMargin" id="miD-NY-GoR"/>
-                                    <constraint firstItem="8gN-Ip-A97" firstAttribute="leading" secondItem="YM2-g9-Ul7" secondAttribute="leadingMargin" id="oGM-JL-JpP"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YM2-g9-Ul7" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="2VM-du-T9n"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="YM2-g9-Ul7" secondAttribute="bottom" constant="5" id="5nM-Hb-2uE"/>
                             <constraint firstItem="YM2-g9-Ul7" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="5" id="NBA-NL-PNp"/>
-                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="YM2-g9-Ul7" secondAttribute="bottom" id="d6a-25-Slr"/>
                             <constraint firstItem="YM2-g9-Ul7" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="fgn-dZ-FLb"/>
                             <constraint firstItem="YM2-g9-Ul7" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" id="ier-g8-ZXv"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2VM-du-T9n"/>
-                                <exclude reference="d6a-25-Slr"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="OMP-fD-83I">
                         <nil key="title"/>
@@ -137,17 +119,24 @@
                                             <rect key="frame" x="8" y="8" width="584" height="55"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u1c-7D-9mX">
-                                                    <rect key="frame" x="0.0" y="17" width="535" height="20.5"/>
+                                                    <rect key="frame" x="0.0" y="17.5" width="424" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1DF-Wb-zBq">
-                                                    <rect key="frame" x="535" y="12" width="51" height="31"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="JDF-wv-9kK">
+                                                    <rect key="frame" x="424" y="13.5" width="160" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="160" id="GIN-SC-NMR"/>
+                                                    </constraints>
+                                                    <segments>
+                                                        <segment title="Attended"/>
+                                                        <segment title="Absent"/>
+                                                    </segments>
                                                     <connections>
-                                                        <action selector="statusChanged:" destination="303-mh-vHS" eventType="valueChanged" id="uT7-ep-nbw"/>
+                                                        <action selector="statusChanged:" destination="303-mh-vHS" eventType="valueChanged" id="PkW-5Z-zET"/>
                                                     </connections>
-                                                </switch>
+                                                </segmentedControl>
                                             </subviews>
                                         </stackView>
                                     </subviews>
@@ -160,7 +149,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="attendanceSwitch" destination="1DF-Wb-zBq" id="66Q-Yw-zlA"/>
+                                    <outlet property="attendanceSegemnt" destination="JDF-wv-9kK" id="H40-WH-dtG"/>
                                     <outlet property="dayLabel" destination="u1c-7D-9mX" id="zM5-77-weL"/>
                                 </connections>
                             </tableViewCell>
@@ -277,14 +266,14 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-TJ-lmF">
                                             <rect key="frame" x="8" y="8" width="584" height="28"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cML-oL-jVb">
-                                                    <rect key="frame" x="0.0" y="0.0" width="514" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cML-oL-jVb">
+                                                    <rect key="frame" x="0.0" y="0.0" width="535" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Attended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWl-Pl-bQ7">
-                                                    <rect key="frame" x="514" y="0.0" width="71" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWl-Pl-bQ7">
+                                                    <rect key="frame" x="535" y="0.0" width="50" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -299,6 +288,7 @@
                                         <constraint firstItem="Apb-TJ-lmF" firstAttribute="top" secondItem="dUu-2h-TDW" secondAttribute="topMargin" id="iOc-Ft-5UD"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.16180157419999999" green="1" blue="0.29881595820000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dayHeaderLabel" destination="Apb-TJ-lmF" id="LeL-y0-pBE"/>
                                     <outlet property="statusLabel" destination="dUu-2h-TDW" id="gh6-9o-OAl"/>

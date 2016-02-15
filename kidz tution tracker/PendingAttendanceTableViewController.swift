@@ -16,7 +16,8 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Attendance")
-        
+        //fetchRequest.predicate = NSPredicate(format: "status = %@", AttendanceStatus.Pending.rawValue)
+         fetchRequest.predicate = NSPredicate(format: "status == %@", AttendanceStatus.Pending.description)
         // Add Sort Descriptors
         let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
         let sortDescriptor2 = NSSortDescriptor(key: "relTuition.name", ascending: true)
@@ -55,9 +56,20 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             for item in result
             {
                 let tuition = item as! Tuition
-                CreateNewAttendance(tuition)
+                for i in 1...4{
+                    let today = NSDate()
+                    let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
+                        .Day,
+                        value: i,
+                        toDate: today,
+                        options: NSCalendarOptions(rawValue: 0))
+
+                     CreateNewAttendance(tuition,date: tomorrow!)
+                    }
+               
                 //print(tuition.name)
             }
+            print ("created test data")
             //print(result)
             
         } catch {
@@ -70,7 +82,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         }
     }
 
-    func CreateNewAttendance(tuition : Tuition )
+    func CreateNewAttendance(tuition : Tuition , date : NSDate)
     {
         // Create Entity
         let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: self.managedObjectContext)
@@ -86,9 +98,11 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             options: NSCalendarOptions(rawValue: 0))
         */
         
-        record.setValue(NSDate() , forKey: "date")
-        record.setValue(false, forKey: "attended")
-        record.setValue("", forKey: "notes")
+        record.setValue(date , forKey: "date")
+        record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
+      //  record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
+        //record.setValue(false, forKey: "status")
+        //record.setValue("", forKey: "notes")
         
         
         
@@ -192,10 +206,29 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     }
 
     func configureCell(cell : PendingAttendanceCell , atIndexPath indexPath: NSIndexPath){
+        print(fetchedResultsController.objectAtIndexPath(indexPath))
         let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
         cell.atIndexPath = indexPath
         cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
-        cell.attendanceSwitch.on = attendance.attended!.boolValue
+        //cell.attendanceSwitch.on = attendance.attended!.boolValue
+        if let status = attendance.status  {
+            switch attendance.CurrentStatus
+            {
+            case AttendanceStatus.Pending :
+                cell.attendanceSegemnt.selected = false ;
+                break
+                
+            case AttendanceStatus.Attended :
+                 cell.attendanceSegemnt.selectedSegmentIndex = 0
+                break
+            case AttendanceStatus.Absent :
+                cell.attendanceSegemnt.selectedSegmentIndex = 1
+                break
+                
+            }
+           
+        }
+       
         cell.delegate = self
     }
     
@@ -207,8 +240,9 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
+       // tableView.endUpdates()
     }
+    /*
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch (type) {
         case .Insert:
@@ -238,16 +272,16 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             break;
         }
     }
-    
+    */
 
 
     //MARK : AttendanceChangeControllerDelegate
-    func StatusChanged(atIndexPath : NSIndexPath ,attended : Bool)
+    func StatusChanged(atIndexPath : NSIndexPath ,status : AttendanceStatus)
     {
         // Fetch Record
         let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Attendance
         
-        record.setValue(attended, forKeyPath: "attended")
+        record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
         
         do {
             // Save Record

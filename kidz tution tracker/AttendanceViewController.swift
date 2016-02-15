@@ -20,8 +20,11 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     override func viewDidLoad() {
         self.currentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("pendingAttendance")
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+        //self.currentViewController!.view.layoutSubviews()
         self.addChildViewController(self.currentViewController!)
+        
         self.addSubview(self.currentViewController!.view, toView: self.containerView)
+
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -58,10 +61,16 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
         
         var viewBindingsDict = [String: AnyObject]()
         viewBindingsDict["subView"] = subView
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subView]|",
+            options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subView]|",
+            options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
+        /*
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))
+    */
 
     }
 /*

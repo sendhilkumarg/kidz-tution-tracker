@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
     <entity name="Attendance" representedClassName=".Attendance" syncable="YES">
-        <attribute name="attended" attributeType="Boolean" syncable="YES"/>
         <attribute name="date" attributeType="Date" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="relTuition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tuition" inverseName="relAttendance" inverseEntity="Tuition" syncable="YES"/>
     </entity>
     <entity name="Tuition" representedClassName=".Tuition" syncable="YES">

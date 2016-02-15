@@ -13,12 +13,17 @@ class PendingAttendanceCell: UITableViewCell {
     var atIndexPath : NSIndexPath?
     @IBOutlet weak var dayLabel: UILabel!
 
+    @IBOutlet weak var attendanceSegemnt: UISegmentedControl!
     @IBOutlet weak var attendanceSwitch: UISwitch!
     
-    @IBAction func statusChanged(sender: UISwitch) {
-        
-        if let delegate1 = delegate {
-            delegate1.StatusChanged( atIndexPath!,attended: sender.on)
+    
+    @IBAction func statusChanged(sender: UISegmentedControl) {
+        if let delegate = delegate {
+           
+            delegate.StatusChanged( atIndexPath! , status : sender.selectedSegmentIndex == 0 ?AttendanceStatus.Attended  : AttendanceStatus.Absent)
         }
+
     }
+    
+
 }

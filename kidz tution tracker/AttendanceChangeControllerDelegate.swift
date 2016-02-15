@@ -9,5 +9,5 @@
 import Foundation
 import UIKit
 public protocol AttendanceChangeControllerDelegate{
-    func StatusChanged(atIndexPath : NSIndexPath, attended : Bool)
+    func StatusChanged(atIndexPath : NSIndexPath, status : AttendanceStatus)
 }

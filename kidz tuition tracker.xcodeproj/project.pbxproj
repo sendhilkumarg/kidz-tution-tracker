@@ -39,6 +39,8 @@
 		BCFF26C91C6EF81600E2838E /* HistoryAttendanceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C81C6EF81600E2838E /* HistoryAttendanceTableViewController.swift */; };
 		BCFF26CB1C6EFB7200E2838E /* HistoryAttendanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26CA1C6EFB7200E2838E /* HistoryAttendanceCell.swift */; };
 		BCFF26CD1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26CC1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift */; };
+		BCFF26CF1C71B2AD00E2838E /* AttendanceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26CE1C71B2AD00E2838E /* AttendanceStatus.swift */; };
+		BCFF26D11C71C73B00E2838E /* AttendanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26D01C71C73B00E2838E /* AttendanceExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		BCFF26C81C6EF81600E2838E /* HistoryAttendanceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttendanceTableViewController.swift; sourceTree = "<group>"; };
 		BCFF26CA1C6EFB7200E2838E /* HistoryAttendanceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttendanceCell.swift; sourceTree = "<group>"; };
 		BCFF26CC1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttenanceHeaderCell.swift; sourceTree = "<group>"; };
+		BCFF26CE1C71B2AD00E2838E /* AttendanceStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceStatus.swift; sourceTree = "<group>"; };
+		BCFF26D01C71C73B00E2838E /* AttendanceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +225,8 @@
 				BC044AE01C67F7B9006A49CE /* Tuition+CoreDataProperties.swift */,
 				BC044ADD1C67F5FF006A49CE /* Tuition.swift */,
 				BC6905DC1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld */,
+				BCFF26CE1C71B2AD00E2838E /* AttendanceStatus.swift */,
+				BCFF26D01C71C73B00E2838E /* AttendanceExtension.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */,
 				BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */,
 				BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */,
+				BCFF26CF1C71B2AD00E2838E /* AttendanceStatus.swift in Sources */,
 				BCFF26C51C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift in Sources */,
 				BC044AE11C67F7B9006A49CE /* Attendance+CoreDataProperties.swift in Sources */,
 				BCFF26C91C6EF81600E2838E /* HistoryAttendanceTableViewController.swift in Sources */,
@@ -379,6 +386,7 @@
 				BC6905DE1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld in Sources */,
 				BCFF26C31C6C953000E2838E /* PendingAttenanceHeaderCell.swift in Sources */,
 				BC044AE61C68961B006A49CE /* UIHelper.swift in Sources */,
+				BCFF26D11C71C73B00E2838E /* AttendanceExtension.swift in Sources */,
 				BC6905AA1C45A94F00B00E35 /* SecondViewController.swift in Sources */,
 				BCFF26C71C6EE8A800E2838E /* AttendanceTuitionTableViewCell.swift in Sources */,
 				BC6905A61C45A94F00B00E35 /* AppDelegate.swift in Sources */,

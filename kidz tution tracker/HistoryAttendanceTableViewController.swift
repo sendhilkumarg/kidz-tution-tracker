@@ -21,7 +21,9 @@ class HistoryAttendanceTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for item in tuition!.relAttendance! {
+        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
+
+        for item in tuition!.relAttendance!.sortedArrayUsingDescriptors([sortDescriptor1]) {
           //  print(item)
             attendanceList.append(item as! Attendance)
         }
@@ -68,7 +70,9 @@ class HistoryAttendanceTableViewController: UITableViewController {
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? HistoryAttenanceHeaderCell
         return headerCell
     }
-    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.00
+    }
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "historyAttendanceTableViewCell"
@@ -83,8 +87,13 @@ class HistoryAttendanceTableViewController: UITableViewController {
         let attendance = attendanceList[indexPath.row]
 
         cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
-        cell.statusLabel.text = attendance.attended!.boolValue ? "Yes" : "No"
-
-        
+        if let status = attendance.status {
+            cell.statusLabel.text =  attendance.CurrentStatus.displaytext;
+    
+        }
+        else
+        {
+            cell.statusLabel.text = "Pending"
+        }
     }
     }
