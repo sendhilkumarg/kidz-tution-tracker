@@ -1764,7 +1764,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.133818"
+                  timestampString = "477314484.683613"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1779,7 +1779,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.133975"
+                  timestampString = "477314484.683812"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -1794,7 +1794,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.13412"
+                  timestampString = "477314484.683968"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -1809,7 +1809,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.134246"
+                  timestampString = "477314484.684122"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
@@ -1890,7 +1890,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.135621"
+                  timestampString = "477314484.686521"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1905,7 +1905,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.135758"
+                  timestampString = "477314484.686723"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1920,7 +1920,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.135903"
+                  timestampString = "477314484.686869"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -1935,7 +1935,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.136013"
+                  timestampString = "477314484.686994"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -1950,7 +1950,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.136114"
+                  timestampString = "477314484.687152"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -1965,7 +1965,7 @@
                   moduleName = "kidz tuition tracker"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/HistoryAttendanceTableViewController.swift"
-                  timestampString = "477229677.13621"
+                  timestampString = "477314484.687326"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -2062,13 +2062,105 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "kidz tution tracker/AttendanceViewController.swift"
-            timestampString = "477230327.410707"
+            timestampString = "477231113.609522"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "cycleFromViewController(_:toViewController:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/PaymentStatus.swift"
+            timestampString = "477266770.453709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.PaymentStatus.rawValue.getter : Swift.Int32"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/PaymentStatus.swift"
+                  timestampString = "477314484.692709"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.PaymentStatus.init (kidz_tuition_tracker.PaymentStatus.Type)(rawValue : Swift.Int32) -&gt; Swift.Optional&lt;kidz_tuition_tracker.PaymentStatus&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/PaymentStatus.swift"
+                  timestampString = "477314484.692821"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "kidz tution tracker/PaymentStatus.swift"
+            timestampString = "477266855.238105"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.PaymentStatus.rawValue.getter : Swift.Int32"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/PaymentStatus.swift"
+                  timestampString = "477314484.69362"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kidz_tuition_tracker.PaymentStatus.init (kidz_tuition_tracker.PaymentStatus.Type)(rawValue : Swift.Int32) -&gt; Swift.Optional&lt;kidz_tuition_tracker.PaymentStatus&gt;"
+                  moduleName = "kidz tuition tracker"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sendhilkumargurunathan/WorkSpace/Kidz%20Tution%20Tracker/kidz%20tution%20tracker/kidz%20tution%20tracker/PaymentStatus.swift"
+                  timestampString = "477314484.693755"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

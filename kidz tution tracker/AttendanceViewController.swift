@@ -65,6 +65,7 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
             options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subView]|",
             options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
+        
         /*
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))

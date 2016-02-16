@@ -1,5 +1,5 @@
 //
-//  Attendance+CoreDataProperties.swift
+//  Payment+CoreDataProperties.swift
 //  kidz tuition tracker
 //
 //  Created by Sendhil kumar Gurunathan on 2/16/16.
@@ -12,13 +12,11 @@
 import Foundation
 import CoreData
 
-extension Attendance {
+extension Payment {
 
-    @NSManaged var status: NSNumber?
     @NSManaged var date: NSDate?
     @NSManaged var notes: String?
-    @NSManaged var isadhoc: NSNumber?
-    @NSManaged var paymentrequired: NSNumber?
-    @NSManaged var relTuition: Tuition?
+    @NSManaged var status: NSNumber?
+    @NSManaged var relTuition: NSSet?
 
 }

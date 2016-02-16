@@ -41,6 +41,9 @@
 		BCFF26CD1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26CC1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift */; };
 		BCFF26CF1C71B2AD00E2838E /* AttendanceStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26CE1C71B2AD00E2838E /* AttendanceStatus.swift */; };
 		BCFF26D11C71C73B00E2838E /* AttendanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26D01C71C73B00E2838E /* AttendanceExtension.swift */; };
+		BCFF26D41C7281E000E2838E /* Payment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26D21C7281E000E2838E /* Payment+CoreDataProperties.swift */; };
+		BCFF26D51C7281E000E2838E /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26D31C7281E000E2838E /* Payment.swift */; };
+		BCFF26D71C72822300E2838E /* PaymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26D61C72822300E2838E /* PaymentStatus.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,9 @@
 		BCFF26CC1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryAttenanceHeaderCell.swift; sourceTree = "<group>"; };
 		BCFF26CE1C71B2AD00E2838E /* AttendanceStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceStatus.swift; sourceTree = "<group>"; };
 		BCFF26D01C71C73B00E2838E /* AttendanceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceExtension.swift; sourceTree = "<group>"; };
+		BCFF26D21C7281E000E2838E /* Payment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Payment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BCFF26D31C7281E000E2838E /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
+		BCFF26D61C72822300E2838E /* PaymentStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentStatus.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +175,7 @@
 		BC6905A41C45A94F00B00E35 /* kidz tuition tracker */ = {
 			isa = PBXGroup;
 			children = (
+				BCFF26D81C72857C00E2838E /* Payments */,
 				BC044AC21C66D5AA006A49CE /* Attendance */,
 				BC6F1E881C6551600001FE6C /* utils */,
 				BC6905EA1C4A2DBD00B00E35 /* Model */,
@@ -176,7 +183,6 @@
 				BC6905A51C45A94F00B00E35 /* AppDelegate.swift */,
 				BC6905A91C45A94F00B00E35 /* SecondViewController.swift */,
 				BC6905AB1C45A94F00B00E35 /* Main.storyboard */,
-				BC6905DA1C46FCB800B00E35 /* Payments.storyboard */,
 				BC6905AE1C45A94F00B00E35 /* Assets.xcassets */,
 				BC6905B01C45A94F00B00E35 /* LaunchScreen.storyboard */,
 				BC6905B31C45A94F00B00E35 /* Info.plist */,
@@ -220,6 +226,8 @@
 		BC6905EA1C4A2DBD00B00E35 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCFF26D21C7281E000E2838E /* Payment+CoreDataProperties.swift */,
+				BCFF26D31C7281E000E2838E /* Payment.swift */,
 				BC044AE31C67F8E3006A49CE /* Attendance.swift */,
 				BC044ADF1C67F7B9006A49CE /* Attendance+CoreDataProperties.swift */,
 				BC044AE01C67F7B9006A49CE /* Tuition+CoreDataProperties.swift */,
@@ -227,6 +235,7 @@
 				BC6905DC1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld */,
 				BCFF26CE1C71B2AD00E2838E /* AttendanceStatus.swift */,
 				BCFF26D01C71C73B00E2838E /* AttendanceExtension.swift */,
+				BCFF26D61C72822300E2838E /* PaymentStatus.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -239,6 +248,14 @@
 				BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */,
 			);
 			name = utils;
+			sourceTree = "<group>";
+		};
+		BCFF26D81C72857C00E2838E /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				BC6905DA1C46FCB800B00E35 /* Payments.storyboard */,
+			);
+			name = Payments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +393,7 @@
 			files = (
 				BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */,
 				BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */,
+				BCFF26D51C7281E000E2838E /* Payment.swift in Sources */,
 				BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */,
 				BCFF26CF1C71B2AD00E2838E /* AttendanceStatus.swift in Sources */,
 				BCFF26C51C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift in Sources */,
@@ -394,11 +412,13 @@
 				BC044ADE1C67F5FF006A49CE /* Tuition.swift in Sources */,
 				BC044AEA1C69C638006A49CE /* AttendanceChangeControllerDelegate.swift in Sources */,
 				BCFF26CB1C6EFB7200E2838E /* HistoryAttendanceCell.swift in Sources */,
+				BCFF26D71C72822300E2838E /* PaymentStatus.swift in Sources */,
 				BCFF26CD1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift in Sources */,
 				BC044AE21C67F7B9006A49CE /* Tuition+CoreDataProperties.swift in Sources */,
 				BC6905EC1C4A3B4500B00E35 /* TuitionsAddViewController.swift in Sources */,
 				BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */,
 				BC044AE81C68A3E1006A49CE /* PendingAttendanceCell.swift in Sources */,
+				BCFF26D41C7281E000E2838E /* Payment+CoreDataProperties.swift in Sources */,
 				BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

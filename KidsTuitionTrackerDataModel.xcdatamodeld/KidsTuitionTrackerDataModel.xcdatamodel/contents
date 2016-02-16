@@ -2,9 +2,17 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="15D21" minimumToolsVersion="Xcode 7.0">
     <entity name="Attendance" representedClassName=".Attendance" syncable="YES">
         <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="isadhoc" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="paymentrequired" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="status" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="relTuition" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tuition" inverseName="relAttendance" inverseEntity="Tuition" syncable="YES"/>
+    </entity>
+    <entity name="Payment" representedClassName=".Payment" syncable="YES">
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="relTuition" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Tuition" inverseName="relPayment" inverseEntity="Tuition" syncable="YES"/>
     </entity>
     <entity name="Tuition" representedClassName=".Tuition" syncable="YES">
         <attribute name="amount" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -15,9 +23,11 @@
         <attribute name="startdate" attributeType="Date" syncable="YES"/>
         <attribute name="time" attributeType="String" minValueString="1" maxValueString="12" syncable="YES"/>
         <relationship name="relAttendance" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Attendance" inverseName="relTuition" inverseEntity="Attendance" syncable="YES"/>
+        <relationship name="relPayment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Payment" inverseName="relTuition" inverseEntity="Payment" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Attendance" positionX="259" positionY="45" width="128" height="105"/>
-        <element name="Tuition" positionX="-54" positionY="-9" width="128" height="165"/>
+        <element name="Attendance" positionX="259" positionY="45" width="128" height="135"/>
+        <element name="Tuition" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="Payment" positionX="99" positionY="63" width="128" height="105"/>
     </elements>
 </model>
