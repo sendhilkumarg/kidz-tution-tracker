@@ -29,49 +29,24 @@ let managedObjectContext = TuitionTrackerDataController().managedObjectContext
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    func savedata(){
-        
-        let tution = NSEntityDescription.insertNewObjectForEntityForName("Tuition", inManagedObjectContext: managedObjectContext) as! Tuition
-        tution.setValue("Music1", forKey: "name")
-        
-        do {
-            try  managedObjectContext.save()
-            // print("saved the data")
-            
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-
-    }
-    
-    func fetch(){
-        var tutionFetch =  NSFetchRequest(entityName: "Tuition")
-        do{
-            let fectchedTutions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tuition]
-            print(fectchedTutions.first!.name!)
-        }catch {
-             fatalError("Failure to read from context: \(error)")
-        }
-        
-    }
-    
     func addSubview(subView:UIView, toView parentView:UIView) {
         parentView.addSubview(subView)
         
         
         var viewBindingsDict = [String: AnyObject]()
         viewBindingsDict["subView"] = subView
-        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subView]|",
+       
+        /*parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subView]|",
             options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subView]|",
             options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
+        */
         
-        /*
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))
-    */
+    
 
     }
 /*

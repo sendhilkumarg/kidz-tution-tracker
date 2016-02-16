@@ -22,6 +22,30 @@ class Utils{
         // Present Alert Controller
         viewControler.presentViewController(alertController, animated: true, completion: nil)
     }
+    //MARK : Container views sa=waping
+    
+    static func addSubview(subView:UIView, toView parentView:UIView) {
+        parentView.addSubview(subView)
+        
+        
+        var viewBindingsDict = [String: AnyObject]()
+        viewBindingsDict["subView"] = subView
+        
+        /*parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subView]|",
+        options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subView]|",
+        options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
+        */
+        
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+            options: [], metrics: nil, views: viewBindingsDict))
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+            options: [], metrics: nil, views: viewBindingsDict))
+        
+        
+    }
+    
+    
     
     static func ToLongDateString(date : NSDate) -> String
     {
