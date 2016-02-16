@@ -8,7 +8,7 @@
         <!--Tuitions-->
         <scene sceneID="dgj-Tn-9QT">
             <objects>
-                <viewController id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3IQ-eI-if4"/>
                         <viewControllerLayoutGuide type="bottom" id="kY7-8P-enX"/>
@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" rowHeight="78" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="560" height="78"/>
+                                        <rect key="frame" x="0.0" y="28" width="560" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krY-jg-Idq" id="K5V-G1-8Ql">
                                             <rect key="frame" x="0.0" y="0.0" width="527" height="77.5"/>
