@@ -65,6 +65,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
                         options: NSCalendarOptions(rawValue: 0))
 
                      CreateNewAttendance(tuition,date: tomorrow!)
+                     CreateNewPayment(tuition,date: tomorrow!)
                     }
                
                 //print(tuition.name)
@@ -104,6 +105,40 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         //record.setValue(false, forKey: "status")
         //record.setValue("", forKey: "notes")
         
+        
+        
+        // Create Relationship
+        //let parent = record.mutableSetValueForKey("relTuition")
+        //parent.addObject(newChildPerson)
+        record.setValue(tuition, forKey: "relTuition")
+        
+        do {
+            // Save Record
+            try record.managedObjectContext?.save()
+            
+            // Dismiss View Controller
+            dismissViewControllerAnimated(true, completion: nil)
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+        }
+    }
+    
+    func CreateNewPayment(tuition : Tuition , date : NSDate)
+    {
+        // Create Entity
+        let entity = NSEntityDescription.entityForName("Payment", inManagedObjectContext: self.managedObjectContext)
+        
+        // Initialize Record
+        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
+        
+        
+        record.setValue(date , forKey: "date")
+        record.setValue( NSInteger( PaymentStatus.Pending.rawValue) , forKey: "status")
         
         
         // Create Relationship

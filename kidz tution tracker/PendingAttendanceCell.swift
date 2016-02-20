@@ -14,7 +14,6 @@ class PendingAttendanceCell: UITableViewCell {
     @IBOutlet weak var dayLabel: UILabel!
 
     @IBOutlet weak var attendanceSegemnt: UISegmentedControl!
-    @IBOutlet weak var attendanceSwitch: UISwitch!
     
     
     @IBAction func statusChanged(sender: UISegmentedControl) {

@@ -5,22 +5,89 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Pending Payment Table View Controller-->
         <scene sceneID="aKY-Nw-eXO">
             <objects>
-                <tableViewController storyboardIdentifier="pendingPayment" automaticallyAdjustsScrollViewInsets="NO" id="Q3f-Eg-cpp" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pendingPayment" automaticallyAdjustsScrollViewInsets="NO" id="Q3f-Eg-cpp" customClass="PendingPaymentTableViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RI9-hL-RuA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JIr-EK-fWG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="JIr-EK-fWG" customClass="PendingPaymentHeaderCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JIr-EK-fWG" id="1ou-qb-0xs">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vAc-7y-355">
+                                            <rect key="frame" x="8" y="8" width="584" height="28"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTP-7X-td7">
+                                                    <rect key="frame" x="0.0" y="4" width="542" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8G-DK-MQ0">
+                                                    <rect key="frame" x="542" y="4" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="vAc-7y-355" secondAttribute="trailing" id="7Vl-3c-STK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="vAc-7y-355" secondAttribute="bottom" id="Mj8-ld-qww"/>
+                                        <constraint firstItem="vAc-7y-355" firstAttribute="leading" secondItem="1ou-qb-0xs" secondAttribute="leadingMargin" id="QS1-Nb-7g8"/>
+                                        <constraint firstItem="vAc-7y-355" firstAttribute="top" secondItem="1ou-qb-0xs" secondAttribute="topMargin" id="lHY-mt-1dI"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.33375281759999997" green="1" blue="0.24154046179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="timeLabel" destination="n8G-DK-MQ0" id="B2V-6y-UHb"/>
+                                    <outlet property="tuitionLabel" destination="qTP-7X-td7" id="LSP-EK-czY"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pendingPaymentTableViewCell" id="80x-e7-q5e" customClass="PendingPaymentCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80x-e7-q5e" id="kzF-EP-DPW">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="dNA-pX-y3g">
+                                            <rect key="frame" x="8" y="8" width="584" height="28"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgU-PU-BRE">
+                                                    <rect key="frame" x="0.0" y="4" width="535" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RcC-Jq-wFG">
+                                                    <rect key="frame" x="535" y="0.0" width="51" height="28"/>
+                                                    <connections>
+                                                        <action selector="statusChanged:" destination="80x-e7-q5e" eventType="valueChanged" id="z8j-Ho-bUJ"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dNA-pX-y3g" firstAttribute="top" secondItem="kzF-EP-DPW" secondAttribute="topMargin" id="96K-Xj-yc4"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dNA-pX-y3g" secondAttribute="bottom" id="Txp-Q7-QZ3"/>
+                                        <constraint firstItem="dNA-pX-y3g" firstAttribute="leading" secondItem="kzF-EP-DPW" secondAttribute="leadingMargin" id="eaC-C1-0hq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dNA-pX-y3g" secondAttribute="trailing" id="mA8-Vm-hbJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dayLabel" destination="AgU-PU-BRE" id="rQE-oM-fbw"/>
+                                    <outlet property="statusSwitch" destination="RcC-Jq-wFG" id="Dd3-Ux-6d2"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
