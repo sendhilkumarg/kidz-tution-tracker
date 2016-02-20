@@ -50,6 +50,11 @@
 		BCFF26E91C744FF100E2838E /* PendingPaymentHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26E81C744FF100E2838E /* PendingPaymentHeaderCell.swift */; };
 		BCFF26EB1C74531300E2838E /* PaymentChangeControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26EA1C74531300E2838E /* PaymentChangeControllerDelegate.swift */; };
 		BCFF26ED1C783E6B00E2838E /* PaymentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26EC1C783E6B00E2838E /* PaymentExtension.swift */; };
+		BCFF26EF1C784A6000E2838E /* PaymentTuitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26EE1C784A6000E2838E /* PaymentTuitionTableViewCell.swift */; };
+		BCFF26F11C784CFC00E2838E /* PaymentTuitionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F01C784CFC00E2838E /* PaymentTuitionListTableViewController.swift */; };
+		BCFF26F31C78522000E2838E /* PaymentHistoryTableViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F21C78522000E2838E /* PaymentHistoryTableViewControler.swift */; };
+		BCFF26F51C7854C300E2838E /* PaymentHistoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */; };
+		BCFF26F71C78550000E2838E /* PaymentHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +124,11 @@
 		BCFF26E81C744FF100E2838E /* PendingPaymentHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingPaymentHeaderCell.swift; sourceTree = "<group>"; };
 		BCFF26EA1C74531300E2838E /* PaymentChangeControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentChangeControllerDelegate.swift; sourceTree = "<group>"; };
 		BCFF26EC1C783E6B00E2838E /* PaymentExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentExtension.swift; sourceTree = "<group>"; };
+		BCFF26EE1C784A6000E2838E /* PaymentTuitionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTuitionTableViewCell.swift; sourceTree = "<group>"; };
+		BCFF26F01C784CFC00E2838E /* PaymentTuitionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentTuitionListTableViewController.swift; sourceTree = "<group>"; };
+		BCFF26F21C78522000E2838E /* PaymentHistoryTableViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryTableViewControler.swift; sourceTree = "<group>"; };
+		BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryHeaderCell.swift; sourceTree = "<group>"; };
+		BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +282,11 @@
 				BCFF26E61C744FAD00E2838E /* PendingPaymentCell.swift */,
 				BCFF26E81C744FF100E2838E /* PendingPaymentHeaderCell.swift */,
 				BCFF26EA1C74531300E2838E /* PaymentChangeControllerDelegate.swift */,
+				BCFF26EE1C784A6000E2838E /* PaymentTuitionTableViewCell.swift */,
+				BCFF26F01C784CFC00E2838E /* PaymentTuitionListTableViewController.swift */,
+				BCFF26F21C78522000E2838E /* PaymentHistoryTableViewControler.swift */,
+				BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */,
+				BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -411,9 +426,12 @@
 			files = (
 				BCFF26ED1C783E6B00E2838E /* PaymentExtension.swift in Sources */,
 				BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */,
+				BCFF26F31C78522000E2838E /* PaymentHistoryTableViewControler.swift in Sources */,
 				BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */,
 				BCFF26D51C7281E000E2838E /* Payment.swift in Sources */,
 				BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */,
+				BCFF26F51C7854C300E2838E /* PaymentHistoryHeaderCell.swift in Sources */,
+				BCFF26F11C784CFC00E2838E /* PaymentTuitionListTableViewController.swift in Sources */,
 				BCFF26E51C744D2D00E2838E /* PendingPaymentTableViewController.swift in Sources */,
 				BCFF26CF1C71B2AD00E2838E /* AttendanceStatus.swift in Sources */,
 				BCFF26E91C744FF100E2838E /* PendingPaymentHeaderCell.swift in Sources */,
@@ -441,9 +459,11 @@
 				BC044AE21C67F7B9006A49CE /* Tuition+CoreDataProperties.swift in Sources */,
 				BC6905EC1C4A3B4500B00E35 /* TuitionsAddViewController.swift in Sources */,
 				BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */,
+				BCFF26F71C78550000E2838E /* PaymentHistoryCell.swift in Sources */,
 				BC044AE81C68A3E1006A49CE /* PendingAttendanceCell.swift in Sources */,
 				BCFF26D41C7281E000E2838E /* Payment+CoreDataProperties.swift in Sources */,
 				BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */,
+				BCFF26EF1C784A6000E2838E /* PaymentTuitionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

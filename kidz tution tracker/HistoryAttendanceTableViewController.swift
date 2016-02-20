@@ -11,7 +11,7 @@ import CoreData
 
 class HistoryAttendanceTableViewController: UITableViewController {
 
-    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    //let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
     var attendanceList : [Attendance] = [];

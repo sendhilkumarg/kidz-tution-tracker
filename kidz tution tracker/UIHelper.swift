@@ -196,5 +196,64 @@ class Utils{
         
     }
 
-
+    static     func configurePaymentTuitionTableViewCell(cell: PaymentTuitionTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
+        // Fetch Record
+        // let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+        
+        // Update Cell
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
+            }
+            else{
+                cell.tuitionNameLabel.text = name
+                
+            }
+            
+        }
+        
+        if let  time = tuition.time  {
+            cell.timeLabel.text = Utils.ToTimeFromString(time)
+        }
+        else
+        {
+            cell.timeLabel.text = "";
+        }
+        
+        
+        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
+            
+            var days = [String]()
+            var dayText = "S"
+            
+            for frequency in tuition.frequency!
+            {
+                
+                switch frequency
+                {
+                case 0 :
+                    dayText = "S"
+                case 1 :
+                    dayText = "M"
+                case 2 :
+                    dayText = "T"
+                case 3 :
+                    dayText = "W"
+                case 4 :
+                    dayText = "T"
+                case 5 :
+                    dayText = "F"
+                case 6 :
+                    dayText = "S"
+                default:
+                    dayText = "S"
+                }
+                
+                days.append(dayText)
+            }
+            
+            cell.daysLabel.text  = "Days : " + days.joinWithSeparator("|")
+        }
+        
+    }
 }
