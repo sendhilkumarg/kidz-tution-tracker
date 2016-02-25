@@ -10,6 +10,22 @@ import Foundation
 import UIKit
 
 class Utils{
+    
+    static func  daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
+    {
+       // let calendar = NSCalendar.currentCalendar()
+        return NSCalendar.currentCalendar().components(.Day, fromDate: startDate, toDate: endDate, options: []).day
+
+      //let result =  calendar.compareDate(calendar.startOfDayForDate(startDate), toDate: calendar.startOfDayForDate(endDate), toUnitGranularity:.Day );
+    //  return  result.rawValue
+        /*
+        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+    
+        
+        return components.day
+        */
+    }
+    
     // MARK: -
     // MARK: Helper Methods
     static func showAlertWithTitle(viewControler: UIViewController, title: String, message: String, cancelButtonTitle: String) {

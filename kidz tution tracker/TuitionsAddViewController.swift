@@ -210,10 +210,16 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             record.setValue(day, forKey: "payon")
             record.setValue(personName, forKey: "personname")
             record.setValue( NSDecimalNumber(string: amount), forKey: "amount")
-  
+            //record.setValue(NSDate(), forKey: "startdate")
         
-            record.setValue(NSDate(), forKey: "startdate")
-            
+        let dayToProcess = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: -360,
+            toDate: NSDate(),
+            options: NSCalendarOptions(rawValue: 0))
+        
+            record.setValue(dayToProcess, forKey: "startdate")
+        
             do {
                 // Save Record
                 try record.managedObjectContext?.save()
@@ -250,6 +256,8 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
     
     
     @IBAction func tutionTimeChanged(sender: UIDatePicker) {
+        print(tutionTimePicker.date)
+        
         let formatter = NSDateFormatter()
          formatter.dateFormat =  "HH:mm"
        // formatter.timeStyle = .ShortStyle

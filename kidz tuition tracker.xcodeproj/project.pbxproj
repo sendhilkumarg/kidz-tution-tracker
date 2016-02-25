@@ -55,6 +55,7 @@
 		BCFF26F31C78522000E2838E /* PaymentHistoryTableViewControler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F21C78522000E2838E /* PaymentHistoryTableViewControler.swift */; };
 		BCFF26F51C7854C300E2838E /* PaymentHistoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */; };
 		BCFF26F71C78550000E2838E /* PaymentHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */; };
+		BCFF26F91C7E55D700E2838E /* tuitiontrackerextensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		BCFF26F21C78522000E2838E /* PaymentHistoryTableViewControler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryTableViewControler.swift; sourceTree = "<group>"; };
 		BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryHeaderCell.swift; sourceTree = "<group>"; };
 		BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryCell.swift; sourceTree = "<group>"; };
+		BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuitiontrackerextensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,6 +271,7 @@
 				BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */,
 				BC044AE51C68961B006A49CE /* UIHelper.swift */,
 				BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */,
+				BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -358,6 +361,11 @@
 				TargetAttributes = {
 					BC6905A11C45A94F00B00E35 = {
 						CreatedOnToolsVersion = 7.0.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					BC6905B71C45A94F00B00E35 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -464,6 +472,7 @@
 				BCFF26D41C7281E000E2838E /* Payment+CoreDataProperties.swift in Sources */,
 				BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */,
 				BCFF26EF1C784A6000E2838E /* PaymentTuitionTableViewCell.swift in Sources */,
+				BCFF26F91C7E55D700E2838E /* tuitiontrackerextensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
