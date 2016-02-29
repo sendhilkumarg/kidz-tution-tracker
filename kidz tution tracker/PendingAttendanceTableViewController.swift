@@ -58,7 +58,8 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
         
         // Simply adding an object to the data source for this example
 
-        CreateTestData()
+        DataUtils.processMissingData(true, processPayments: false, showErrorMessage: true)
+        //CreateTestData()
         //self.tableView.reloadData()
         do {
             try self.fetchedResultsController.performFetch()

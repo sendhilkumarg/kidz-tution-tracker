@@ -37,6 +37,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     override func viewDidLoad() {
         super.viewDidLoad()
        // CreateTestData()
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         do {
             try self.fetchedResultsController.performFetch()
@@ -46,6 +47,26 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
         
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        
+        // Simply adding an object to the data source for this example
+        
+        DataUtils.processMissingData(false, processPayments: true, showErrorMessage: true)
+        //CreateTestData()
+        //self.tableView.reloadData()
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+        }
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     // MARK: - Table view data source
     

@@ -11,7 +11,93 @@ import CoreData
 
 public class DataUtils
 {
-    static func ProcessMissingPayments( numberOfMonths: Int, lastAttendenceDate : NSDate , tuition : Tuition,managedObjectContext: NSManagedObjectContext){
+    static func processMissingData( processAttendance : Bool , processPayments : Bool , showErrorMessage : Bool){
+        
+        let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Tuition")
+        let sortDescriptor1 = NSSortDescriptor(key: "startdate", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor1]
+        do {
+            let result = try managedObjectContext.executeFetchRequest(fetchRequest)
+            for item in result
+            {
+                let tuition = item as! Tuition
+                if  processAttendance , let days = tuition.frequency{
+                    //Attendance
+                    if let attendenceList = tuition.relAttendance
+                    {
+                        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
+                        let sortedList = attendenceList.sortedArrayUsingDescriptors([sortDescriptor1])
+                        if sortedList.count > 0
+                        {
+                            //create attendance from the last attendance date
+                            let latestAttendenceCreated = sortedList[0] as! Attendance
+                            print( "latest attendance date \(latestAttendenceCreated.date!)")
+                            
+                            let daysDiff = Utils.daysBetweenDate( latestAttendenceCreated.date!, endDate: NSDate());
+                            print("number of days to check \( daysDiff)")
+                            if daysDiff > 0
+                            {
+                                DataUtils.processMissingAttendance(daysDiff,lastAttendenceDate: latestAttendenceCreated.date!,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                            }
+                            
+                            
+                        }
+                        else
+                        {
+                            // create new from start date
+                            let daysDiff = Utils.daysBetweenDate( tuition.startdate!, endDate: NSDate());
+                            print("number of days to check \( daysDiff)")
+                            if daysDiff > 0
+                            {
+                                DataUtils.processMissingAttendance(daysDiff,lastAttendenceDate: tuition.startdate!,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                            }
+                        }
+                        
+                    }
+                    
+                }
+                
+                //Payment
+                
+                if processPayments , let paymentList = tuition.relPayment{
+                    
+                    let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
+                    let sortedList = paymentList.sortedArrayUsingDescriptors([sortDescriptor1])
+                    if sortedList.count > 0
+                    {
+                        let latestPaymentCreated = sortedList[0] as! Payment
+                        print( "latest payment date \(latestPaymentCreated.date!)")
+                        
+                        let monthDiff = Utils.monthsBetweenDate( latestPaymentCreated.date!, endDate: NSDate());
+                        print("number of months to check \( monthDiff)")
+                        if monthDiff > 0
+                        {
+                            DataUtils.processMissingPayments(monthDiff,lastAttendenceDate: latestPaymentCreated.date!,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage )
+                        }
+                    }
+                    else
+                    {
+                        let monthDiff = Utils.monthsBetweenDate( tuition.startdate!, endDate: NSDate());
+                        print("number of months to check \( monthDiff)")
+                        if monthDiff > 0
+                        {
+                            DataUtils.processMissingPayments(monthDiff,lastAttendenceDate: tuition.startdate!,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                        }
+                    }
+                }
+                
+            }
+            //print ("created test data")
+        }
+        catch {
+            
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+        }
+    }
+    
+    static func processMissingPayments( numberOfMonths: Int, lastAttendenceDate : NSDate , tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
         for i in 1 ... numberOfMonths
         {
         
@@ -20,13 +106,13 @@ public class DataUtils
                 options: NSCalendarOptions(rawValue: 0))
             {
              print("payment day to process \(dayToProcess)")
-                CreateNewPayment(tuition,date: dayToProcess,managedObjectContext: managedObjectContext)
+                createNewPayment(tuition,date: dayToProcess,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
             }
         
         }
     }
     
-    static func CreateNewPayment(tuition : Tuition , date : NSDate, managedObjectContext: NSManagedObjectContext)
+    static func createNewPayment(tuition : Tuition , date : NSDate, managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)
     {
         // Create Entity
         let entity = NSEntityDescription.entityForName("Payment", inManagedObjectContext: managedObjectContext)
@@ -50,7 +136,7 @@ public class DataUtils
         }
     }
     
-static func CreateNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext)
+static func createNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)
 {
     // Create Entity
     let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: managedObjectContext)
@@ -74,7 +160,7 @@ static func CreateNewAttendance(tuition : Tuition , date : NSDate ,managedObject
     }
 }
 
-static func ProcessMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext){
+static func processMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
     
     for i in 1 ... numberOfDays
     {
@@ -110,7 +196,7 @@ static func ProcessMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSD
                         let dateComparisionResult = currentDateTime.compare(dateTimeToCheck)
                         if( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
                             
-                            CreateNewAttendance(tuition,date: dayToProcess,managedObjectContext: managedObjectContext)
+                            createNewAttendance(tuition,date: dayToProcess,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
                         }
                         
                     }

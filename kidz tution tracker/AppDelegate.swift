@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         print("perfroming fetch");
         let start = NSDate();        
-        getData();
+        DataUtils.processMissingData(true, processPayments: true, showErrorMessage: false)
         let end = NSDate();
         let timeInterval: Double = end.timeIntervalSinceDate(start);
         print("Time to load data: \(timeInterval) seconds");
@@ -59,93 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func getData(){
-        
-        let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Tuition")
-        let sortDescriptor1 = NSSortDescriptor(key: "startdate", ascending: false)
-       // let sortDescriptor2 = NSSortDescriptor(key: "relAttendance.date", ascending: true)
-       // let sortDescriptor3 = NSSortDescriptor(key: "relPayment.date", ascending: true)
-        //fetchRequest.sortDescriptors = [sortDescriptor1, sortDescriptor2,sortDescriptor3]
-        fetchRequest.sortDescriptors = [sortDescriptor1]
-        do {
-            let result = try managedObjectContext.executeFetchRequest(fetchRequest)
-            for item in result
-            {
-                let tuition = item as! Tuition
-               /* if  let days = tuition.frequency{
-                    //Attendance
-                    if let attendenceList = tuition.relAttendance
-                    {
-                        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
-                        let sortedList = attendenceList.sortedArrayUsingDescriptors([sortDescriptor1])
-                        if sortedList.count > 0
-                        {
-                            //create attendance from the last attendance date
-                            let latestAttendenceCreated = sortedList[0] as! Attendance
-                            print( "latest attendance date \(latestAttendenceCreated.date!)")
-                            
-                            let daysDiff = Utils.daysBetweenDate( latestAttendenceCreated.date!, endDate: NSDate());
-                            print("number of days to check \( daysDiff)")
-                            if daysDiff > 0
-                            {
-                                DataUtils.ProcessMissingAttendance(daysDiff,lastAttendenceDate: latestAttendenceCreated.date!,days: days,tuition: tuition,managedObjectContext: managedObjectContext)
-                            }
- 
-                            
-                        }
-                        else
-                        {
-                            // create new from start date
-                            let daysDiff = Utils.daysBetweenDate( tuition.startdate!, endDate: NSDate());
-                            print("number of days to check \( daysDiff)")
-                            if daysDiff > 0
-                            {
-                                DataUtils.ProcessMissingAttendance(daysDiff,lastAttendenceDate: tuition.startdate!,days: days,tuition: tuition,managedObjectContext: managedObjectContext)
-                            }
-                        }
 
-                    }
-
-                }
-                */
-                //Payment
-                
-                if let paymentList = tuition.relPayment{
-                    
-                    let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
-                    let sortedList = paymentList.sortedArrayUsingDescriptors([sortDescriptor1])
-                    if sortedList.count > 0
-                    {
-                        let latestPaymentCreated = sortedList[0] as! Payment
-                        print( "latest payment date \(latestPaymentCreated.date!)")
-                        
-                        let monthDiff = Utils.monthsBetweenDate( latestPaymentCreated.date!, endDate: NSDate());
-                        print("number of months to check \( monthDiff)")
-                        if monthDiff > 0
-                        {
-                            DataUtils.ProcessMissingPayments(monthDiff,lastAttendenceDate: latestPaymentCreated.date!,tuition: tuition,managedObjectContext: managedObjectContext)
-                        }
-                    }
-                    else
-                    {
-                        let monthDiff = Utils.monthsBetweenDate( tuition.startdate!, endDate: NSDate());
-                        print("number of months to check \( monthDiff)")
-                        if monthDiff > 0
-                        {
-                            DataUtils.ProcessMissingPayments(monthDiff,lastAttendenceDate: tuition.startdate!,tuition: tuition,managedObjectContext: managedObjectContext)
-                        }
-                    }
-                }
-
-            }
-            print ("created test data")
-        }
-        catch {
-            
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-        }
-    }
 }
 

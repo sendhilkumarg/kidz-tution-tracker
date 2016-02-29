@@ -274,6 +274,17 @@
                             <outlet property="delegate" destination="vth-wg-RB7" id="Lkl-tx-3EH"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Fw5-kb-mJ8">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle">
+                            <fragment content="Pull to refresh payments">
+                                <attributes>
+                                    <font key="NSFont" size="12" name="ArialMT"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eL-iO-KQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
