@@ -9,9 +9,11 @@
 import UIKit
 import CoreData
 
-class PendingAttendanceTableViewController: UITableViewController  , NSFetchedResultsControllerDelegate , AttendanceChangeControllerDelegate{
+class PendingAttendanceTableViewController: UITableViewController  , AttendanceChangeControllerDelegate , NSFetchedResultsControllerDelegate
+{
     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-
+    var itemsChanged =  [NSIndexPath]()
+    var dayUpdteCounter  = 1
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
@@ -37,6 +39,8 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     override func viewDidLoad() {
         super.viewDidLoad()
       //CreateTestData()
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+    
 
         do {
             try self.fetchedResultsController.performFetch()
@@ -48,6 +52,25 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
 
     }
     
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        // Do some reloading of data and update the table view's data source
+        // Fetch more objects from a web service, for example...
+        
+        // Simply adding an object to the data source for this example
+
+        CreateTestData()
+        //self.tableView.reloadData()
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+        }
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
     func CreateTestData(){
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
         
@@ -56,14 +79,14 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             for item in result
             {
                 let tuition = item as! Tuition
-                for i in 1...4{
+                for i in 1...2{
                     let today = NSDate()
                     let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
                         .Day,
-                        value: i,
+                        value: dayUpdteCounter,
                         toDate: today,
                         options: NSCalendarOptions(rawValue: 0))
-
+dayUpdteCounter++
                      CreateNewAttendance(tuition,date: tomorrow!)
                      CreateNewPayment(tuition,date: tomorrow!)
                     }
@@ -90,34 +113,14 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         
         // Initialize Record
         let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
-       
-        /*let today = NSDate()
-        let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
-            .Day,
-            value: 1,
-            toDate: today,
-            options: NSCalendarOptions(rawValue: 0))
-        */
         
         record.setValue(date , forKey: "date")
         record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
-      //  record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
-        //record.setValue(false, forKey: "status")
-        //record.setValue("", forKey: "notes")
-        
-        
-        
-        // Create Relationship
-        //let parent = record.mutableSetValueForKey("relTuition")
-        //parent.addObject(newChildPerson)
         record.setValue(tuition, forKey: "relTuition")
         
         do {
             // Save Record
             try record.managedObjectContext?.save()
-            
-            // Dismiss View Controller
-            dismissViewControllerAnimated(true, completion: nil)
             
         } catch {
             let saveError = error as NSError
@@ -149,9 +152,6 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         do {
             // Save Record
             try record.managedObjectContext?.save()
-            
-            // Dismiss View Controller
-            dismissViewControllerAnimated(true, completion: nil)
             
         } catch {
             let saveError = error as NSError
@@ -234,19 +234,26 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cellIdentifier = "pendingAttendanceTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PendingAttendanceCell
+        //let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PendingAttendanceCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! PendingAttendanceCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
 
     }
 
     func configureCell(cell : PendingAttendanceCell , atIndexPath indexPath: NSIndexPath){
-        print(fetchedResultsController.objectAtIndexPath(indexPath))
+        print("indexPath \(indexPath)")
+        //print(fetchedResultsController.objectAtIndexPath(indexPath))
         let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
+        //print(attendance.)
+        cell.objectId = attendance.objectID
         cell.atIndexPath = indexPath
         cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
-        //cell.attendanceSwitch.on = attendance.attended!.boolValue
+        cell.attendanceSegemnt.selected = false ;
+        cell.attendanceSegemnt.selectedSegmentIndex = -1
+       // cell.attendanceSegemnt.reloadInputViews()// (UISegmentedControlNoSegment)
         if let status = attendance.status  {
+            print("segment status " + status.description)
             switch attendance.CurrentStatus
             {
             case AttendanceStatus.Pending :
@@ -265,6 +272,7 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
         }
        
         cell.delegate = self
+       
     }
     
     
@@ -275,28 +283,59 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-       // tableView.endUpdates()
+
+        tableView.endUpdates()
     }
-    /*
+    
+     func controller(
+        controller: NSFetchedResultsController,
+        didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+        atIndex sectionIndex: Int,
+        forChangeType type: NSFetchedResultsChangeType) {
+            
+            switch type {
+            case .Insert:
+                let sectionIndexSet = NSIndexSet(index: sectionIndex)
+                self.tableView.insertSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            case .Delete:
+                let sectionIndexSet = NSIndexSet(index: sectionIndex)
+                self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            default:
+                ""
+            }
+    }
+    
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        print(type.rawValue)
+        
+        if let ip = indexPath {
+             itemsChanged.append(ip)
+        }
+       
         switch (type) {
         case .Insert:
+            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
+            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
+
         case .Update:
+            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! PendingAttendanceCell
                 configureCell(cell, atIndexPath: indexPath)
             }
             break;
+
         case .Move:
+            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -305,24 +344,27 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
             break;
+
+         default :
+            break;
         }
     }
-    */
+
 
 
     //MARK : AttendanceChangeControllerDelegate
-    func StatusChanged(atIndexPath : NSIndexPath ,status : AttendanceStatus)
+    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : AttendanceStatus)
     {
         // Fetch Record
-        let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Attendance
-        
-        record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
-        
+        // let fetchRequest = NSFetchRequest(entityName: "Attendance")
+       // var error: NSError?
         do {
             // Save Record
-            try record.managedObjectContext?.save()
+            let record = try managedObjectContext.existingObjectWithID(objectId )
             
-            dismissViewControllerAnimated(true, completion: nil)
+            record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
+            try record.managedObjectContext?.save()
+            // dismissViewControllerAnimated(true, completion: nil)
             
         } catch {
             let saveError = error as NSError
@@ -331,6 +373,27 @@ class PendingAttendanceTableViewController: UITableViewController  , NSFetchedRe
             // Show Alert View
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
         }
+        
+      /*
+        //fetchRequest.
+        let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Attendance
+        
+        record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
+        
+        do {
+            // Save Record
+            try record.managedObjectContext?.save()
+            
+           // dismissViewControllerAnimated(true, completion: nil)
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+        }
+        */
         
     }
     

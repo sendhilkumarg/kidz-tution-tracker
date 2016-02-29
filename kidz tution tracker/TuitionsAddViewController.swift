@@ -214,7 +214,7 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
         
         let dayToProcess = NSCalendar.currentCalendar().dateByAddingUnit(
             .Day,
-            value: -360,
+            value: -69,
             toDate: NSDate(),
             options: NSCalendarOptions(rawValue: 0))
         

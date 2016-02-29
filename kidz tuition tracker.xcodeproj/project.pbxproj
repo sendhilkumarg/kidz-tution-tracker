@@ -56,6 +56,7 @@
 		BCFF26F51C7854C300E2838E /* PaymentHistoryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */; };
 		BCFF26F71C78550000E2838E /* PaymentHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */; };
 		BCFF26F91C7E55D700E2838E /* tuitiontrackerextensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */; };
+		BCFF26FB1C7FA63B00E2838E /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26FA1C7FA63B00E2838E /* DataUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryHeaderCell.swift; sourceTree = "<group>"; };
 		BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentHistoryCell.swift; sourceTree = "<group>"; };
 		BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tuitiontrackerextensions.swift; sourceTree = "<group>"; };
+		BCFF26FA1C7FA63B00E2838E /* DataUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -272,6 +274,7 @@
 				BC044AE51C68961B006A49CE /* UIHelper.swift */,
 				BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */,
 				BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */,
+				BCFF26FA1C7FA63B00E2838E /* DataUtils.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */,
 				BCFF26F71C78550000E2838E /* PaymentHistoryCell.swift in Sources */,
 				BC044AE81C68A3E1006A49CE /* PendingAttendanceCell.swift in Sources */,
+				BCFF26FB1C7FA63B00E2838E /* DataUtils.swift in Sources */,
 				BCFF26D41C7281E000E2838E /* Payment+CoreDataProperties.swift in Sources */,
 				BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */,
 				BCFF26EF1C784A6000E2838E /* PaymentTuitionTableViewCell.swift in Sources */,

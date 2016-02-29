@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 public protocol AttendanceChangeControllerDelegate{
-    func StatusChanged(atIndexPath : NSIndexPath, status : AttendanceStatus)
+    func StatusChanged(atIndexPath : NSIndexPath, objectId : NSManagedObjectID , status : AttendanceStatus)
 }

@@ -23,7 +23,7 @@
         <attribute name="startdate" attributeType="Date" syncable="YES"/>
         <attribute name="time" attributeType="String" minValueString="1" maxValueString="12" syncable="YES"/>
         <relationship name="relAttendance" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Attendance" inverseName="relTuition" inverseEntity="Attendance" syncable="YES"/>
-        <relationship name="relPayment" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Payment" inverseName="relTuition" inverseEntity="Payment" syncable="YES"/>
+        <relationship name="relPayment" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Payment" inverseName="relTuition" inverseEntity="Payment" syncable="YES"/>
     </entity>
     <elements>
         <element name="Attendance" positionX="259" positionY="45" width="128" height="135"/>

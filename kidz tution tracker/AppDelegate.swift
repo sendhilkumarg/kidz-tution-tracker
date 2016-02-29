@@ -50,8 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         print("perfroming fetch");
-        let start = NSDate();
-        
+        let start = NSDate();        
         getData();
         let end = NSDate();
         let timeInterval: Double = end.timeIntervalSinceDate(start);
@@ -60,85 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    func CreateNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext)
-    {
-        // Create Entity
-        let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: managedObjectContext)
-        
-        // Initialize Record
-        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
-        
-        record.setValue(date , forKey: "date")
-        record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
-        record.setValue(tuition, forKey: "relTuition")
-        
-        do {
-            // Save Record
-            try record.managedObjectContext?.save()
-            
-            
-        } catch {
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
-        }
-    }
-    
-    func ProcessMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext){
-        
-        for i in 1 ... numberOfDays
-        {
-            if   let dayToProcess = NSCalendar.currentCalendar().dateByAddingUnit(
-                .Day,
-                value: i,
-                toDate: lastAttendenceDate,
-                options: NSCalendarOptions(rawValue: 0))
-            {
-                print(dayToProcess)
-                print(dayToProcess.dayOfWeek())
-                print(days.contains(dayToProcess.dayOfWeek()! - 1))
-                // find whether the time has crossed ?
-                
-                print (tuition.time!)
-                let dateFormatter = NSDateFormatter()
-                dateFormatter.dateFormat =  "HH:mm"
-                
-                
-                if let date = dateFormatter.dateFromString(tuition.time!) {
-                    print("retrieved time with date \(date)")
-                    let time = dateFormatter.stringFromDate(NSDate())
-                    print("current time \(time)")
-                    let  timeArray = tuition.time!.componentsSeparatedByString(":")
-                    if(timeArray.count == 2 ) {
-                        
-                        
-                        if let dateTimeToCheck =  NSCalendar.currentCalendar().dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: NSDate(), options: [])
-                        {
-                            print("retrieved time with date updated \(dateTimeToCheck)")
-                            let currentDateTime : NSDate = NSDate()
-                            
-                            let dateComparisionResult = currentDateTime.compare(dateTimeToCheck)
-                            if( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
-                                
-                                CreateNewAttendance(tuition,date: dayToProcess,managedObjectContext: managedObjectContext)
-                                //print("to create data")
-                            }
-                            
-                        }
-                    }
-                    
-                    
-                    
-                }
-                
-            }
-            
-            
-        }
-
-    }
-
-
     func getData(){
         
         let managedObjectContext = TuitionTrackerDataController().managedObjectContext
@@ -153,7 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for item in result
             {
                 let tuition = item as! Tuition
-                if  let days = tuition.frequency{
+               /* if  let days = tuition.frequency{
+                    //Attendance
                     if let attendenceList = tuition.relAttendance
                     {
                         let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
@@ -168,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("number of days to check \( daysDiff)")
                             if daysDiff > 0
                             {
-                                ProcessMissingAttendance(daysDiff,lastAttendenceDate: latestAttendenceCreated.date!,days: days,tuition: tuition,managedObjectContext: managedObjectContext)
+                                DataUtils.ProcessMissingAttendance(daysDiff,lastAttendenceDate: latestAttendenceCreated.date!,days: days,tuition: tuition,managedObjectContext: managedObjectContext)
                             }
  
                             
@@ -180,14 +101,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("number of days to check \( daysDiff)")
                             if daysDiff > 0
                             {
-                                ProcessMissingAttendance(daysDiff,lastAttendenceDate: tuition.startdate!,days: days,tuition: tuition,managedObjectContext: managedObjectContext)
+                                DataUtils.ProcessMissingAttendance(daysDiff,lastAttendenceDate: tuition.startdate!,days: days,tuition: tuition,managedObjectContext: managedObjectContext)
                             }
                         }
 
                     }
 
                 }
+                */
+                //Payment
                 
+                if let paymentList = tuition.relPayment{
+                    
+                    let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
+                    let sortedList = paymentList.sortedArrayUsingDescriptors([sortDescriptor1])
+                    if sortedList.count > 0
+                    {
+                        let latestPaymentCreated = sortedList[0] as! Payment
+                        print( "latest payment date \(latestPaymentCreated.date!)")
+                        
+                        let monthDiff = Utils.monthsBetweenDate( latestPaymentCreated.date!, endDate: NSDate());
+                        print("number of months to check \( monthDiff)")
+                        if monthDiff > 0
+                        {
+                            DataUtils.ProcessMissingPayments(monthDiff,lastAttendenceDate: latestPaymentCreated.date!,tuition: tuition,managedObjectContext: managedObjectContext)
+                        }
+                    }
+                    else
+                    {
+                        let monthDiff = Utils.monthsBetweenDate( tuition.startdate!, endDate: NSDate());
+                        print("number of months to check \( monthDiff)")
+                        if monthDiff > 0
+                        {
+                            DataUtils.ProcessMissingPayments(monthDiff,lastAttendenceDate: tuition.startdate!,tuition: tuition,managedObjectContext: managedObjectContext)
+                        }
+                    }
+                }
 
             }
             print ("created test data")

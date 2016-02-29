@@ -7,10 +7,11 @@
 //
 
 import UIKit
-
+import CoreData
 class PendingAttendanceCell: UITableViewCell {
     var delegate : AttendanceChangeControllerDelegate?
     var atIndexPath : NSIndexPath?
+    var objectId : NSManagedObjectID?
     @IBOutlet weak var dayLabel: UILabel!
 
     @IBOutlet weak var attendanceSegemnt: UISegmentedControl!
@@ -19,7 +20,7 @@ class PendingAttendanceCell: UITableViewCell {
     @IBAction func statusChanged(sender: UISegmentedControl) {
         if let delegate = delegate {
            
-            delegate.StatusChanged( atIndexPath! , status : sender.selectedSegmentIndex == 0 ?AttendanceStatus.Attended  : AttendanceStatus.Absent)
+            delegate.StatusChanged( atIndexPath! , objectId: objectId!, status : sender.selectedSegmentIndex == 0 ?AttendanceStatus.Attended  : AttendanceStatus.Absent)
         }
 
     }

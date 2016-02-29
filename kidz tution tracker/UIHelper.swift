@@ -13,9 +13,9 @@ class Utils{
     
     static func  daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
     {
-       // let calendar = NSCalendar.currentCalendar()
         return NSCalendar.currentCalendar().components(.Day, fromDate: startDate, toDate: endDate, options: []).day
 
+        // let calendar = NSCalendar.currentCalendar()
       //let result =  calendar.compareDate(calendar.startOfDayForDate(startDate), toDate: calendar.startOfDayForDate(endDate), toUnitGranularity:.Day );
     //  return  result.rawValue
         /*
@@ -24,6 +24,12 @@ class Utils{
         
         return components.day
         */
+    }
+    
+    static func  monthsBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
+    {
+        return NSCalendar.currentCalendar().components(.Month, fromDate: startDate, toDate: endDate, options: []).month
+
     }
     
     // MARK: -
