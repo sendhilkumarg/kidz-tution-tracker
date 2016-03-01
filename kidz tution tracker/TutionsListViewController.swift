@@ -13,7 +13,8 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
 
     @IBOutlet weak var tuitionsTableView: UITableView!
     
-    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    //let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var deleteTutionsIndexPath: NSIndexPath? = nil
     
     override func viewDidLoad() {

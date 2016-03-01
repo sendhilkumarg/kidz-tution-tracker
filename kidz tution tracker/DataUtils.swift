@@ -13,7 +13,8 @@ public class DataUtils
 {
     static func processMissingData( processAttendance : Bool , processPayments : Bool , showErrorMessage : Bool){
         
-        let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+        //let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+        let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
         let sortDescriptor1 = NSSortDescriptor(key: "startdate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor1]
@@ -78,12 +79,21 @@ public class DataUtils
                     }
                     else
                     {
-                        let monthDiff = Utils.monthsBetweenDate( tuition.startdate!, endDate: NSDate());
-                        print("number of months to check \( monthDiff)")
-                        if monthDiff > 0
-                        {
-                            DataUtils.processMissingPayments(monthDiff,lastAttendenceDate: tuition.startdate!,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                        //Todo : work out how to create valid date between 29-31
+                        if let payOnDateToCheck =  NSCalendar.currentCalendar().dateBySettingUnit(.Day, value: Int(tuition.payon!), ofDate: tuition.startdate!, options: []){
+                           print("payon date \(Int(tuition.payon!))")
+                            print("tuition start day \(tuition.startdate!)")
+                             print("payOnDateToCheck day \(payOnDateToCheck)")
+                            //calendar.startOfDayForDate(tuition.startdate!)
+                            let monthDiff = Utils.monthsBetweenDate( payOnDateToCheck, endDate: NSDate());
+                            print("number of months to check \( monthDiff)")
+                            if monthDiff > 0
+                            {
+                                DataUtils.processMissingPayments(monthDiff,lastAttendenceDate: payOnDateToCheck,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                            }
                         }
+                        
+
                     }
                 }
                 
@@ -180,7 +190,7 @@ static func processMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSD
             dateFormatter.dateFormat =  "HH:mm"
             
             
-            if let date = dateFormatter.dateFromString(tuition.time!) {
+            if days.contains(dayToProcess.dayOfWeek()! - 1) ,let date = dateFormatter.dateFromString(tuition.time!) {
                 print("retrieved time with date \(date)")
                 let time = dateFormatter.stringFromDate(NSDate())
                 print("current time \(time)")

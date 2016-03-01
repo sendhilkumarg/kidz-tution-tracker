@@ -11,10 +11,11 @@ import CoreData
 
 class PendingAttendanceTableViewController: UITableViewController  , AttendanceChangeControllerDelegate , NSFetchedResultsControllerDelegate
 {
-    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-    var itemsChanged =  [NSIndexPath]()
+   // let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
+    //var itemsChanged =  [NSIndexPath]()
     var dayUpdteCounter  = 1
-    
+        var messageLabel : UILabel?
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Attendance")
@@ -176,12 +177,31 @@ dayUpdteCounter++
         guard let sectionCount = fetchedResultsController.sections?.count else {
             return 0
         }
+        if sectionCount == 0 {
+             messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
+            
+            
+            messageLabel!.text = "No pending attendance is currently available. Please pull down to refresh.";
+            messageLabel!.textColor = UIColor.blackColor() ;
+            messageLabel!.numberOfLines = 0;
+            messageLabel!.textAlignment = NSTextAlignment.Center;
+            messageLabel!.font = UIFont(name: "Arial", size: 12)
+            //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            
+            self.tableView.backgroundView = messageLabel;
+        }
         return sectionCount
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sectionData = fetchedResultsController.sections?[section] else {
             return 0
+        }
+        if(sectionData.numberOfObjects > 0){
+            if let label = messageLabel{
+                label.hidden = true;
+            }
+            
         }
         return sectionData.numberOfObjects
     }
@@ -307,12 +327,7 @@ dayUpdteCounter++
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        print(type.rawValue)
-        
-        if let ip = indexPath {
-             itemsChanged.append(ip)
-        }
-       
+        print("pending attendance \(type.rawValue)")
         switch (type) {
         case .Insert:
             print("insert")

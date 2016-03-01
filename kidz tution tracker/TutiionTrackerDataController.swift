@@ -9,7 +9,17 @@ import UIKit
 import CoreData
 
 
-class TuitionTrackerDataController: NSObject {
+class TuitionTrackerDataController : NSObject {
+    
+
+    class var sharedInstance : TuitionTrackerDataController {
+        struct Static {
+            static let instance : TuitionTrackerDataController = TuitionTrackerDataController()
+        }
+        return Static.instance
+    }
+    
+
     var managedObjectContext: NSManagedObjectContext
     
     override init() {
@@ -39,16 +49,4 @@ class TuitionTrackerDataController: NSObject {
             fatalError("Error migrating store: \(error)")
         }
         }
-    
-    func loadTutions() -> [Tuition] {
-        var tutionFetch =  NSFetchRequest(entityName: "Tuition")
-        do{
-            let tuitions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tuition]
-            return tuitions
-            // print(tuitions.first!.name!)
-        }catch {
-            fatalError("Failure to read from context: \(error)")
-        }
-        
-    }
-}
+  }

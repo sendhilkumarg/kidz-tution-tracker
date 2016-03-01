@@ -10,8 +10,8 @@ import UIKit
 import CoreData
 
 class PendingPaymentTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, PaymentChangeControllerDelegate {
-    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-    
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext //TuitionTrackerDataController().managedObjectContext
+    var messageLabel : UILabel?
 
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
@@ -23,7 +23,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         let sortDescriptor2 = NSSortDescriptor(key: "relTuition.name", ascending: true)
         let sortDescriptor3 = NSSortDescriptor(key: "relTuition.personname", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor2,sortDescriptor3, sortDescriptor1]
-        //fetchRequest.sortDescriptors = [sortDescriptor1]
         // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil) //"relTuition.objectID"
         // Configure Fetched Results Controller
@@ -36,7 +35,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // CreateTestData()
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         
         do {
@@ -72,7 +70,21 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         guard let sectionCount = fetchedResultsController.sections?.count else {
+            
             return 0
+        }
+        if sectionCount == 0 {
+             messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width , self.view.bounds.size.height))
+            
+            
+            messageLabel!.text = "No pending payments is currently available. Please pull down to refresh.";
+            messageLabel!.textColor = UIColor.blackColor() ;
+            messageLabel!.numberOfLines = 0;
+            messageLabel!.textAlignment = NSTextAlignment.Center;
+            messageLabel!.font = UIFont(name: "Arial", size: 12)
+            //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+            
+            self.tableView.backgroundView = messageLabel;
         }
         return sectionCount
     }
@@ -81,6 +93,14 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         guard let sectionData = fetchedResultsController.sections?[section] else {
             return 0
         }
+        if(sectionData.numberOfObjects > 0){
+            if let label = messageLabel{
+                label.hidden = true;
+            }
+            
+            //messageLabel!.hidden = true;
+        }
+        
         return sectionData.numberOfObjects
     }
     
@@ -172,8 +192,70 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        // tableView.endUpdates()
+         tableView.endUpdates()
     }
+    
+    func controller(
+        controller: NSFetchedResultsController,
+        didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+        atIndex sectionIndex: Int,
+        forChangeType type: NSFetchedResultsChangeType) {
+            
+            switch type {
+            case .Insert:
+                let sectionIndexSet = NSIndexSet(index: sectionIndex)
+                self.tableView.insertSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            case .Delete:
+                let sectionIndexSet = NSIndexSet(index: sectionIndex)
+                self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+            default:
+                ""
+            }
+    }
+    
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        print("pending payment \(type.rawValue)")
+        switch (type) {
+        case .Insert:
+            print("insert")
+            if let indexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            print("delete")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+        case .Update:
+            print("update")
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! PendingPaymentCell
+                configureCell(cell, atIndexPath: indexPath)
+            }
+            break;
+            
+        case .Move:
+            print("move")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+        default :
+            break;
+        }
+    }
+    
+    
+
 
     //MARK : PaymentChangeControllerDelegate
     func StatusChanged(atIndexPath : NSIndexPath ,status : PaymentStatus)
