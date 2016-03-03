@@ -44,6 +44,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
+     //   DataUtils.scheduleLocal()
         
     }
     
@@ -65,7 +66,12 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         }
         self.tableView.reloadData()
         refreshControl.endRefreshing()
+       // DataUtils.scheduleLocal()
     }
+    
+
+    
+
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

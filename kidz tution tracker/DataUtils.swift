@@ -8,12 +8,35 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 public class DataUtils
 {
+    
+    
+    static func schedulePaymentNotification(tuition : Tuition , payment : Payment) {
+        if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
+            settings.types != .None {
+                
+                let payReminderDate =  NSCalendar.currentCalendar().dateByAddingUnit(.Minute, value: 1, toDate: payment.date!, options: []) //TODO : this day can be of any hour. so update a logic that might suit . say 7 AM in the morning
+                print(payment.date!)
+                print(payReminderDate!)
+                let notification = UILocalNotification()
+                
+                notification.fireDate = payReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
+                notification.alertBody = "Update the pament status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(payment.date!))"
+                notification.alertAction = "open"
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.alertTitle = "Tuition Tracker"
+                notification.userInfo = ["action": "payment"]
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                 //UIApplication.sharedApplication().cancelAllLocalNotifications()
+                //print("set notification")
+        }
+    }
+    
     static func processMissingData( processAttendance : Bool , processPayments : Bool , showErrorMessage : Bool){
-        
-        //let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+
+        let calendar = NSCalendar.currentCalendar()
         let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
         let sortDescriptor1 = NSSortDescriptor(key: "startdate", ascending: false)
@@ -80,17 +103,67 @@ public class DataUtils
                     else
                     {
                         //Todo : work out how to create valid date between 29-31
-                        if let payOnDateToCheck =  NSCalendar.currentCalendar().dateBySettingUnit(.Day, value: Int(tuition.payon!), ofDate: tuition.startdate!, options: []){
-                           print("payon date \(Int(tuition.payon!))")
-                            print("tuition start day \(tuition.startdate!)")
+                        
+                        /*
+let currentDateTime : NSDate = NSDate()
+
+let dateComparisionResult = currentDateTime.compare(dateTimeToCheck)
+if( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
+
+*/
+                        print("payon date \(Int(tuition.payon!))")
+                        print("tuition start day \(tuition.startdate!)")
+                        var startDate = calendar.startOfDayForDate( tuition.startdate!)
+                        var payOn = Int(tuition.payon!)
+                        
+                        print("tuition start day using startOfDayForDate \(startDate)")
+                        let currentDateTime : NSDate = calendar.startOfDayForDate(NSDate())
+                        
+                        
+                        if var payOnDateToCheck =  NSCalendar.currentCalendar().dateBySettingUnit(.Day, value: payOn, ofDate: startDate, options: []){
+                            
+                            var dateComparisionResult = currentDateTime.compare(payOnDateToCheck)
+                            
                              print("payOnDateToCheck day \(payOnDateToCheck)")
+                            print("dateComparisionResult = \(dateComparisionResult.rawValue)")
+                            //var i = 0
+                            while (dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending)
+                            {
+                                //print("i = \(i)")
+                                    createNewPayment(tuition,date: payOnDateToCheck,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                                //i++
+                               if let   nextMonthDate  = NSCalendar.currentCalendar().dateByAddingUnit(
+                                .Month,        value: 1, toDate: payOnDateToCheck, //options: [])
+                                options: NSCalendarOptions(rawValue: 0))
+                               {
+                                
+                                    payOnDateToCheck = calendar.startOfDayForDate( nextMonthDate)
+                                    dateComparisionResult = currentDateTime.compare(payOnDateToCheck)
+                                    print("payOnDateToCheck day updated \(payOnDateToCheck)")
+
+                                    print("dateComparisionResult = \(dateComparisionResult.rawValue)")
+                                
+                                }
+                                else
+                               {
+                                print("invalid")
+                                dateComparisionResult =  NSComparisonResult.OrderedAscending
+                                
+                                }
+
+                            }
+
+                           
                             //calendar.startOfDayForDate(tuition.startdate!)
-                            let monthDiff = Utils.monthsBetweenDate( payOnDateToCheck, endDate: NSDate());
+                          /*  let monthDiff = Utils.monthsBetweenDate( payOnDateToCheck, endDate: NSDate());
                             print("number of months to check \( monthDiff)")
                             if monthDiff > 0
                             {
+                                
+                                
                                 DataUtils.processMissingPayments(monthDiff,lastAttendenceDate: payOnDateToCheck,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
                             }
+                            */
                         }
                         
 
@@ -117,6 +190,8 @@ public class DataUtils
             {
              print("payment day to process \(dayToProcess)")
                 createNewPayment(tuition,date: dayToProcess,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                
+                
             }
         
         }
@@ -138,6 +213,7 @@ public class DataUtils
         do {
             // Save Record
             try record.managedObjectContext?.save()
+            //schedulePaymentNotification(tuition,payment: record as! Payment)
             
         } catch {
             let saveError = error as NSError
