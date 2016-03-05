@@ -11,13 +11,29 @@ import CoreData
 import UIKit
 public class DataUtils
 {
+    static let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
+    static let calendar = NSCalendar.currentCalendar()
     
+    //MARK: - Badge
+
+    static func PendingAttendanceAndPaymentCount() -> Int {
+         let attendancefetchRequest = NSFetchRequest(entityName: "Attendance")
+         attendancefetchRequest.predicate = NSPredicate(format: "status == %@", AttendanceStatus.Pending.description)
+         let paymentfetchRequest = NSFetchRequest(entityName: "Payment")
+         paymentfetchRequest.predicate = NSPredicate(format: "status == %@", PaymentStatus.Pending.description)
+         var error: NSError? = nil
+         let attendanceCount =  managedObjectContext.countForFetchRequest(attendancefetchRequest, error: &error)
+         let paymentCount =  managedObjectContext.countForFetchRequest(paymentfetchRequest, error: &error)
+         return (attendanceCount + paymentCount)
+
+    }
+     //MARK: - Scheduling
     
     static func schedulePaymentNotification(tuition : Tuition , payment : Payment) {
         if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
             settings.types != .None {
                 
-                let payReminderDate =  NSCalendar.currentCalendar().dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: []) // This is at UTC 13 houra:. so setting up the reminder for 7 AM in the morning
+                let payReminderDate =  calendar.dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: []) // This is at UTC 13 houra:. so setting up the reminder for 7 AM in the morning
                 print(payment.date!)
                 print(payReminderDate!)
                 let notification = UILocalNotification()
@@ -37,7 +53,7 @@ public class DataUtils
         if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
             settings.types != .None {
                 
-                let attendanceReminderDate =  NSCalendar.currentCalendar().dateByAddingUnit(.Minute, value: 30, toDate: attendance.date!, options: []) //TODO : this day can be of any hour. so update a logic that might suit . say 7 AM in the morning
+                let attendanceReminderDate =  calendar.dateByAddingUnit(.Minute, value: 5, toDate: attendance.date!, options: []) //TODO : this day can be of any hour. so update a logic that might suit . say 7 AM in the morning
                 print(attendance.date!)
                 print(attendanceReminderDate!)
                 let notification = UILocalNotification()
@@ -53,10 +69,11 @@ public class DataUtils
         }
     }
     
+    //MARK: - Missing Data processing
+    
     static func processMissingData( processAttendance : Bool , processPayments : Bool , showErrorMessage : Bool){
 
-        let calendar = NSCalendar.currentCalendar()
-        let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
+        
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
         let sortDescriptor1 = NSSortDescriptor(key: "startdate", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor1]
@@ -77,24 +94,28 @@ public class DataUtils
                             let latestAttendenceCreated = sortedList[0] as! Attendance
                             print( "latest attendance date \(latestAttendenceCreated.date!)")
                             
-                            let daysDiff = Utils.daysBetweenDate( latestAttendenceCreated.date!, endDate: NSDate());
-                            print("number of days to check \( daysDiff)")
-                            if daysDiff > 0
+
+                            if let   nextDate  = calendar.dateByAddingUnit(
+                                .Day,        value: 1, toDate: latestAttendenceCreated.date!,
+                                options: NSCalendarOptions(rawValue: 0))
                             {
-                                DataUtils.processMissingAttendance(daysDiff,lastAttendenceDate: latestAttendenceCreated.date!,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+
+                                DataUtils.processMissingAttendance( nextDate,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
                             }
-                            
+
                             
                         }
                         else
                         {
+                            //todo : handle same day start date
                             // create new from start date
-                            let daysDiff = Utils.daysBetweenDate( tuition.startdate!, endDate: NSDate());
-                            print("number of days to check \( daysDiff)")
-                            if daysDiff > 0
-                            {
-                                DataUtils.processMissingAttendance(daysDiff,lastAttendenceDate: tuition.startdate!,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
-                            }
+                            let startDate = calendar.startOfDayForDate( tuition.startdate!)
+                            //let daysDiff = Utils.daysBetweenDate( startDate, endDate: NSDate()); // should we check from start of the day ?
+                           // print("number of days to check \( daysDiff)")
+                            //if daysDiff > 0
+                            //{
+                                DataUtils.processMissingAttendance( startDate,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                            //}
                         }
                         
                     }
@@ -112,7 +133,7 @@ public class DataUtils
                         let latestPaymentCreated = sortedList[0] as! Payment
                         print( "latest payment date \(latestPaymentCreated.date!)")
                         let startDate = calendar.startOfDayForDate( latestPaymentCreated.date!)
-                        if let   nextMonthDate  = NSCalendar.currentCalendar().dateByAddingUnit(
+                        if let   nextMonthDate  = calendar.dateByAddingUnit(
                         .Month,        value: 1, toDate: startDate,
                         options: NSCalendarOptions(rawValue: 0))
                         {
@@ -140,12 +161,12 @@ public class DataUtils
         }
     }
     
+    //MARK: -  Payment processing
     
     static func processMissingPayments(  lastPaymentDate : NSDate , tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
-        let calendar = NSCalendar.currentCalendar()
         let currentDateTime : NSDate = calendar.startOfDayForDate(NSDate())
         let payOn = Int(tuition.payon!)
-        if var payOnDateToCheck =  NSCalendar.currentCalendar().dateBySettingUnit(.Day, value: payOn, ofDate: lastPaymentDate, options: []){
+        if var payOnDateToCheck =  calendar.dateBySettingUnit(.Day, value: payOn, ofDate: lastPaymentDate, options: []){
             
             var dateComparisionResult = currentDateTime.compare(payOnDateToCheck)
             
@@ -156,7 +177,7 @@ public class DataUtils
             {
                 createNewPayment(tuition,date: payOnDateToCheck,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
 
-                if let   nextMonthDate  = NSCalendar.currentCalendar().dateByAddingUnit(
+                if let   nextMonthDate  = calendar.dateByAddingUnit(
                     .Month,        value: 1, toDate: payOnDateToCheck, //options: [])
                     options: NSCalendarOptions(rawValue: 0))
                 {
@@ -208,64 +229,72 @@ public class DataUtils
         }
     }
     
-static func createNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)
-{
-    // Create Entity
-    let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: managedObjectContext)
+//MARK: - Attendance processing
     
-    // Initialize Record
-    let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
     
-    record.setValue(date , forKey: "date")
-    record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
-    record.setValue(tuition, forKey: "relTuition")
-    
-    do {
-        // Save Record
-        try record.managedObjectContext?.save()
-        scheduleAttendanceNotification(tuition, attendance : record as! Attendance)
-        
-        
-    } catch {
-        let saveError = error as NSError
-        print("\(saveError), \(saveError.userInfo)")
-        
-    }
-}
+    var dayToProcess : NSDate
+    let  timeArray = tuition.time!.componentsSeparatedByString(":")
+    if(timeArray.count == 2 ) {
+        var dayToProcess = lastAttendenceDate;
+        //if days.contains(dayToProcess.dayOfWeek()! - 1)  {
+            if let dateTimeToCheck =  calendar.dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
+            {
+                dayToProcess = dateTimeToCheck
+                print("retrieved time with date updated \(dateTimeToCheck)")
+                
+                //let currentDateTime : NSDate = NSDate()
+                
+                var dateComparisionResult = NSDate().compare(dayToProcess)
+                while( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
+                    
+                    if days.contains(dayToProcess.dayOfWeek()! - 1)  {
+                    createNewAttendance(tuition,date: dayToProcess,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                    }
+                    if   let updatedDayToProcess = calendar.dateByAddingUnit(
+                        .Day,
+                        value: 1,
+                        toDate: dayToProcess,
+                        options:[]) // construct the date
+                    {
+                        dayToProcess = updatedDayToProcess
+                        dateComparisionResult = NSDate().compare(updatedDayToProcess)
+                         print("retrieved time with date updated \(updatedDayToProcess)")
 
-static func processMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
+                    }
+                    else
+                    {
+                        dateComparisionResult = NSComparisonResult.OrderedAscending
+                    }
+                }
+                
+            }
+            
+        
+       // }
+    }
+
     
+    /*
     print ("tuition time = \(tuition.time!)")
     for i in 1 ... numberOfDays
     {
-        if   let dayToProcess = NSCalendar.currentCalendar().dateByAddingUnit(
+        if   let dayToProcess = calendar.dateByAddingUnit(
             .Day,
             value: i,
             toDate: lastAttendenceDate,
-            options: NSCalendarOptions(rawValue: 0)) // construct the date
+            options:[]) // construct the date
         {
             
-            //update the date with time of the tuition
             print("dayToProcess = \(dayToProcess)")
-            
-            //print(dayToProcess.dayOfWeek())
-            //print(days.contains(dayToProcess.dayOfWeek()! - 1))
-            // find whether the time has crossed ?
-            
-            
-            
-            //let dateFormatter = NSDateFormatter()
-            //dateFormatter.dateFormat =  "HH:mm"
-            
+
             
             if days.contains(dayToProcess.dayOfWeek()! - 1)  {
-                //print("retrieved time with date \(date)")
-                //let time = dateFormatter.stringFromDate(NSDate())
-                //print("current time \(time)")
+
                 let  timeArray = tuition.time!.componentsSeparatedByString(":")
                 if(timeArray.count == 2 ) {
                     
-                    if let dateTimeToCheck =  NSCalendar.currentCalendar().dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
+                    if let dateTimeToCheck =  calendar.dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
                     {
                         print("retrieved time with date updated \(dateTimeToCheck)")
                         let currentDateTime : NSDate = NSDate()
@@ -287,6 +316,33 @@ static func processMissingAttendance(numberOfDays: Int, lastAttendenceDate : NSD
  
     }
     
+    */
 }
+    
+    static func createNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)
+    {
+        // Create Entity
+        let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: managedObjectContext)
+        
+        // Initialize Record
+        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        
+        record.setValue(date , forKey: "date")
+        record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
+        record.setValue(tuition, forKey: "relTuition")
+        
+        do {
+            // Save Record
+            try record.managedObjectContext?.save()
+            scheduleAttendanceNotification(tuition, attendance : record as! Attendance)
+            
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+        }
+    }
+
 
 }

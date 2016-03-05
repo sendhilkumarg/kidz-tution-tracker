@@ -217,9 +217,9 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             value: -69,
             toDate: NSDate(),
             options: NSCalendarOptions(rawValue: 0))
-        
-            record.setValue(dayToProcess, forKey: "startdate")
-        
+                    record.setValue(dayToProcess, forKey: "startdate")
+
+
             do {
                 // Save Record
                 try record.managedObjectContext?.save()
