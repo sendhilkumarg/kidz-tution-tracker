@@ -15,15 +15,6 @@ class Utils{
     {
         return NSCalendar.currentCalendar().components(.Day, fromDate: startDate, toDate: endDate, options: []).day
 
-        // let calendar = NSCalendar.currentCalendar()
-      //let result =  calendar.compareDate(calendar.startOfDayForDate(startDate), toDate: calendar.startOfDayForDate(endDate), toUnitGranularity:.Day );
-    //  return  result.rawValue
-        /*
-        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
-    
-        
-        return components.day
-        */
     }
     
     static func  monthsBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
@@ -44,6 +35,7 @@ class Utils{
         // Present Alert Controller
         viewControler.presentViewController(alertController, animated: true, completion: nil)
     }
+    
     //MARK : Container views sa=waping
     
     static func addSubview(subView:UIView, toView parentView:UIView) {
@@ -53,17 +45,17 @@ class Utils{
         var viewBindingsDict = [String: AnyObject]()
         viewBindingsDict["subView"] = subView
         
-        /*parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subView]|",
+        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[subView]|",
         options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subView]|",
         options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
-        */
-        
+
+        /*
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
             options: [], metrics: nil, views: viewBindingsDict))
-        
+        */
         
     }
     

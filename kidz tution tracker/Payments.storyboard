@@ -70,6 +70,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RcC-Jq-wFG">
                                                     <rect key="frame" x="535" y="0.0" width="51" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="7kA-6M-ZiD"/>
+                                                    </constraints>
                                                     <connections>
                                                         <action selector="statusChanged:" destination="80x-e7-q5e" eventType="valueChanged" id="z8j-Ho-bUJ"/>
                                                     </connections>

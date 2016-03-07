@@ -109,7 +109,7 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
     // returns the number of 'columns' to display.
     //refer http://makeapppie.com/tag/uipickerview-in-swift/ for good sample
     @available(iOS 2.0, *)
-    public func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+    internal func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
         if pickerView == payDayPicker{
             return dayPickerData.count
         }
@@ -120,7 +120,7 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
     
     // returns the # of rows in each component..
     @available(iOS 2.0, *)
-    public func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+    internal func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
        
         if pickerView == payDayPicker{
           return dayPickerData[component].count

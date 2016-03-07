@@ -27,7 +27,7 @@ public class DataUtils
          return (attendanceCount + paymentCount)
 
     }
-     //MARK: - Scheduling
+    //MARK: - Scheduling
     
     static func schedulePaymentNotification(tuition : Tuition , payment : Payment) {
         if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
@@ -107,15 +107,9 @@ public class DataUtils
                         }
                         else
                         {
-                            //todo : handle same day start date
-                            // create new from start date
                             let startDate = calendar.startOfDayForDate( tuition.startdate!)
-                            //let daysDiff = Utils.daysBetweenDate( startDate, endDate: NSDate()); // should we check from start of the day ?
-                           // print("number of days to check \( daysDiff)")
-                            //if daysDiff > 0
-                            //{
-                                DataUtils.processMissingAttendance( startDate,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
-                            //}
+                            DataUtils.processMissingAttendance( startDate,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+
                         }
                         
                     }
@@ -152,7 +146,6 @@ public class DataUtils
                 }
                 
             }
-            //print ("created test data")
         }
         catch {
             
@@ -233,29 +226,26 @@ public class DataUtils
     
 static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
     
-    var dayToProcess : NSDate
+
     let  timeArray = tuition.time!.componentsSeparatedByString(":")
     if(timeArray.count == 2 ) {
         var dayToProcess = lastAttendenceDate;
-        //if days.contains(dayToProcess.dayOfWeek()! - 1)  {
-            if let dateTimeToCheck =  calendar.dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
-            {
-                dayToProcess = dateTimeToCheck
-                print("retrieved time with date updated \(dateTimeToCheck)")
-                
-                //let currentDateTime : NSDate = NSDate()
-                
-                var dateComparisionResult = NSDate().compare(dayToProcess)
-                while( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
+        if let dateTimeToCheck =  calendar.dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
+        {
+            dayToProcess = dateTimeToCheck
+            print("retrieved time with date updated \(dateTimeToCheck)")
+
+            var dateComparisionResult = NSDate().compare(dayToProcess)
+            while( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
                     
-                    if days.contains(dayToProcess.dayOfWeek()! - 1)  {
+                if days.contains(dayToProcess.dayOfWeek()! - 1)  {
                     createNewAttendance(tuition,date: dayToProcess,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
-                    }
-                    if   let updatedDayToProcess = calendar.dateByAddingUnit(
+                }
+                if   let updatedDayToProcess = calendar.dateByAddingUnit(
                         .Day,
                         value: 1,
                         toDate: dayToProcess,
-                        options:[]) // construct the date
+                        options:[]) // construct the next date
                     {
                         dayToProcess = updatedDayToProcess
                         dateComparisionResult = NSDate().compare(updatedDayToProcess)
@@ -269,55 +259,10 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
                 }
                 
             }
-            
-        
-       // }
+
     }
 
-    
-    /*
-    print ("tuition time = \(tuition.time!)")
-    for i in 1 ... numberOfDays
-    {
-        if   let dayToProcess = calendar.dateByAddingUnit(
-            .Day,
-            value: i,
-            toDate: lastAttendenceDate,
-            options:[]) // construct the date
-        {
-            
-            print("dayToProcess = \(dayToProcess)")
-
-            
-            if days.contains(dayToProcess.dayOfWeek()! - 1)  {
-
-                let  timeArray = tuition.time!.componentsSeparatedByString(":")
-                if(timeArray.count == 2 ) {
-                    
-                    if let dateTimeToCheck =  calendar.dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
-                    {
-                        print("retrieved time with date updated \(dateTimeToCheck)")
-                        let currentDateTime : NSDate = NSDate()
-                        
-                        let dateComparisionResult = currentDateTime.compare(dateTimeToCheck)
-                        if( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
-                            
-                            createNewAttendance(tuition,date: dateTimeToCheck,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
-                        }
-                        
-                    }
-                }
-                
-                
-                
-            }
-            
-        }
- 
     }
-    
-    */
-}
     
     static func createNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)
     {
