@@ -8,6 +8,7 @@
 
 import UIKit
 
+//@IBDesignable
 class DayPickerControl: UIView {
 
     private  var dayButtons = [ UIButton]()
@@ -21,8 +22,9 @@ class DayPickerControl: UIView {
         
         for day in 0..<7 {
             
+            let button = UIButton()
             
-            let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+           // let button = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
            // button.setImage(emptyStarImage, forState: .Normal)
           //  button.setImage(filledStarmage, forState: .Selected)
            // button.setImage(filledStarmage, forState: [.Highlighted , .Selected ])
@@ -59,7 +61,11 @@ class DayPickerControl: UIView {
     }
     
     override func intrinsicContentSize() -> CGSize {
-        return CGSize(width: 250, height: 44)
+        let buttonSize = Int(frame.size.height)
+        let width = (buttonSize + 5)*7
+        print(buttonSize)
+        print(width)
+        return CGSize(width: width, height: buttonSize)
     }
 
     override func layoutSubviews() {
@@ -70,7 +76,6 @@ class DayPickerControl: UIView {
             button.frame = buttonFrame
         }
         setSelectedDays()
-      //  updateButtonSelectionStates()
         
     }
     

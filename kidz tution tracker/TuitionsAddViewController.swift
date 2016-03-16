@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavigationControllerDelegate ,
-    UIPickerViewDataSource , UIPickerViewDelegate
+    UIPickerViewDataSource , UIPickerViewDelegate ,UITableViewDataSource ,UITableViewDelegate// , UITableViewController ,
 {
    
     var managedObjectContext: NSManagedObjectContext!
@@ -25,6 +25,11 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
     @IBOutlet weak var personNameText: UITextField!
 
     @IBOutlet weak var payPerClassText: UITextField!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var parentStackView: UIStackView!
+    
+    @IBOutlet weak var customTableView: UITableView!
     
     let dayPickerData = [
         [1,2,3,4,5,6,7,8,9,10,11,12,
@@ -47,12 +52,50 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
             tutionTimePicker.date = date
           
         }
+       //parentStackView.v = view.frame.width - 40
+      //  self.automaticallyAdjustsScrollViewInsets = false;
         
+      /*  scrollView.contentSize = CGSize(width: parentStackView.frame.width, height: parentStackView.frame.height)
+        */
+    
+        customTableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    /*
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+  
+        parentStackView.frame =  CGRectMake(0 , self.view.frame.height * 0.7, self.view.frame.width, self.view.frame.height * 0.3)
+        scrollView.contentSize = CGSize(width: parentStackView.frame.width, height: parentStackView.frame.height)
+        scrollView.contentInset = UIEdgeInsetsMake(64, 0, 44, 0)
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 44, 0)
+
+    }
+    */
+    
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // return the number of sections
+        return 1
+    }
+    
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // return the number of rows
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+                 return customTableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath);// as!
+        }
+               return customTableView.dequeueReusableCellWithIdentifier("cell2", forIndexPath: indexPath);// as!
+        
+ 
+        
+     //   return nil
     }
     
     // MARK: UITextFieldDelegate
@@ -148,6 +191,7 @@ class TuitionsAddViewController: UIViewController , UITextFieldDelegate , UINavi
 
     }
 
+   // func override tab
     // MARK: Save
     @IBAction func saveAction(sender: UIBarButtonItem) {
         let name = txtTution.text
