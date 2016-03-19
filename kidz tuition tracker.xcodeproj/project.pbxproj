@@ -33,9 +33,7 @@
 		BC6905DE1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BC6905DC1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld */; };
 		BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */; };
 		BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */; };
-		BC6905EC1C4A3B4500B00E35 /* TuitionsAddViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905EB1C4A3B4500B00E35 /* TuitionsAddViewController1.swift */; };
 		BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */; };
-		BC6905FA1C4EE84800B00E35 /* TuitionsEditViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905F91C4EE84800B00E35 /* TuitionsEditViewController1.swift */; };
 		BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */; };
 		BCFF26C31C6C953000E2838E /* PendingAttenanceHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */; };
 		BCFF26C51C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C41C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift */; };
@@ -113,9 +111,7 @@
 		BC6905DD1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KidsTuitionTrackerDataModel.xcdatamodel; sourceTree = "<group>"; };
 		BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutiionTrackerDataController.swift; sourceTree = "<group>"; };
 		BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsTableViewCell.swift; sourceTree = "<group>"; };
-		BC6905EB1C4A3B4500B00E35 /* TuitionsAddViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsAddViewController1.swift; sourceTree = "<group>"; };
 		BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutionsListViewController.swift; sourceTree = "<group>"; };
-		BC6905F91C4EE84800B00E35 /* TuitionsEditViewController1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsEditViewController1.swift; sourceTree = "<group>"; };
 		BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayPickerControl.swift; sourceTree = "<group>"; };
 		BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingAttenanceHeaderCell.swift; sourceTree = "<group>"; };
 		BCFF26C41C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceTuitionListTableViewController.swift; sourceTree = "<group>"; };
@@ -252,8 +248,6 @@
 				BC6905F71C4D921A00B00E35 /* TutionsListViewController.swift */,
 				BC6905D51C46FBF700B00E35 /* Tuitions.storyboard */,
 				BC6905E81C4A2BAD00B00E35 /* TuitionsTableViewCell.swift */,
-				BC6905EB1C4A3B4500B00E35 /* TuitionsAddViewController1.swift */,
-				BC6905F91C4EE84800B00E35 /* TuitionsEditViewController1.swift */,
 				BC101C3D1C996CC500995966 /* DayListTableViewController.swift */,
 				BC101C3F1C9A844F00995966 /* DayChangeControllerDelegate.swift */,
 				BC101C411C9A8D6700995966 /* TuitionsAddViewController.swift */,
@@ -466,7 +460,6 @@
 				BCFF26E31C73486D00E2838E /* PaymentViewController.swift in Sources */,
 				BCFF26C91C6EF81600E2838E /* HistoryAttendanceTableViewController.swift in Sources */,
 				BC101C421C9A8D6700995966 /* TuitionsAddViewController.swift in Sources */,
-				BC6905FA1C4EE84800B00E35 /* TuitionsEditViewController1.swift in Sources */,
 				BC044AC41C66F4BE006A49CE /* PendingAttendanceTableViewController.swift in Sources */,
 				BC6905DE1C49D60A00B00E35 /* KidsTuitionTrackerDataModel.xcdatamodeld in Sources */,
 				BCFF26C31C6C953000E2838E /* PendingAttenanceHeaderCell.swift in Sources */,
@@ -484,7 +477,6 @@
 				BCFF26D71C72822300E2838E /* PaymentStatus.swift in Sources */,
 				BCFF26CD1C6F00DB00E2838E /* HistoryAttenanceHeaderCell.swift in Sources */,
 				BC044AE21C67F7B9006A49CE /* Tuition+CoreDataProperties.swift in Sources */,
-				BC6905EC1C4A3B4500B00E35 /* TuitionsAddViewController1.swift in Sources */,
 				BC6F1E8A1C6551EF0001FE6C /* DayPickerControl.swift in Sources */,
 				BCFF26F71C78550000E2838E /* PaymentHistoryCell.swift in Sources */,
 				BC044AE81C68A3E1006A49CE /* PendingAttendanceCell.swift in Sources */,
