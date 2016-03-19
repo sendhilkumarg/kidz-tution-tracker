@@ -88,37 +88,55 @@ class Utils{
         return ""
     }
     
-    static     func configureTuitionsTableViewCellCell(cell: TuitionsTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
-        // Fetch Record
-       // let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+     
+    static func GetRepeatLabel(daysSelected : [Int] ) -> String
+    {
+        var dayText = "Never"
         
-        // Update Cell
-        if let name = tuition.name {
-            if let personName = tuition.personname {
-                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
-            }
-            else{
-                cell.tuitionNameLabel.text = name
-                
-            }
-            
-        }
-        
-        if let  time = tuition.time  {
-            cell.timeLabel.text = Utils.ToTimeFromString(time)
-        }
-        else
-        {
-            cell.timeLabel.text = "";
-        }
-        
-        
-        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
+        if  !daysSelected.isEmpty {
             
             var days = [String]()
-            var dayText = "S"
             
-            for frequency in tuition.frequency!
+            for frequency in daysSelected.sort()
+            {
+                
+                switch frequency
+                {
+                case 0 :
+                    dayText = "Sun"
+                case 1 :
+                    dayText = "Mon"
+                case 2 :
+                    dayText = "Tue"
+                case 3 :
+                    dayText = "Wed"
+                case 4 :
+                    dayText = "Thu"
+                case 5 :
+                    dayText = "Fri"
+                case 6 :
+                    dayText = "Sat"
+                default:
+                    dayText = ""
+                }
+                
+                days.append(dayText)
+            }
+            return days.joinWithSeparator(" ")
+        }
+           return dayText
+
+    }
+    
+    static func GetRepeatLabelInShortFormat(daysSelected : [Int] ) -> String
+    {
+        var dayText = "Days : Never"
+        
+        if  !daysSelected.isEmpty {
+            
+            var days = [String]()
+            
+            for frequency in daysSelected.sort()
             {
                 
                 switch frequency
@@ -138,14 +156,14 @@ class Utils{
                 case 6 :
                     dayText = "S"
                 default:
-                    dayText = "S"
+                    dayText = ""
                 }
                 
                 days.append(dayText)
             }
-            
-            cell.daysLabel.text  = "Days : " + days.joinWithSeparator("|")
+            return "Days : \(days.joinWithSeparator("|"))"
         }
+        return dayText
         
     }
     

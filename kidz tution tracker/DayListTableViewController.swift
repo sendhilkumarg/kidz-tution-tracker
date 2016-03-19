@@ -9,6 +9,7 @@
 import UIKit
 
 class DayListTableViewController: UITableViewController {
+    var delegate : DayChangeControllerDelegate?
 
     private var days = ["Sunday", "Monday" , "Tuesday","Wednesday","Thursday","Friday","Saturday"]
     var selectedDays = [Int]()
@@ -46,6 +47,11 @@ class DayListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("dayCell", forIndexPath: indexPath) as UITableViewCell
         //cell.accessoryType = (lastSelectedIndexPath?.row == indexPath.row) ? .Checkmark : .None
         cell.textLabel?.text = days[indexPath.row]
+        if selectedDays.contains(indexPath.row)
+        {
+            cell.accessoryType = .Checkmark
+        }
+        
 
 
         // Configure the cell...
@@ -70,6 +76,9 @@ class DayListTableViewController: UITableViewController {
             
         }
 
+        if let delegate = delegate {
+            delegate.DaysChanged(selectedDays)
+        }
        
 
     }
@@ -109,14 +118,20 @@ class DayListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if let vc = segue.destinationViewController as? TuitionsAddViewController
+        {
+          print(selectedDays)
+        }
+        
     }
-    */
+
 
 }
