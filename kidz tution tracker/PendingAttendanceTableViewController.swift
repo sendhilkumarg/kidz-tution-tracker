@@ -11,15 +11,12 @@ import CoreData
 
 class PendingAttendanceTableViewController: UITableViewController  , AttendanceChangeControllerDelegate , NSFetchedResultsControllerDelegate
 {
-   // let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
-    //var itemsChanged =  [NSIndexPath]()
     var dayUpdteCounter  = 1
         var messageLabel : UILabel?
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Attendance")
-        //fetchRequest.predicate = NSPredicate(format: "status = %@", AttendanceStatus.Pending.rawValue)
          fetchRequest.predicate = NSPredicate(format: "status == %@", AttendanceStatus.Pending.description)
         // Add Sort Descriptors
         let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
@@ -39,7 +36,6 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      //CreateTestData()
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     
 
@@ -54,15 +50,8 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        // Do some reloading of data and update the table view's data source
-        // Fetch more objects from a web service, for example...
-        
-        // Simply adding an object to the data source for this example
-
         DataUtils.processMissingData(true, processPayments: false, showErrorMessage: true)
-        //CreateTestData()
-        //self.tableView.reloadData()
-        do {
+       do {
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
@@ -73,96 +62,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
         refreshControl.endRefreshing()
     }
     
-    func CreateTestData(){
-        let fetchRequest = NSFetchRequest(entityName: "Tuition")
-        
-        do {
-            let result = try self.managedObjectContext.executeFetchRequest(fetchRequest)
-            for item in result
-            {
-                let tuition = item as! Tuition
-                for i in 1...2{
-                    let today = NSDate()
-                    let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
-                        .Day,
-                        value: dayUpdteCounter,
-                        toDate: today,
-                        options: NSCalendarOptions(rawValue: 0))
-dayUpdteCounter++
-                     CreateNewAttendance(tuition,date: tomorrow!)
-                     CreateNewPayment(tuition,date: tomorrow!)
-                    }
-               
-                //print(tuition.name)
-            }
-            print ("created test data")
-            //print(result)
-            
-        } catch {
-            
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
-        }
-    }
 
-    func CreateNewAttendance(tuition : Tuition , date : NSDate)
-    {
-        // Create Entity
-        let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: self.managedObjectContext)
-        
-        // Initialize Record
-        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
-        
-        record.setValue(date , forKey: "date")
-        record.setValue( NSInteger( AttendanceStatus.Pending.rawValue) , forKey: "status")
-        record.setValue(tuition, forKey: "relTuition")
-        
-        do {
-            // Save Record
-            try record.managedObjectContext?.save()
-            
-        } catch {
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
-        }
-    }
-    
-    func CreateNewPayment(tuition : Tuition , date : NSDate)
-    {
-        // Create Entity
-        let entity = NSEntityDescription.entityForName("Payment", inManagedObjectContext: self.managedObjectContext)
-        
-        // Initialize Record
-        let record = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
-        
-        
-        record.setValue(date , forKey: "date")
-        record.setValue( NSInteger( PaymentStatus.Pending.rawValue) , forKey: "status")
-        
-        
-        // Create Relationship
-        //let parent = record.mutableSetValueForKey("relTuition")
-        //parent.addObject(newChildPerson)
-        record.setValue(tuition, forKey: "relTuition")
-        
-        do {
-            // Save Record
-            try record.managedObjectContext?.save()
-            
-        } catch {
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
-        }
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -263,16 +163,12 @@ dayUpdteCounter++
     }
 
     func configureCell(cell : PendingAttendanceCell , atIndexPath indexPath: NSIndexPath){
-        print("indexPath \(indexPath)")
-        //print(fetchedResultsController.objectAtIndexPath(indexPath))
         let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
-        //print(attendance.)
         cell.objectId = attendance.objectID
         cell.atIndexPath = indexPath
         cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
         cell.attendanceSegemnt.selected = false ;
         cell.attendanceSegemnt.selectedSegmentIndex = -1
-       // cell.attendanceSegemnt.reloadInputViews()// (UISegmentedControlNoSegment)
         if let status = attendance.status  {
             print("segment status " + status.description)
             switch attendance.CurrentStatus
@@ -390,26 +286,6 @@ dayUpdteCounter++
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
         }
         
-      /*
-        //fetchRequest.
-        let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Attendance
-        
-        record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
-        
-        do {
-            // Save Record
-            try record.managedObjectContext?.save()
-            
-           // dismissViewControllerAnimated(true, completion: nil)
-            
-        } catch {
-            let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
-        }
-        */
         
     }
     

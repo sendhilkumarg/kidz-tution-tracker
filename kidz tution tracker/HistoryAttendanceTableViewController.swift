@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 
-class HistoryAttendanceTableViewController: UITableViewController {
+class HistoryAttendanceTableViewController: UITableViewController , AttendanceChangeControllerDelegate {
 
-    //let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
+
     var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
     var attendanceList : [Attendance] = [];
@@ -24,7 +25,6 @@ class HistoryAttendanceTableViewController: UITableViewController {
         let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
 
         for item in tuition!.relAttendance!.sortedArrayUsingDescriptors([sortDescriptor1]) {
-          //  print(item)
             attendanceList.append(item as! Attendance)
         }
         if let tuition = tuition{
@@ -83,17 +83,77 @@ class HistoryAttendanceTableViewController: UITableViewController {
     }
     
     func configureCell(cell : HistoryAttendanceCell , atIndexPath indexPath: NSIndexPath){
-        //let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
         let attendance = attendanceList[indexPath.row]
 
         cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
-        if let status = attendance.status {
+        if let _ = attendance.status {
             cell.statusLabel.text =  attendance.CurrentStatus.displaytext;
-    
         }
         else
         {
             cell.statusLabel.text = "Pending"
         }
     }
+    
+    // MARK: Prepare for Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "seagueEditTuitionItem" {
+            if let controller = segue.destinationViewController as? AttendanceEditController
+            {
+                 if let indexPath = tableView.indexPathForSelectedRow {
+                    controller.attendance = attendanceList[indexPath.row]
+                    controller.atIndexPath = indexPath
+                    controller.objectId = attendanceList[indexPath.row].objectID
+                    controller.delegate = self
+                }
+            }
+        }
+
+ 
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "seagueEditTuitionItem"{
+            if let cell = sender
+            {
+                if let historyCell = cell as? HistoryAttendanceCell
+                {
+                    if historyCell.statusLabel.text != AttendanceStatus.Pending.displaytext{
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+        return false
+    }
+    
+    
+    //MARK : AttendanceChangeControllerDelegate
+    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : AttendanceStatus)
+    {
+        
+        do {
+            // Save Record
+            let record = try managedObjectContext.existingObjectWithID(objectId )
+            
+            record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
+            try record.managedObjectContext?.save()
+            attendanceList[atIndexPath.row].status = NSInteger(status.rawValue)
+            let cell = tableView.cellForRowAtIndexPath(atIndexPath) as! HistoryAttendanceCell
+            configureCell(cell, atIndexPath: atIndexPath)
+
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+        }
+    }
+
+    
+}
+

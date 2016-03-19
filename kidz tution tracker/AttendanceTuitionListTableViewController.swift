@@ -11,8 +11,9 @@ import CoreData
 class AttendanceTuitionListTableViewController: UITableViewController , NSFetchedResultsControllerDelegate{
 
     @IBOutlet var tuitionsTableView: UITableView!
-     let managedObjectContext = TuitionTrackerDataController().managedObjectContext
-    
+    // let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -312,16 +312,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IF-qU-sbH">
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2IF-qU-sbH">
                                             <rect key="frame" x="8" y="8" width="584" height="28"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEC-jU-xiZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GEC-jU-xiZ">
                                                     <rect key="frame" x="0.0" y="0.0" width="542" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh2-EJ-T4v">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kh2-EJ-T4v">
                                                     <rect key="frame" x="542" y="0.0" width="42" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -340,6 +340,7 @@
                                 <connections>
                                     <outlet property="dayLabel" destination="GEC-jU-xiZ" id="zBW-9F-O4z"/>
                                     <outlet property="statusLabel" destination="kh2-EJ-T4v" id="52v-xE-Jyt"/>
+                                    <segue destination="JuP-KT-2qe" kind="show" identifier="seagueEditTuitionItem" id="39A-Dh-Gh3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -352,6 +353,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xSk-rU-xi5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4105" y="105"/>
+        </scene>
+        <!--Attendance Edit Controller-->
+        <scene sceneID="Ir9-XC-QzR">
+            <objects>
+                <viewController id="JuP-KT-2qe" customClass="AttendanceEditController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ng6-Kl-9bd"/>
+                        <viewControllerLayoutGuide type="bottom" id="XIa-nN-un0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1af-xA-X6s">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="SPS-s8-tqb">
+                                <rect key="frame" x="30" y="74" width="540" height="28"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RM6-Xo-6z4">
+                                        <rect key="frame" x="0.0" y="4" width="410" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="NjN-7g-bSJ">
+                                        <rect key="frame" x="410" y="0.0" width="130" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="A4c-Wo-ac1"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="Attended"/>
+                                            <segment title="Absent"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="statusChanged:" destination="JuP-KT-2qe" eventType="valueChanged" id="kou-5F-Q8q"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="SPS-s8-tqb" secondAttribute="trailing" constant="10" id="5yY-Rk-xom"/>
+                            <constraint firstItem="SPS-s8-tqb" firstAttribute="leading" secondItem="1af-xA-X6s" secondAttribute="leadingMargin" constant="10" id="FBV-9T-n3D"/>
+                            <constraint firstItem="SPS-s8-tqb" firstAttribute="top" secondItem="Ng6-Kl-9bd" secondAttribute="bottom" constant="10" id="sFP-yj-aFQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="attendanceSegemnt" destination="NjN-7g-bSJ" id="zNC-Cf-gqX"/>
+                        <outlet property="dayLabel" destination="RM6-Xo-6z4" id="zet-eS-QE9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uh9-A7-Gp7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5056" y="100"/>
         </scene>
         <!--Attendance-->
         <scene sceneID="4V6-S4-McE">
