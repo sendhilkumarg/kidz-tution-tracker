@@ -10,8 +10,9 @@ import Foundation
 import CoreData
 import UIKit
 
-class PaymentHistoryTableViewControler: UITableViewController {
-    
+class PaymentHistoryTableViewControler: UITableViewController , PaymentChangeControllerDelegate {
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext //TuitionTrackerDataController().managedObjectContext
+
    // let managedObjectContext = TuitionTrackerDataController().managedObjectContext
     var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
@@ -97,5 +98,67 @@ class PaymentHistoryTableViewControler: UITableViewController {
             cell.statusLabel.text = "Pending"
         }
     }
+
+    // MARK: Prepare for Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "seagueEditPaymentItem" {
+            if let controller = segue.destinationViewController as? PaymentEditController
+            {
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    controller.payment = paymentList[indexPath.row]
+                    controller.atIndexPath = indexPath
+                    controller.objectId = paymentList[indexPath.row].objectID
+                    controller.delegate = self
+                }
+            }
+        }
+        
+        
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if identifier == "seagueEditPaymentItem"{
+            if let cell = sender
+            {
+                if let historyCell = cell as? PaymentHistoryCell
+                {
+                    if historyCell.statusLabel.text != PaymentStatus.Pending.displaytext{
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+        return false
+    }
+    
+        //MARK : PaymentChangeControllerDelegate
+
+    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : PaymentStatus)
+    {
+        
+        do {
+            // Save Record
+            let record = try managedObjectContext.existingObjectWithID(objectId )
+            
+            record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
+            try record.managedObjectContext?.save()
+            paymentList[atIndexPath.row].status = NSInteger(status.rawValue)
+            let cell = tableView.cellForRowAtIndexPath(atIndexPath) as! PaymentHistoryCell
+            configureCell(cell, atIndexPath: atIndexPath)
+            
+            
+        } catch {
+            let saveError = error as NSError
+            print("\(saveError), \(saveError.userInfo)")
+            
+            // Show Alert View
+            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+        }
+    }
+    
+
+
 
 }

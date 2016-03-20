@@ -7,13 +7,15 @@
 //
 
 import UIKit
-
+import CoreData
 class PendingPaymentCell: UITableViewCell {
   var delegate : PaymentChangeControllerDelegate?
+  var objectId : NSManagedObjectID?
+  var atIndexPath : NSIndexPath?
+    
     @IBOutlet weak var dayLabel: UILabel!
     
   
-     var atIndexPath : NSIndexPath?
     @IBOutlet weak var statusSwitch: UISwitch!
     
     
@@ -24,7 +26,7 @@ class PendingPaymentCell: UITableViewCell {
     @IBAction func statusChanged(sender: UISwitch) {
         if let delegate = delegate {
             
-            delegate.StatusChanged( atIndexPath! , status : sender.on  ?PaymentStatus.Paid  : PaymentStatus.Pending)
+            delegate.StatusChanged( atIndexPath! , objectId: objectId!, status : sender.on  ?PaymentStatus.Paid  : PaymentStatus.Pending)
         }
         
 

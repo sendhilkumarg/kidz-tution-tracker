@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class AttendanceEditController: UIViewController //, AttendanceChangeControllerDelegate
+class AttendanceEditController: UIViewController 
 {
 
     var attendance : Attendance?

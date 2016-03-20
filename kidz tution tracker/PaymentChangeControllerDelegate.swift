@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 public protocol PaymentChangeControllerDelegate{
-    func StatusChanged(atIndexPath : NSIndexPath, status : PaymentStatus)
+    func StatusChanged(atIndexPath : NSIndexPath,  objectId : NSManagedObjectID, status : PaymentStatus)
 }

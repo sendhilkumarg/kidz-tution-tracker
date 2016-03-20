@@ -280,6 +280,7 @@
                                 <connections>
                                     <outlet property="dayLabel" destination="I4E-Yq-ohk" id="rHE-fq-2C5"/>
                                     <outlet property="statusLabel" destination="FUV-zH-0lW" id="kZ1-7A-175"/>
+                                    <segue destination="byf-SC-Jw6" kind="show" identifier="seagueEditPaymentItem" id="O8f-YG-aaT"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -291,7 +292,56 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6eL-iO-KQl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5182" y="1277"/>
+            <point key="canvasLocation" x="5240" y="1216"/>
+        </scene>
+        <!--Payment Edit Controller-->
+        <scene sceneID="GBS-DQ-mrz">
+            <objects>
+                <viewController id="byf-SC-Jw6" customClass="PaymentEditController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VQB-3G-U8B"/>
+                        <viewControllerLayoutGuide type="bottom" id="F6Y-0K-AIJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iRA-VI-7Iu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ef8-Iw-yad">
+                                <rect key="frame" x="30" y="74" width="540" height="28"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEx-FW-CLW">
+                                        <rect key="frame" x="0.0" y="4" width="491" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BFY-4i-cNU">
+                                        <rect key="frame" x="491" y="0.0" width="51" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="JHf-fe-Eqw"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="statusChanged:" destination="byf-SC-Jw6" eventType="valueChanged" id="bqh-20-HxY"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ef8-Iw-yad" secondAttribute="trailing" constant="10" id="lSO-J5-bFc"/>
+                            <constraint firstItem="ef8-Iw-yad" firstAttribute="top" secondItem="VQB-3G-U8B" secondAttribute="bottom" constant="10" id="mXh-j0-xgi"/>
+                            <constraint firstItem="ef8-Iw-yad" firstAttribute="leading" secondItem="iRA-VI-7Iu" secondAttribute="leadingMargin" constant="10" id="teH-JG-v0Z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dayLabel" destination="DEx-FW-CLW" id="d1a-lk-D4Y"/>
+                        <outlet property="paymentStatusSwitch" destination="BFY-4i-cNU" id="hbx-nK-zqd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VBR-2S-dgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5923" y="1216"/>
         </scene>
         <!--Payments-->
         <scene sceneID="IT1-nc-enw">

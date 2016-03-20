@@ -167,10 +167,11 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     }
     
     func configureCell(cell : PendingPaymentCell , atIndexPath indexPath: NSIndexPath){
-        print(fetchedResultsController.objectAtIndexPath(indexPath))
+        //print(fetchedResultsController.objectAtIndexPath(indexPath))
         let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
         cell.atIndexPath = indexPath
         cell.dayLabel.text = Utils.ToLongDateString( payment.date!)
+        cell.objectId = payment.objectID
        // cell.statusSwitch.on = payment.status.attended!.boolValue
         if let _ = payment.status  {
             switch payment.CurrentStatus
@@ -264,16 +265,22 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
 
 
     //MARK : PaymentChangeControllerDelegate
-    func StatusChanged(atIndexPath : NSIndexPath ,status : PaymentStatus)
+    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID ,status : PaymentStatus)
     {
         // Fetch Record
-        let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Payment
-        
-        record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
+        //let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Payment
+       // let record = try managedObjectContext.existingObjectWithID(objectId )
+
+        //record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
         
         do {
             // Save Record
+            let record = try managedObjectContext.existingObjectWithID(objectId )
+            
+            record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
+            // Save Record
+            //try record.managedObjectContext?.save()
             
             dismissViewControllerAnimated(true, completion: nil)
             

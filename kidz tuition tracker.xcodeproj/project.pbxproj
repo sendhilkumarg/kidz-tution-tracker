@@ -20,6 +20,7 @@
 		BC101C421C9A8D6700995966 /* TuitionsAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101C411C9A8D6700995966 /* TuitionsAddViewController.swift */; };
 		BC101C441C9CC82800995966 /* TuitionsEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101C431C9CC82800995966 /* TuitionsEditViewController.swift */; };
 		BC101C461C9D1B8800995966 /* AttendanceEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101C451C9D1B8800995966 /* AttendanceEditController.swift */; };
+		BC101C481C9D3A7100995966 /* PaymentEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC101C471C9D3A7100995966 /* PaymentEditController.swift */; };
 		BC6905A61C45A94F00B00E35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905A51C45A94F00B00E35 /* AppDelegate.swift */; };
 		BC6905A81C45A94F00B00E35 /* AttendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905A71C45A94F00B00E35 /* AttendanceViewController.swift */; };
 		BC6905AA1C45A94F00B00E35 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905A91C45A94F00B00E35 /* SecondViewController.swift */; };
@@ -93,6 +94,7 @@
 		BC101C411C9A8D6700995966 /* TuitionsAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsAddViewController.swift; sourceTree = "<group>"; };
 		BC101C431C9CC82800995966 /* TuitionsEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsEditViewController.swift; sourceTree = "<group>"; };
 		BC101C451C9D1B8800995966 /* AttendanceEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceEditController.swift; sourceTree = "<group>"; };
+		BC101C471C9D3A7100995966 /* PaymentEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentEditController.swift; sourceTree = "<group>"; };
 		BC6905A21C45A94F00B00E35 /* kidz tuition tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "kidz tuition tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6905A51C45A94F00B00E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC6905A71C45A94F00B00E35 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				BCFF26F21C78522000E2838E /* PaymentHistoryTableViewControler.swift */,
 				BCFF26F41C7854C300E2838E /* PaymentHistoryHeaderCell.swift */,
 				BCFF26F61C78550000E2838E /* PaymentHistoryCell.swift */,
+				BC101C471C9D3A7100995966 /* PaymentEditController.swift */,
 			);
 			name = Payments;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				BC6905F81C4D921A00B00E35 /* TutionsListViewController.swift in Sources */,
 				BCFF26F31C78522000E2838E /* PaymentHistoryTableViewControler.swift in Sources */,
 				BC6905E91C4A2BAD00B00E35 /* TuitionsTableViewCell.swift in Sources */,
+				BC101C481C9D3A7100995966 /* PaymentEditController.swift in Sources */,
 				BC101C441C9CC82800995966 /* TuitionsEditViewController.swift in Sources */,
 				BCFF26D51C7281E000E2838E /* Payment.swift in Sources */,
 				BC6905E01C49D72100B00E35 /* TutiionTrackerDataController.swift in Sources */,
