@@ -138,7 +138,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9oa-E7-8p4">
                                                     <rect key="frame" x="0.0" y="0.0" width="551" height="24"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-Sa-OiH">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-Sa-OiH">
                                                             <rect key="frame" x="0.0" y="0.0" width="551" height="24"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -230,7 +230,7 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.16180157419999999" green="1" blue="0.29881595820000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.63977288320000003" green="1" blue="0.63841952530000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="5hi-Sm-RTB" firstAttribute="top" secondItem="0cT-Kz-V3E" secondAttribute="topMargin" id="64X-0I-UKV"/>
                                         <constraint firstItem="5hi-Sm-RTB" firstAttribute="leading" secondItem="0cT-Kz-V3E" secondAttribute="leadingMargin" id="c4O-jj-U9U"/>
@@ -348,7 +348,7 @@
         <scene sceneID="IT1-nc-enw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vln-ED-YUm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Payments" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Payments" image="paymentIcon" selectedImage="paymentIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WcL-iZ-Lbr">
@@ -432,6 +432,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="paymentIcon" width="50" height="50"/>
     </resources>
 </document>

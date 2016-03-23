@@ -48,11 +48,14 @@
         <scene sceneID="sjx-Ci-43K">
             <objects>
                 <viewControllerPlaceholder storyboardName="Payments" id="0g5-hS-sZP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="R32-dF-Py9"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="paymentIcon" id="R32-dF-Py9"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gdj-QA-uCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042" y="301"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="paymentIcon" width="50" height="50"/>
+    </resources>
 </document>

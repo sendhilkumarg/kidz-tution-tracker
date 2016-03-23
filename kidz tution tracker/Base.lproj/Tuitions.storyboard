@@ -435,7 +435,7 @@
         <scene sceneID="zLC-kr-qfA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rws-2s-1jK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tutions" id="b8y-5k-PF5"/>
+                    <tabBarItem key="tabBarItem" title="Tutions" image="tuitionsIcon" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="91G-5v-VUv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -780,6 +780,9 @@
             <point key="canvasLocation" x="1996" y="1489"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tuitionsIcon" width="50" height="50"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NtJ-HD-LZd"/>
     </inferredMetricsTieBreakers>
