@@ -124,7 +124,6 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
                 let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
                 configureTuitionsTableViewCellCell(cell,tuition: tuition, atIndexPath: indexPath)
 
-               // configureCell(cell, atIndexPath: indexPath)
             }
             break;
         case .Move:

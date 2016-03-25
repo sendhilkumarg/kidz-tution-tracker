@@ -187,7 +187,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         
         let dayToProcess = NSCalendar.currentCalendar().dateByAddingUnit(
             .Day,
-            value: -360,
+            value: -60,
             toDate: NSDate(),
             options: NSCalendarOptions(rawValue: 0))
         record.setValue(dayToProcess, forKey: "startdate")

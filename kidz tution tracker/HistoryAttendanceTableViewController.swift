@@ -9,24 +9,41 @@
 import UIKit
 import CoreData
 
-class HistoryAttendanceTableViewController: UITableViewController , AttendanceChangeControllerDelegate {
+class HistoryAttendanceTableViewController: UITableViewController , NSFetchedResultsControllerDelegate , AttendanceChangeControllerDelegate {
 
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
 
     var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
-    var attendanceList : [Attendance] = [];
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Attendance")
+        fetchRequest.predicate = NSPredicate(format: "relTuition == %@", self.tuition!)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }( )
 
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
-
-        for item in tuition!.relAttendance!.sortedArrayUsingDescriptors([sortDescriptor1]) {
-            attendanceList.append(item as! Attendance)
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
+
         if let tuition = tuition{
             var header = ""
         if let name = tuition.name {
@@ -56,14 +73,19 @@ class HistoryAttendanceTableViewController: UITableViewController , AttendanceCh
 
     // MARK: - Table view data source
 
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-        
+        guard let sectionCount = fetchedResultsController.sections?.count else {
+            return 0
+        }
+        return sectionCount
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attendanceList.count
- 
+        guard let sectionData = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        return sectionData.numberOfObjects
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -83,17 +105,72 @@ class HistoryAttendanceTableViewController: UITableViewController , AttendanceCh
     }
     
     func configureCell(cell : HistoryAttendanceCell , atIndexPath indexPath: NSIndexPath){
-        let attendance = attendanceList[indexPath.row]
+        let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
 
-        cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
-        if let _ = attendance.status {
-            cell.statusLabel.text =  attendance.CurrentStatus.displaytext;
+        if let date = attendance.date{
+            cell.dayLabel.text = Utils.ToLongDateString( date)
+            if let _ = attendance.status {
+                cell.statusLabel.text =  attendance.CurrentStatus.displaytext;
+            }
+            else
+            {
+                cell.statusLabel.text = "Pending"
+            }
         }
-        else
-        {
-            cell.statusLabel.text = "Pending"
+
+    }
+    
+    // MARK: -  FetchedResultsController Delegate
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        switch (type) {
+        case .Insert:
+            print("insert")
+            if let indexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            print("delete")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+        case .Update:
+            print("update")
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! HistoryAttendanceCell
+                configureCell(cell, atIndexPath: indexPath)
+            }
+            break;
+            
+        case .Move:
+            print("move")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+        default :
+            break;
         }
     }
+    
+
     
     // MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -102,9 +179,11 @@ class HistoryAttendanceTableViewController: UITableViewController , AttendanceCh
             if let controller = segue.destinationViewController as? AttendanceEditController
             {
                  if let indexPath = tableView.indexPathForSelectedRow {
-                    controller.attendance = attendanceList[indexPath.row]
+                    let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
+
+                    controller.attendance = attendance
                     controller.atIndexPath = indexPath
-                    controller.objectId = attendanceList[indexPath.row].objectID
+                    controller.objectId = attendance.objectID
                     controller.delegate = self
                 }
             }
@@ -140,10 +219,6 @@ class HistoryAttendanceTableViewController: UITableViewController , AttendanceCh
             
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
-            attendanceList[atIndexPath.row].status = NSInteger(status.rawValue)
-            let cell = tableView.cellForRowAtIndexPath(atIndexPath) as! HistoryAttendanceCell
-            configureCell(cell, atIndexPath: atIndexPath)
-
             
         } catch {
             let saveError = error as NSError

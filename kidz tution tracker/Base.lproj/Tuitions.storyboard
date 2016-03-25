@@ -431,11 +431,11 @@
             </objects>
             <point key="canvasLocation" x="4044" y="1117"/>
         </scene>
-        <!--Tutions-->
+        <!--Tuitions-->
         <scene sceneID="zLC-kr-qfA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rws-2s-1jK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tutions" image="tuitionsIcon" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
+                    <tabBarItem key="tabBarItem" title="Tuitions" image="tuitionsIcon" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="91G-5v-VUv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

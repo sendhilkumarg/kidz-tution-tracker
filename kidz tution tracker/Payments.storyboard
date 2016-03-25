@@ -330,8 +330,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ef8-Iw-yad" firstAttribute="top" secondItem="VQB-3G-U8B" secondAttribute="bottom" constant="10" id="cmx-Br-K2N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ef8-Iw-yad" secondAttribute="trailing" constant="10" id="lSO-J5-bFc"/>
-                            <constraint firstItem="ef8-Iw-yad" firstAttribute="top" secondItem="VQB-3G-U8B" secondAttribute="bottom" constant="10" id="mXh-j0-xgi"/>
                             <constraint firstItem="ef8-Iw-yad" firstAttribute="leading" secondItem="iRA-VI-7Iu" secondAttribute="leadingMargin" constant="10" id="teH-JG-v0Z"/>
                         </constraints>
                     </view>

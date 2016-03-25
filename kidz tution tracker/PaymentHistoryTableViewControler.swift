@@ -10,25 +10,40 @@ import Foundation
 import CoreData
 import UIKit
 
-class PaymentHistoryTableViewControler: UITableViewController , PaymentChangeControllerDelegate {
-    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext //TuitionTrackerDataController().managedObjectContext
-
-   // let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResultsControllerDelegate , PaymentChangeControllerDelegate  {
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
-    var paymentList : [Payment] = [];
     
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+    
+        let fetchRequest = NSFetchRequest(entityName: "Payment")
+        fetchRequest.predicate = NSPredicate(format: "relTuition == %@", self.tuition!)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+   
+        // Initialize Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }( )
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
-        
-        for item in tuition!.relPayment!.sortedArrayUsingDescriptors([sortDescriptor1]) {
-            //  print(item)
-            paymentList.append(item as! Payment)
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("\(fetchError), \(fetchError.userInfo)")
+            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
+
         if let tuition = tuition{
             var header = ""
             if let name = tuition.name {
@@ -53,19 +68,22 @@ class PaymentHistoryTableViewControler: UITableViewController , PaymentChangeCon
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-        
+        guard let sectionCount = fetchedResultsController.sections?.count else {
+            return 0
+        }
+        return sectionCount
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return paymentList.count
-        
+        guard let sectionData = fetchedResultsController.sections?[section] else {
+            return 0
+        }
+        return sectionData.numberOfObjects
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -85,17 +103,67 @@ class PaymentHistoryTableViewControler: UITableViewController , PaymentChangeCon
     }
     
     func configureCell(cell : PaymentHistoryCell , atIndexPath indexPath: NSIndexPath){
-        //let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
-        let payment = paymentList[indexPath.row]
-        
-        cell.dayLabel.text = Utils.ToLongDateString( payment.date!)
-        if let status = payment.status {
-            cell.statusLabel.text =  payment.CurrentStatus.displaytext;
-            
+        let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
+
+        if let date = payment.date {
+            cell.dayLabel.text = Utils.ToLongDateString( date)
+            if let _ = payment.status {
+                cell.statusLabel.text =  payment.CurrentStatus.displaytext;
+            }
+            else
+            {
+                cell.statusLabel.text = "Pending"
+            }
         }
-        else
-        {
-            cell.statusLabel.text = "Pending"
+        
+
+    }
+    
+    // MARK: -  FetchedResultsController Delegate
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        switch (type) {
+        case .Insert:
+            print("insert")
+            if let indexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            print("deleting row")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+        case .Update:
+            print("update")
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! PaymentHistoryCell
+                configureCell(cell, atIndexPath: indexPath)
+            }
+            break;
+            
+        case .Move:
+            print("move")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+            
         }
     }
 
@@ -106,9 +174,10 @@ class PaymentHistoryTableViewControler: UITableViewController , PaymentChangeCon
             if let controller = segue.destinationViewController as? PaymentEditController
             {
                 if let indexPath = tableView.indexPathForSelectedRow {
-                    controller.payment = paymentList[indexPath.row]
+                     let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
+                    controller.payment = payment
                     controller.atIndexPath = indexPath
-                    controller.objectId = paymentList[indexPath.row].objectID
+                     controller.objectId = payment.objectID
                     controller.delegate = self
                 }
             }
@@ -144,17 +213,13 @@ class PaymentHistoryTableViewControler: UITableViewController , PaymentChangeCon
             
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
-            paymentList[atIndexPath.row].status = NSInteger(status.rawValue)
-            let cell = tableView.cellForRowAtIndexPath(atIndexPath) as! PaymentHistoryCell
-            configureCell(cell, atIndexPath: atIndexPath)
-            
             
         } catch {
             let saveError = error as NSError
             print("\(saveError), \(saveError.userInfo)")
             
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: "Error", message: "Failed to save the changes", cancelButtonTitle: "Cancel")
         }
     }
     

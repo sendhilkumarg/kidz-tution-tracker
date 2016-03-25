@@ -12,8 +12,7 @@ import CoreData
 class PendingAttendanceTableViewController: UITableViewController  , AttendanceChangeControllerDelegate , NSFetchedResultsControllerDelegate
 {
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
-    var dayUpdteCounter  = 1
-        var messageLabel : UILabel?
+    var messageLabel : UILabel?
     lazy var fetchedResultsController: NSFetchedResultsController = {
         // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Attendance")

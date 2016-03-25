@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class PaymentTuitionListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
-    let managedObjectContext = TuitionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +76,48 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
         tableView.endUpdates()
     }
     
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        switch (type) {
+        case .Insert:
+            print("insert")
+            if let indexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+        case .Delete:
+            print("delete")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+        case .Update:
+            print("update")
+            if let indexPath = indexPath {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! PaymentTuitionTableViewCell
+                let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
+                Utils.configurePaymentTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
+                
+            }
+            break;
+            
+        case .Move:
+            print("move")
+            if let indexPath = indexPath {
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            }
+            
+            if let newIndexPath = newIndexPath {
+                tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
+            }
+            break;
+            
+            
+        }
+    }
+
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
