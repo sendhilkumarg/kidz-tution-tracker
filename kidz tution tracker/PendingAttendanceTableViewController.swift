@@ -255,10 +255,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
             break;
-
-         default :
-            break;
-        }
+       }
     }
 
 

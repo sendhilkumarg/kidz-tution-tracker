@@ -173,7 +173,6 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
                 if decimalAmount == NSDecimalNumber.notANumber() {
                     Utils.showAlertWithTitle(self, title: "Error", message: "Please enter a valid fee amount", cancelButtonTitle: "OK") ;
                     return
-                return
             }
         }
         

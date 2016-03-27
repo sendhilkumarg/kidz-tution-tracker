@@ -164,9 +164,6 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
             break;
-            
-        default :
-            break;
         }
     }
     

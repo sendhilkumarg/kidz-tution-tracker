@@ -52,22 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-       // UIAlertView(title: "Hi", message: "Alert", delegate: nil, cancelButtonTitle: "OK").show()
-        let  action = notification.userInfo!["action"] as! String;
-        print("userinfo  \(notification)")
-        print("userinfo action \(action)")
-    }
 
-    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
-        
-        let  action = notification.userInfo!["action"] as! String;
-        print("userinfo  \(notification)")
-        print("userinfo action \(action)")
-        print("identifie \(identifier)")
-       // UIAlertView(title: "Hi", message: "Alert", delegate: nil, cancelButtonTitle: "OK").show()
-        completionHandler()
-    }
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -85,12 +70,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        print("perfroming fetch");
-        let start = NSDate();        
+        //let start = NSDate();
         DataUtils.processMissingData(true, processPayments: true, showErrorMessage: false)
-        let end = NSDate();
-        let timeInterval: Double = end.timeIntervalSinceDate(start);
-        print("Time to load data: \(timeInterval) seconds");
+        //let end = NSDate();
+        //let timeInterval: Double = end.timeIntervalSinceDate(start);
+        //print("Time to load data: \(timeInterval) seconds");
         completionHandler(UIBackgroundFetchResult.NewData)
         
     }

@@ -11,18 +11,7 @@ import UIKit
 
 class Utils{
     
-    static func  daysBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
-    {
-        return NSCalendar.currentCalendar().components(.Day, fromDate: startDate, toDate: endDate, options: []).day
 
-    }
-    
-    static func  monthsBetweenDate(startDate: NSDate, endDate: NSDate) -> Int
-    {
-        return NSCalendar.currentCalendar().components(.Month, fromDate: startDate, toDate: endDate, options: []).month
-
-    }
-    
     // MARK: -
     // MARK: Helper Methods
     static func showAlertWithTitle(viewControler: UIViewController, title: String, message: String, cancelButtonTitle: String) {
@@ -49,13 +38,6 @@ class Utils{
         options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
         parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[subView]|",
         options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewBindingsDict))
-
-        /*
-        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-        parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
-            options: [], metrics: nil, views: viewBindingsDict))
-        */
         
     }
     

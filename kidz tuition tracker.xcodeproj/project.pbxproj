@@ -376,7 +376,7 @@
 				TargetAttributes = {
 					BC6905A11C45A94F00B00E35 = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 8R6H2S6VUC;
+						DevelopmentTeam = 665EQPZJWN;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -647,6 +647,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "kidz tution tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -661,6 +662,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "kidz tution tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

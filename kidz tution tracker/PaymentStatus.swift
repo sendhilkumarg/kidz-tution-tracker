@@ -19,11 +19,8 @@ public enum PaymentStatus: Int32 {
         switch rawValue{
         case 0 :
             return "Pending"
-            break
         case 1 :
             return "Paid"
-            break
-
         default :
             return "Pending"
             

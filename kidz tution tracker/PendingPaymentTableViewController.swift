@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class PendingPaymentTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, PaymentChangeControllerDelegate {
-    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext //TuitionTrackerDataController().managedObjectContext
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var messageLabel : UILabel?
 
     
@@ -24,7 +24,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         let sortDescriptor3 = NSSortDescriptor(key: "relTuition.personname", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor2,sortDescriptor3, sortDescriptor1]
         // Initialize Fetched Results Controller
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil) //"relTuition.objectID"
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil)
         // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
@@ -44,19 +44,11 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
-     //   DataUtils.scheduleLocal()
         
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        // Do some reloading of data and update the table view's data source
-        // Fetch more objects from a web service, for example...
-        
-        // Simply adding an object to the data source for this example
-        
         DataUtils.processMissingData(false, processPayments: true, showErrorMessage: true)
-        //CreateTestData()
-        //self.tableView.reloadData()
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
@@ -66,7 +58,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         }
         self.tableView.reloadData()
         refreshControl.endRefreshing()
-       // DataUtils.scheduleLocal()
     }
     
 
@@ -76,22 +67,25 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         guard let sectionCount = fetchedResultsController.sections?.count else {
-            
             return 0
         }
         if sectionCount == 0 {
              messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width , self.view.bounds.size.height))
-            
-            
             messageLabel!.text = "No pending payments is currently available. Please pull down to refresh.";
             messageLabel!.textColor = UIColor.blackColor() ;
             messageLabel!.numberOfLines = 0;
             messageLabel!.textAlignment = NSTextAlignment.Center;
             messageLabel!.font = UIFont(name: "Arial", size: 12)
-            //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+           // self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
             
             self.tableView.backgroundView = messageLabel;
         }
+ /*       else
+        {
+            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+
+        }
+        */
         return sectionCount
     }
     
@@ -254,9 +248,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             if let newIndexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
-            break;
-            
-        default :
             break;
         }
     }

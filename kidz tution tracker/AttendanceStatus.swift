@@ -20,13 +20,10 @@ import Foundation
         switch rawValue{
         case 0 :
             return "Pending"
-            break
         case 1 :
             return "Attended"
-            break
         case 2 :
             return "Absent"
-            break
         default :
             return "Pending"
             
