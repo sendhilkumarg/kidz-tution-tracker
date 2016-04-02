@@ -2,7 +2,7 @@
 //  Tuition+CoreDataProperties.swift
 //  kidz tuition tracker
 //
-//  Created by Sendhil kumar Gurunathan on 2/29/16.
+//  Created by Sendhil kumar Gurunathan on 4/2/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
