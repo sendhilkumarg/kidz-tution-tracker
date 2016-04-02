@@ -35,7 +35,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(PendingAttendanceTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
     
 
         do {
@@ -154,8 +154,8 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         let cellIdentifier = "pendingAttendanceTableViewCell"
-        //let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PendingAttendanceCell
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! PendingAttendanceCell
+        //let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PendingAttendanceCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
 
@@ -222,23 +222,19 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     }
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        print("pending attendance \(type.rawValue)")
         switch (type) {
         case .Insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
-            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
 
         case .Update:
-            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! PendingAttendanceCell
                 configureCell(cell, atIndexPath: indexPath)
@@ -246,7 +242,6 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             break;
 
         case .Move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -263,16 +258,13 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     //MARK : AttendanceChangeControllerDelegate
     func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : AttendanceStatus)
     {
-        // Fetch Record
-        // let fetchRequest = NSFetchRequest(entityName: "Attendance")
-       // var error: NSError?
+
         do {
             // Save Record
             let record = try managedObjectContext.existingObjectWithID(objectId )
             
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
-            // dismissViewControllerAnimated(true, completion: nil)
             
         } catch {
             let saveError = error as NSError

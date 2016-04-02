@@ -19,7 +19,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
     
         let fetchRequest = NSFetchRequest(entityName: "Payment")
         fetchRequest.predicate = NSPredicate(format: "relTuition == %@", self.tuition!)
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
    
         // Initialize Fetched Results Controller

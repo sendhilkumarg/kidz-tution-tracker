@@ -12,8 +12,7 @@ import UIKit
 class Utils{
     
 
-    // MARK: -
-    // MARK: Helper Methods
+    // MARK: Alert helper Methods
     static func showAlertWithTitle(viewControler: UIViewController, title: String, message: String, cancelButtonTitle: String) {
         // Initialize Alert Controller
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
@@ -24,8 +23,14 @@ class Utils{
         // Present Alert Controller
         viewControler.presentViewController(alertController, animated: true, completion: nil)
     }
+    /*
+    static func showAlert(viewControler: UIViewController, error  NSError)
+    {
+
+    }
+    */
     
-    //MARK : Container views sa=waping
+    //MARK : Container views swaping
     
     static func addSubview(subView:UIView, toView parentView:UIView) {
         parentView.addSubview(subView)

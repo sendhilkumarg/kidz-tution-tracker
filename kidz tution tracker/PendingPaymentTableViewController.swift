@@ -35,7 +35,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(PendingPaymentTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         do {
             try self.fetchedResultsController.performFetch()
@@ -97,8 +97,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             if let label = messageLabel{
                 label.hidden = true;
             }
-            
-            //messageLabel!.hidden = true;
         }
         
         return sectionData.numberOfObjects
@@ -161,12 +159,10 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     }
     
     func configureCell(cell : PendingPaymentCell , atIndexPath indexPath: NSIndexPath){
-        //print(fetchedResultsController.objectAtIndexPath(indexPath))
         let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
         cell.atIndexPath = indexPath
         cell.dayLabel.text = Utils.ToLongDateString( payment.date!)
         cell.objectId = payment.objectID
-       // cell.statusSwitch.on = payment.status.attended!.boolValue
         if let _ = payment.status  {
             switch payment.CurrentStatus
             {
@@ -177,9 +173,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             case PaymentStatus.Paid :
                 cell.statusSwitch.on = true ;
                 break
-                
             }
-            
         }
         
         cell.delegate = self
@@ -216,23 +210,19 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        print("pending payment \(type.rawValue)")
         switch (type) {
         case .Insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
-            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
             
         case .Update:
-            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! PendingPaymentCell
                 configureCell(cell, atIndexPath: indexPath)
@@ -240,7 +230,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             break;
             
         case .Move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -258,11 +247,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     //MARK : PaymentChangeControllerDelegate
     func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID ,status : PaymentStatus)
     {
-        // Fetch Record
-        //let record = fetchedResultsController.objectAtIndexPath(atIndexPath) as! Payment
-       // let record = try managedObjectContext.existingObjectWithID(objectId )
-
-        //record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
         
         do {
             // Save Record

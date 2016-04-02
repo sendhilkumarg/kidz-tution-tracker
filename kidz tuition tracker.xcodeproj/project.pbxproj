@@ -212,7 +212,7 @@
 			children = (
 				BCFF26D81C72857C00E2838E /* Payments */,
 				BC044AC21C66D5AA006A49CE /* Attendance */,
-				BC6F1E881C6551600001FE6C /* utils */,
+				BC6F1E881C6551600001FE6C /* Utils */,
 				BC6905EA1C4A2DBD00B00E35 /* Model */,
 				BC6905E71C4A2B0D00B00E35 /* Tuitions */,
 				BC6905A51C45A94F00B00E35 /* AppDelegate.swift */,
@@ -278,7 +278,7 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		BC6F1E881C6551600001FE6C /* utils */ = {
+		BC6F1E881C6551600001FE6C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				BC6F1E891C6551EF0001FE6C /* DayPickerControl.swift */,
@@ -287,7 +287,7 @@
 				BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */,
 				BCFF26FA1C7FA63B00E2838E /* DataUtils.swift */,
 			);
-			name = utils;
+			name = Utils;
 			sourceTree = "<group>";
 		};
 		BCFF26D81C72857C00E2838E /* Payments */ = {
