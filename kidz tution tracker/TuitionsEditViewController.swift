@@ -12,7 +12,7 @@ import CoreData
 class TuitionsEditViewController: UITableViewController , UITextFieldDelegate , //UINavigationControllerDelegate ,
 UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
     
-    var managedObjectContext: NSManagedObjectContext!
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var tuition : Tuition?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!

@@ -11,7 +11,7 @@ import CoreData
 
 class TuitionsAddViewController: UITableViewController , UITextFieldDelegate , UINavigationControllerDelegate ,
 UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
-    var managedObjectContext: NSManagedObjectContext!
+    let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     
 
     

@@ -176,14 +176,8 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     
     // MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "segueAddTutions" {
-            if let navigationController = segue.destinationViewController as? UINavigationController {
-                if let viewController = navigationController.topViewController as? TuitionsAddViewController {
-                    viewController.managedObjectContext = managedObjectContext
-                }
-            }
-        }
-        else if segue.identifier == "segueEditTuitions" {
+
+         if segue.identifier == "segueEditTuitions" {
            if let navigationController = segue.destinationViewController as? UINavigationController {
                 if let viewController = navigationController.topViewController as? TuitionsEditViewController {
                      if let indexPath = tuitionsTableView.indexPathForSelectedRow {
@@ -191,7 +185,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
                     let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
                     
                     viewController.tuition = record
-                    viewController.managedObjectContext = managedObjectContext
+                   
                 }
                 }
             }
