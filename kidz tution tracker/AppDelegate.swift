@@ -62,6 +62,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if let notification = (aLaunchOptions as NSDictionary).objectForKey("UIApplicationLaunchOptionsLocalNotificationKey") as? UILocalNotification {
                 // Handle the notification action on opening. Like updating a table or showing an alert.
                 UIAlertView(title: notification.alertTitle, message: notification.alertBody, delegate: nil, cancelButtonTitle: "OK").show()
+            /*
+                
+                let alertController = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: .Alert)
+                
+                // Configure Alert Controller
+                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                
+                UIAlertController.
+                // Present Alert Controller
+                presentViewController(alertController, animated: true, completion: nil)
+*/
             }
       
             

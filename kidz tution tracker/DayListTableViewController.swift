@@ -30,8 +30,9 @@ class DayListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("dayCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = days[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("dayCell", forIndexPath: indexPath) as! DayTableViewCell
+        cell.dayLabel!.text = days[indexPath.row]
+
         if selectedDays.contains(indexPath.row)
         {
             cell.accessoryType = .Checkmark

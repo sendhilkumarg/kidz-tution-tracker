@@ -20,6 +20,7 @@ class Utils{
         // Configure Alert Controller
         alertController.addAction(UIAlertAction(title: cancelButtonTitle, style: .Default, handler: nil))
         
+        
         // Present Alert Controller
         viewControler.presentViewController(alertController, animated: true, completion: nil)
     }

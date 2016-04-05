@@ -45,7 +45,17 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         tuitionNameText.delegate = self
         personNameText.delegate = self
         payPerClassText.delegate = self
-        payPerClassText.keyboardType = .NumberPad
+        payPerClassText.keyboardType = .DecimalPad
+        
+        let currencyLabel = UILabel(frame: CGRectZero)
+        currencyLabel.text = NSNumberFormatter().currencySymbol
+        currencyLabel.font = payPerClassText.font
+        currencyLabel.textAlignment = .Right
+        currencyLabel.sizeToFit()
+        currencyLabel.frame.size.width += 10
+        payPerClassText.leftView = currencyLabel
+        payPerClassText.leftViewMode = .Always
+
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
@@ -100,9 +110,9 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         
     }
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let myAttribute = [ NSFontAttributeName: UIFont(name: "Chalkduster", size: 18.0)! ]
+        let attribute = [ NSFontAttributeName: UIFont(name: "Trebuchet MS", size: 18.0)! ]
         
-        let result = NSAttributedString(string: String( dayPickerData[component][row]) , attributes: myAttribute);
+        let result = NSAttributedString(string: String( dayPickerData[component][row]) , attributes: attribute);
         return result
     }
     
