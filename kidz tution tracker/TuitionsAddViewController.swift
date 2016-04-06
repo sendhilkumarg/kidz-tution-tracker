@@ -52,7 +52,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         currencyLabel.font = payPerClassText.font
         currencyLabel.textAlignment = .Right
         currencyLabel.sizeToFit()
-        currencyLabel.frame.size.width += 10
+        currencyLabel.frame.size.width += 5
         payPerClassText.leftView = currencyLabel
         payPerClassText.leftViewMode = .Always
 
@@ -70,7 +70,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if(textField == tuitionNameText)
+     /*   if(textField == tuitionNameText)
         {
             tuitionNameText.resignFirstResponder()
         }
@@ -82,8 +82,8 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         {
             payPerClassText.resignFirstResponder()
         }
-        
-        
+        */
+        textField.resignFirstResponder();
         return true
     }
     

@@ -17,6 +17,7 @@ class PaymentEditController: UIViewController {
     var atIndexPath : NSIndexPath?
     var objectId : NSManagedObjectID?
 
+    @IBOutlet weak var tuitionLabel: UILabel!
     @IBOutlet weak var paymentStatusSwitch: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +26,26 @@ class PaymentEditController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let paymentToEdit = payment{
+            if let tuition = paymentToEdit.relTuition{
+                var header = ""
+                if let name = tuition.name {
+                    if let personName = tuition.personname {
+                        header = "\(personName)'s \(name)"
+                    }
+                    else{
+                        header = name
+                        
+                    }
+                    
+                }
+                
+                if let  time = tuition.time  {
+                    header = header + " " + Utils.ToTimeFromString(time)
+                }
+                self.navigationItem.title = "Edit Payment"
+                tuitionLabel.text = header
+            }
+            
             dayLabel.text = Utils.ToLongDateString( paymentToEdit.date!)
             
             if let _ = paymentToEdit.status  {

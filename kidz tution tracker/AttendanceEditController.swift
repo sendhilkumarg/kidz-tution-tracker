@@ -17,11 +17,34 @@ class AttendanceEditController: UIViewController
     var atIndexPath : NSIndexPath?
     var objectId : NSManagedObjectID?
     
+    @IBOutlet weak var tuitionLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var attendanceSegemnt: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
         if let attendanceToEdit = attendance {
+            
+            if let tuition = attendanceToEdit.relTuition{
+                var header = ""
+                if let name = tuition.name {
+                    if let personName = tuition.personname {
+                        header = "\(personName)'s \(name)"
+                    }
+                    else{
+                        header = name
+                        
+                    }
+                    
+                }
+                
+                if let  time = tuition.time  {
+                    header = header + " " + Utils.ToTimeFromString(time)
+                }
+                self.navigationItem.title = "Edit Attendance"
+                tuitionLabel.text = header
+            }
+            
+
             dayLabel.text = Utils.ToLongDateString( attendanceToEdit.date!)
             
             attendanceSegemnt.selected = false ;

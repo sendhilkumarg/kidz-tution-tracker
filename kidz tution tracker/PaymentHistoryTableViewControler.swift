@@ -179,6 +179,11 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
                     controller.atIndexPath = indexPath
                      controller.objectId = payment.objectID
                     controller.delegate = self
+                    
+                    let backItem = UIBarButtonItem()
+                    backItem.title = "Back"
+                    navigationItem.backBarButtonItem = backItem
+
                 }
             }
         }

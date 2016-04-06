@@ -182,6 +182,10 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
                     controller.atIndexPath = indexPath
                     controller.objectId = attendance.objectID
                     controller.delegate = self
+                    
+                    let backItem = UIBarButtonItem()
+                    backItem.title = "Back"
+                    navigationItem.backBarButtonItem = backItem
                 }
             }
         }

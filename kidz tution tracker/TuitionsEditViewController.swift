@@ -50,7 +50,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
         currencyLabel.font = payPerClassText.font
         currencyLabel.textAlignment = .Right
         currencyLabel.sizeToFit()
-        currencyLabel.frame.size.width += 10
+        currencyLabel.frame.size.width += 5
         payPerClassText.leftView = currencyLabel
         payPerClassText.leftViewMode = .Always
         
@@ -86,7 +86,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if(textField == tuitionNameText)
+     /*   if(textField == tuitionNameText)
         {
             tuitionNameText.resignFirstResponder()
         }
@@ -98,8 +98,8 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
         {
             payPerClassText.resignFirstResponder()
         }
-        
-        
+        */
+        textField.resignFirstResponder()
         return true
     }
     
@@ -125,6 +125,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
         return 0
         
     }
+    
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attribute = [ NSFontAttributeName: UIFont(name: "Trebuchet MS", size: 17.0)! ]
         

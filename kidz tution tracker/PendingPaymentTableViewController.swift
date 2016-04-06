@@ -35,6 +35,8 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
         self.refreshControl?.addTarget(self, action: #selector(PendingPaymentTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         do {
@@ -101,20 +103,15 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         
         return sectionData.numberOfObjects
     }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let sectionData = fetchedResultsController.sections?[section] else {
-            return "na"
-        }
-        
-        return sectionData.name
-    }
-    
+
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        print("invoked header")
         
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? PendingPaymentHeaderCell
-        if let cell = headerCell {
+              if let cell = headerCell {
+               // headerCell?.backgroundColor = UIColor.blackColor()
+
             cell.tuitionLabel.text = ""
             cell.timeLabel.text = ""
             if  let sectionData = fetchedResultsController.sections?[section] {
@@ -141,12 +138,17 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             }
             
         }
+       
         return headerCell
         
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.00
+    }
+    
+   override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        true
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -190,23 +192,33 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
          tableView.endUpdates()
     }
     
+    
     func controller(
         controller: NSFetchedResultsController,
         didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
         atIndex sectionIndex: Int,
         forChangeType type: NSFetchedResultsChangeType) {
-            
-            switch type {
+        
+        //print("change type is \(type.rawValue)")
+        let sectionIndexSet = NSIndexSet(index: sectionIndex)
+                    switch type {
             case .Insert:
-                let sectionIndexSet = NSIndexSet(index: sectionIndex)
+                //print("insert")
                 self.tableView.insertSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+                break
             case .Delete:
-                let sectionIndexSet = NSIndexSet(index: sectionIndex)
-                self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
-            default:
-                ""
+               // print("deleting the section")
+                 self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
+                break
+            case .Move :
+                break
+            case .Update :
+                break
+            
             }
+        
     }
+    
     
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
@@ -217,10 +229,13 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             }
             break;
         case .Delete:
+            
             if let indexPath = indexPath {
+                print("deleting data row \(indexPath)")
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            }
-            break;
+                self.tableView.reloadData()
+                }
+                break;
             
         case .Update:
             if let indexPath = indexPath {
@@ -254,9 +269,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
-            // Save Record
-            //try record.managedObjectContext?.save()
-            
+            //self.tableView.reloadData()
             dismissViewControllerAnimated(true, completion: nil)
             
         } catch {
