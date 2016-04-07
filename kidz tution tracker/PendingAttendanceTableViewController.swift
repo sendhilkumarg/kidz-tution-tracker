@@ -231,6 +231,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
         case .Delete:
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                self.tableView.reloadData()
             }
             break;
 
