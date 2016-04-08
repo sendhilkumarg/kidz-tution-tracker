@@ -29,7 +29,6 @@ class TuitionsTableViewController: UITableViewController {
         var tutionFetch =  NSFetchRequest(entityName: "Tuition")
         do{
             tuitions = try managedObjectContext.executeFetchRequest(tutionFetch) as! [Tuition]
-           // print(tuitions.first!.name!)
         }catch {
             fatalError("Failure to read from context: \(error)")
         }
@@ -132,7 +131,6 @@ class TuitionsTableViewController: UITableViewController {
             }
         }
         else if segue.identifier == "AddItem" {
-            print("Adding new Tution.")
         }
     }
 

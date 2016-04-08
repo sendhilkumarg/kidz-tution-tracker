@@ -38,6 +38,7 @@
 		BC9ABB7B1CAF44AC00411A6C /* Attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9ABB791CAF44AC00411A6C /* Attendance.swift */; };
 		BC9ABB7C1CAF44AC00411A6C /* Tuition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9ABB7A1CAF44AC00411A6C /* Tuition.swift */; };
 		BC9CFF4F1CB3244E00FBF6B1 /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9CFF4E1CB3244E00FBF6B1 /* DayTableViewCell.swift */; };
+		BCDC2C991CB71724009E7FF9 /* Resource.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCDC2C981CB71724009E7FF9 /* Resource.strings */; };
 		BCFF26C31C6C953000E2838E /* PendingAttenanceHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */; };
 		BCFF26C51C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C41C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift */; };
 		BCFF26C71C6EE8A800E2838E /* AttendanceTuitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFF26C61C6EE8A800E2838E /* AttendanceTuitionTableViewCell.swift */; };
@@ -119,6 +120,7 @@
 		BC9ABB791CAF44AC00411A6C /* Attendance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attendance.swift; sourceTree = "<group>"; };
 		BC9ABB7A1CAF44AC00411A6C /* Tuition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuition.swift; sourceTree = "<group>"; };
 		BC9CFF4E1CB3244E00FBF6B1 /* DayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		BCDC2C981CB71724009E7FF9 /* Resource.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Resource.strings; sourceTree = "<group>"; };
 		BCFF26C21C6C953000E2838E /* PendingAttenanceHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingAttenanceHeaderCell.swift; sourceTree = "<group>"; };
 		BCFF26C41C6EE1AB00E2838E /* AttendanceTuitionListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceTuitionListTableViewController.swift; sourceTree = "<group>"; };
 		BCFF26C61C6EE8A800E2838E /* AttendanceTuitionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceTuitionTableViewCell.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				BC6905DF1C49D72100B00E35 /* TutiionTrackerDataController.swift */,
 				BCFF26F81C7E55D700E2838E /* tuitiontrackerextensions.swift */,
 				BCFF26FA1C7FA63B00E2838E /* DataUtils.swift */,
+				BCDC2C981CB71724009E7FF9 /* Resource.strings */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				BC6905AF1C45A94F00B00E35 /* Assets.xcassets in Resources */,
 				BC6905D91C46FC2E00B00E35 /* Attendance.storyboard in Resources */,
 				BC6905DB1C46FCB800B00E35 /* Payments.storyboard in Resources */,
+				BCDC2C991CB71724009E7FF9 /* Resource.strings in Resources */,
 				BC6905AD1C45A94F00B00E35 /* Main.storyboard in Resources */,
 				BC6905D71C46FBF700B00E35 /* Tuitions.storyboard in Resources */,
 			);

@@ -42,7 +42,6 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
              Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
 
@@ -54,7 +53,6 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
         self.tableView.reloadData()
@@ -169,7 +167,6 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
         cell.attendanceSegemnt.selected = false ;
         cell.attendanceSegemnt.selectedSegmentIndex = -1
         if let status = attendance.status  {
-            print("segment status " + status.description)
             switch attendance.CurrentStatus
             {
             case AttendanceStatus.Pending :
@@ -269,8 +266,6 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
             // Show Alert View
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
         }

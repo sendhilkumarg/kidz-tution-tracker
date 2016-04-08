@@ -40,7 +40,6 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
 
@@ -132,20 +131,17 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         
         switch (type) {
         case .Insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
-            print("deleting row")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
             
         case .Update:
-            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! PaymentHistoryCell
                 configureCell(cell, atIndexPath: indexPath)
@@ -153,7 +149,6 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
             break;
             
         case .Move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -221,8 +216,6 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
             // Show Alert View
             Utils.showAlertWithTitle(self, title: "Error", message: "Failed to save the changes", cancelButtonTitle: "Cancel")
         }

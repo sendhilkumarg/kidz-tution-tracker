@@ -1,0 +1,8 @@
+/* 
+  Resource.strings
+  kidz tuition tracker
+
+  Created by Sendhil kumar Gurunathan on 4/8/16.
+  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
+*/
+"INVALID_FEE_AMOUNT" = "Please enter a valid amount to pay per class";

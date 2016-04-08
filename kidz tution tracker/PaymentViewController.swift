@@ -29,13 +29,9 @@ class PaymentViewController: UIViewController {
         oldViewController.willMoveToParentViewController(nil)
         self.addChildViewController(newViewController)
         Utils.addSubview(newViewController.view, toView:self.containerView!)
-        // TODO: Set the starting state of your constraints here
         newViewController.view.layoutIfNeeded()
         
-        // TODO: Set the ending state of your constraints here
-        
         UIView.animateWithDuration(0.5, animations: {
-            // only need to call layoutIfNeeded here
             newViewController.view.layoutIfNeeded()
             },
             completion: { finished in

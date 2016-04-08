@@ -85,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DataUtils.processMissingData(true, processPayments: true, showErrorMessage: false)
         //let end = NSDate();
         //let timeInterval: Double = end.timeIntervalSinceDate(start);
-        //print("Time to load data: \(timeInterval) seconds");
         completionHandler(UIBackgroundFetchResult.NewData)
         
     }

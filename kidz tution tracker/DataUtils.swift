@@ -34,8 +34,6 @@ public class DataUtils
             settings.types != .None {
                 
                 let payReminderDate =  calendar.dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: []) // This is at UTC 13 houra:. so setting up the reminder for 7 AM in the morning
-                print(payment.date!)
-                print(payReminderDate!)
                 let notification = UILocalNotification()
                 
                 notification.fireDate = payReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
@@ -54,8 +52,6 @@ public class DataUtils
             settings.types != .None {
                 
                 let attendanceReminderDate =  calendar.dateByAddingUnit(.Minute, value: 5, toDate: attendance.date!, options: []) //TODO : this day can be of any hour. so update a logic that might suit . say 7 AM in the morning
-                print(attendance.date!)
-                print(attendanceReminderDate!)
                 let notification = UILocalNotification()
                 
                 notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
@@ -92,7 +88,6 @@ public class DataUtils
                         {
                             //create attendance from the last attendance date
                             let latestAttendenceCreated = sortedList[0] as! Attendance
-                            print( "latest attendance date \(latestAttendenceCreated.date!)")
                             
 
                             if let   nextDate  = calendar.dateByAddingUnit(
@@ -125,7 +120,6 @@ public class DataUtils
                     if sortedList.count > 0
                     {
                         let latestPaymentCreated = sortedList[0] as! Payment
-                        print( "latest payment date \(latestPaymentCreated.date!)")
                         let startDate = calendar.startOfDayForDate( latestPaymentCreated.date!)
                         if let   nextMonthDate  = calendar.dateByAddingUnit(
                         .Month,        value: 1, toDate: startDate,
@@ -137,8 +131,6 @@ public class DataUtils
                     }
                     else
                     {
-                        print("payon date \(Int(tuition.payon!))")
-                        print("tuition start day \(tuition.startdate!)")
                         let startDate = calendar.startOfDayForDate( tuition.startdate!)
                         processMissingPayments(startDate, tuition: tuition, managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
 
@@ -150,7 +142,6 @@ public class DataUtils
         catch {
             
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
         }
     }
     
@@ -163,8 +154,6 @@ public class DataUtils
             
             var dateComparisionResult = currentDateTime.compare(payOnDateToCheck)
             
-            print("payOnDateToCheck day \(payOnDateToCheck)")
-            print("dateComparisionResult = \(dateComparisionResult.rawValue)")
 
             while (dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending)
             {
@@ -177,14 +166,10 @@ public class DataUtils
                     
                     payOnDateToCheck = calendar.startOfDayForDate( nextMonthDate)
                     dateComparisionResult = currentDateTime.compare(payOnDateToCheck)
-                    print("payOnDateToCheck day updated \(payOnDateToCheck)")
-                    
-                    print("dateComparisionResult = \(dateComparisionResult.rawValue)")
                     
                 }
                 else
                 {
-                    print("invalid")
                     dateComparisionResult =  NSComparisonResult.OrderedAscending
                     
                 }
@@ -217,7 +202,6 @@ public class DataUtils
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
             
         }
     }
@@ -233,7 +217,6 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
         if let dateTimeToCheck =  calendar.dateBySettingHour(Int(timeArray[0])!, minute: Int(timeArray[1])!, second: 0, ofDate: dayToProcess, options: [])
         {
             dayToProcess = dateTimeToCheck
-            print("retrieved time with date updated \(dateTimeToCheck)")
 
             var dateComparisionResult = NSDate().compare(dayToProcess)
             while( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
@@ -249,8 +232,6 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
                     {
                         dayToProcess = updatedDayToProcess
                         dateComparisionResult = NSDate().compare(updatedDayToProcess)
-                         print("retrieved time with date updated \(updatedDayToProcess)")
-
                     }
                     else
                     {
@@ -284,7 +265,6 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
             
         }
     }

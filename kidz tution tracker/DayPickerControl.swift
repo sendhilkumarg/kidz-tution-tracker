@@ -63,8 +63,6 @@ class DayPickerControl: UIView {
     override func intrinsicContentSize() -> CGSize {
         let buttonSize = Int(frame.size.height)
         let width = (buttonSize + 5)*7
-        print(buttonSize)
-        print(width)
         return CGSize(width: width, height: buttonSize)
     }
 

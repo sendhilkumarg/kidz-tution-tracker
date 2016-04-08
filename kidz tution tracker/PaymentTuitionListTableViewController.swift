@@ -19,7 +19,6 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
     }
@@ -81,20 +80,17 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
         
         switch (type) {
         case .Insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
-            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
             
         case .Update:
-            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! PaymentTuitionTableViewCell
                 let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
@@ -104,7 +100,6 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
             break;
             
         case .Move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }

@@ -43,7 +43,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
         
@@ -55,7 +54,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
         self.tableView.reloadData()
@@ -106,7 +104,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
 
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        print("invoked header")
         
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? PendingPaymentHeaderCell
               if let cell = headerCell {
@@ -199,15 +196,12 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         atIndex sectionIndex: Int,
         forChangeType type: NSFetchedResultsChangeType) {
         
-        //print("change type is \(type.rawValue)")
         let sectionIndexSet = NSIndexSet(index: sectionIndex)
                     switch type {
             case .Insert:
-                //print("insert")
                 self.tableView.insertSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
                 break
             case .Delete:
-               // print("deleting the section")
                  self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
                 break
             case .Move :
@@ -274,8 +268,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
             // Show Alert View
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
         }

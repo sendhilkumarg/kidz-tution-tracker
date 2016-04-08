@@ -25,7 +25,6 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
         }
        
     }
@@ -225,8 +224,6 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         }
         catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
             // Show Alert View
             Utils.showAlertWithTitle(self, title: "Error", message: "Failed to delete the tuition details", cancelButtonTitle: "OK") ;
         }

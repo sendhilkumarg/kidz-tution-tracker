@@ -40,7 +40,6 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            print("\(fetchError), \(fetchError.userInfo)")
             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
         }
 
@@ -134,20 +133,17 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
         
         switch (type) {
         case .Insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
-            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
             
         case .Update:
-            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! HistoryAttendanceCell
                 configureCell(cell, atIndexPath: indexPath)
@@ -155,7 +151,6 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             break;
             
         case .Move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -223,7 +218,6 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
             
             // Show Alert View
             Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
