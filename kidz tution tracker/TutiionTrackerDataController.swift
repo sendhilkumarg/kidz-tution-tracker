@@ -5,6 +5,9 @@
 //  Created by Sendhil kumar Gurunathan on 1/16/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  Datacontroler to manage the persistent sotre data
+//
+
 import UIKit
 import CoreData
 

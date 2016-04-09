@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/7/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  ViewController to display the pending attendance and handle the status change events
+//
 
 import UIKit
 import CoreData
@@ -14,18 +16,13 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var messageLabel : UILabel?
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Attendance")
          fetchRequest.predicate = NSPredicate(format: "status == %@", AttendanceStatus.Pending.description)
-        // Add Sort Descriptors
         let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
         let sortDescriptor2 = NSSortDescriptor(key: "relTuition.name", ascending: true)
         let sortDescriptor3 = NSSortDescriptor(key: "relTuition.personname", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor2,sortDescriptor3, sortDescriptor1]
-        
-        // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil)
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -36,13 +33,11 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl?.addTarget(self, action: #selector(PendingAttendanceTableViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-    
-
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-             Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+             Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
 
     }
@@ -53,20 +48,11 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
         self.tableView.reloadData()
         refreshControl.endRefreshing()
     }
-    
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
     
     // MARK: - Table view data source
 
@@ -75,16 +61,12 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             return 0
         }
         if sectionCount == 0 {
-             messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
-            
-            
+            messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height))
             messageLabel!.text = "No pending attendance is currently available. Please pull down to refresh.";
             messageLabel!.textColor = UIColor.blackColor() ;
             messageLabel!.numberOfLines = 0;
             messageLabel!.textAlignment = NSTextAlignment.Center;
-            messageLabel!.font = UIFont(name: "Arial", size: 12)
-            //self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-            
+            messageLabel!.font = UIFont(name: "Trebuchet MS", size: 16)
             self.tableView.backgroundView = messageLabel;
         }
         return sectionCount
@@ -105,7 +87,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
 
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let sectionData = fetchedResultsController.sections?[section] else {
-            return "na"
+            return ""
         }
        
         return sectionData.name
@@ -153,39 +135,38 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
 
         let cellIdentifier = "pendingAttendanceTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as! PendingAttendanceCell
-        //let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PendingAttendanceCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
 
     }
 
     func configureCell(cell : PendingAttendanceCell , atIndexPath indexPath: NSIndexPath){
-        let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
-        cell.objectId = attendance.objectID
-        cell.atIndexPath = indexPath
-        cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
-        cell.attendanceSegemnt.selected = false ;
-        cell.attendanceSegemnt.selectedSegmentIndex = -1
-        if let status = attendance.status  {
-            switch attendance.CurrentStatus
-            {
-            case AttendanceStatus.Pending :
-                cell.attendanceSegemnt.selected = false ;
-                break
-                
-            case AttendanceStatus.Attended :
-                 cell.attendanceSegemnt.selectedSegmentIndex = 0
-                break
-            case AttendanceStatus.Absent :
-                cell.attendanceSegemnt.selectedSegmentIndex = 1
-                break
+        
+        if let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as? Attendance {
+            cell.delegate = self
+            cell.objectId = attendance.objectID
+            cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
+            cell.attendanceSegemnt.selected = false ;
+            cell.attendanceSegemnt.selectedSegmentIndex = -1
+             if let _ = attendance.status  {
+                switch attendance.CurrentStatus
+                {
+                case AttendanceStatus.Pending :
+                    cell.attendanceSegemnt.selected = false ;
+                    break
+                    
+                case AttendanceStatus.Attended :
+                    cell.attendanceSegemnt.selectedSegmentIndex = 0
+                    break
+                case AttendanceStatus.Absent :
+                    cell.attendanceSegemnt.selectedSegmentIndex = 1
+                    break
+                    
+                }
                 
             }
-           
+   
         }
-       
-        cell.delegate = self
-       
     }
     
     
@@ -214,7 +195,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
                 let sectionIndexSet = NSIndexSet(index: sectionIndex)
                 self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
             default:
-                ""
+                break
             }
     }
     
@@ -254,20 +235,17 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
 
 
     //MARK : AttendanceChangeControllerDelegate
-    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : AttendanceStatus)
+    func StatusChanged( objectId : NSManagedObjectID, status : AttendanceStatus)
     {
 
         do {
-            // Save Record
             let record = try managedObjectContext.existingObjectWithID(objectId )
-            
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
             
         } catch {
             let saveError = error as NSError
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String(saveError.userInfo) , cancelButtonTitle: Utils.titleCancel)
         }
         
         

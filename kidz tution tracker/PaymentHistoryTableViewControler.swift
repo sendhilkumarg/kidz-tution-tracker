@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/20/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  ViewController to display the list of the payments for a specific tuition
+//
 
 import Foundation
 import CoreData
@@ -12,7 +14,6 @@ import UIKit
 
 class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResultsControllerDelegate , PaymentChangeControllerDelegate  {
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
-    var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
@@ -40,7 +41,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
 
         if let tuition = tuition{
@@ -65,10 +66,6 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -84,11 +81,12 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         }
         return sectionData.numberOfObjects
     }
+    
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? PaymentHistoryHeaderCell
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as UITableViewCell?
         return headerCell
     }
+    
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60.00
     }
@@ -171,7 +169,6 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
                 if let indexPath = tableView.indexPathForSelectedRow {
                      let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
                     controller.payment = payment
-                    controller.atIndexPath = indexPath
                      controller.objectId = payment.objectID
                     controller.delegate = self
                     
@@ -197,14 +194,13 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
                     }
                 }
             }
-            return false
         }
         return false
     }
     
         //MARK : PaymentChangeControllerDelegate
 
-    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : PaymentStatus)
+    func StatusChanged(objectId : NSManagedObjectID, status : PaymentStatus)
     {
         
         do {
@@ -217,7 +213,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         } catch {
             let saveError = error as NSError
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "Failed to save the changes", cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String(saveError.userInfo), cancelButtonTitle: Utils.titleCancel)
         }
     }
     

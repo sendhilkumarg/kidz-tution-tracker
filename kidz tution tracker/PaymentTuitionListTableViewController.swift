@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/20/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  ViewController to display the list of the tuitions
+//
 
 import UIKit
 import CoreData
@@ -19,29 +21,22 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
     }
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
-        
-        // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }()
     
-    // MARK: - Table view data source
     
+    // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         guard let sectionCount = fetchedResultsController.sections?.count else {
@@ -61,8 +56,35 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
         let cellIdentifier = "HistoryTuitionViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! PaymentTuitionTableViewCell
         let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-        Utils.configurePaymentTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
+        configurePaymentTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
         return cell
+    }
+    func configurePaymentTuitionTableViewCell(cell: PaymentTuitionTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
+            }
+            else{
+                cell.tuitionNameLabel.text = name
+                
+            }
+            
+        }
+        
+        if let  time = tuition.time  {
+            cell.timeLabel.text = Utils.ToTimeFromString(time)
+        }
+        else
+        {
+            cell.timeLabel.text = "";
+        }
+        
+        
+        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
+            
+            cell.daysLabel.text  = Utils.GetRepeatLabelInShortFormat(tuition.frequency!)
+        }
+        
     }
     
     // MARK: -  FetchedResultsController Delegate
@@ -94,7 +116,7 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! PaymentTuitionTableViewCell
                 let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-                Utils.configurePaymentTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
+                configurePaymentTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
                 
             }
             break;
@@ -108,22 +130,15 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
             break;
-            
-            
         }
     }
 
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueShowPayment" {
             if let viewController = segue.destinationViewController as? PaymentHistoryTableViewControler {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-                    
-                    
-                    viewController.tuitionObjectId = record.objectID
                     viewController.tuition = record
                 }
             }

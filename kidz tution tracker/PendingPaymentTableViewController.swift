@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/17/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  ViewController to display the pending payments and handle the status change events
+//
 
 import UIKit
 import CoreData
@@ -15,17 +17,13 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
 
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Payment")
         fetchRequest.predicate = NSPredicate(format: "status == %@", PaymentStatus.Pending.description)
-        // Add Sort Descriptors
         let sortDescriptor1 = NSSortDescriptor(key: "date", ascending: false)
         let sortDescriptor2 = NSSortDescriptor(key: "relTuition.name", ascending: true)
         let sortDescriptor3 = NSSortDescriptor(key: "relTuition.personname", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor2,sortDescriptor3, sortDescriptor1]
-        // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "relTuition.objectID", cacheName: nil)
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -43,7 +41,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel )
         }
         
     }
@@ -54,7 +52,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
         self.tableView.reloadData()
         refreshControl.endRefreshing()
@@ -75,17 +73,10 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             messageLabel!.textColor = UIColor.blackColor() ;
             messageLabel!.numberOfLines = 0;
             messageLabel!.textAlignment = NSTextAlignment.Center;
-            messageLabel!.font = UIFont(name: "Arial", size: 12)
-           // self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-            
+            messageLabel!.font = UIFont(name: "Trebuchet MS", size: 16)
             self.tableView.backgroundView = messageLabel;
         }
- /*       else
-        {
-            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
 
-        }
-        */
         return sectionCount
     }
     
@@ -106,9 +97,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? PendingPaymentHeaderCell
-              if let cell = headerCell {
-               // headerCell?.backgroundColor = UIColor.blackColor()
-
+            if let cell = headerCell {
             cell.tuitionLabel.text = ""
             cell.timeLabel.text = ""
             if  let sectionData = fetchedResultsController.sections?[section] {
@@ -158,8 +147,8 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     }
     
     func configureCell(cell : PendingPaymentCell , atIndexPath indexPath: NSIndexPath){
-        let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
-        cell.atIndexPath = indexPath
+     if    let payment = fetchedResultsController.objectAtIndexPath(indexPath) as? Payment
+     {
         cell.dayLabel.text = Utils.ToLongDateString( payment.date!)
         cell.objectId = payment.objectID
         if let _ = payment.status  {
@@ -168,7 +157,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             case PaymentStatus.Pending :
                 cell.statusSwitch.on = false ;
                 break
-                
             case PaymentStatus.Paid :
                 cell.statusSwitch.on = true ;
                 break
@@ -176,6 +164,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         }
         
         cell.delegate = self
+        }
     }
     
     
@@ -204,11 +193,8 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             case .Delete:
                  self.tableView.deleteSections(sectionIndexSet, withRowAnimation: UITableViewRowAnimation.Fade)
                 break
-            case .Move :
+             default :
                 break
-            case .Update :
-                break
-            
             }
         
     }
@@ -225,7 +211,6 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
         case .Delete:
             
             if let indexPath = indexPath {
-                print("deleting data row \(indexPath)")
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                 self.tableView.reloadData()
                 }
@@ -254,22 +239,18 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
 
 
     //MARK : PaymentChangeControllerDelegate
-    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID ,status : PaymentStatus)
+    func StatusChanged( objectId : NSManagedObjectID ,status : PaymentStatus)
     {
         
         do {
-            // Save Record
             let record = try managedObjectContext.existingObjectWithID(objectId )
-            
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
-            //self.tableView.reloadData()
             dismissViewControllerAnimated(true, completion: nil)
             
         } catch {
             let saveError = error as NSError
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String(saveError.userInfo) , cancelButtonTitle: Utils.titleCancel)
         }
         
     }

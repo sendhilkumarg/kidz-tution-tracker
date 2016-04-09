@@ -143,11 +143,11 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         let amount =  payPerClassText.text
         
         if let isEmpty = name?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: "Error", message: "Please enter the tution name", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the tution name", cancelButtonTitle: "OK") ;
             return
         }
         if let isEmpty = personName?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: "Error", message: "Please enter the person name attending the tuition ", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the person name attending the tuition ", cancelButtonTitle: "OK") ;
 
             return
         }
@@ -155,12 +155,12 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         
         if selectedDays.isEmpty
         {
-            Utils.showAlertWithTitle(self, title: "Error", message: "Please select the tuition days", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please select the tuition days", cancelButtonTitle: "OK") ;
             return
         }
         
         if let isEmpty = amount?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: "Error", message: "Please enter the fee amount", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the fee amount", cancelButtonTitle: "OK") ;
             return
         }
         else
@@ -168,7 +168,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
             let decimalAmount = NSDecimalNumber(string: amount)
             
             if decimalAmount == NSDecimalNumber.notANumber() {
-                Utils.showAlertWithTitle(self, title: "Error", message: "Please enter a valid fee amount", cancelButtonTitle: "OK") ;
+                Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter a valid fee amount", cancelButtonTitle: "OK") ;
                 return
             }
         }
@@ -215,7 +215,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
             print("\(saveError), \(saveError.userInfo)")
             
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "Failed to save the tuition details", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Failed to save the tuition details", cancelButtonTitle: "OK") ;
 
         }
         

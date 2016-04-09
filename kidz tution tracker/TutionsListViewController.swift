@@ -225,7 +225,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         catch {
             let saveError = error as NSError
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "Failed to delete the tuition details", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Failed to delete the tuition details", cancelButtonTitle: "OK") ;
         }
         deleteTutionsIndexPath = nil
 

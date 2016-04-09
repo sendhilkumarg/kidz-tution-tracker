@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 3/19/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  View controller to edit the status of a payment
+//
 
 import UIKit
 import CoreData
@@ -13,9 +15,9 @@ class PaymentEditController: UIViewController {
 
     var delegate : PaymentChangeControllerDelegate?
     var payment : Payment?
-    @IBOutlet weak var dayLabel: UILabel!
-    var atIndexPath : NSIndexPath?
     var objectId : NSManagedObjectID?
+
+    @IBOutlet weak var dayLabel: UILabel!
 
     @IBOutlet weak var tuitionLabel: UILabel!
     @IBOutlet weak var paymentStatusSwitch: UISwitch!
@@ -66,10 +68,11 @@ class PaymentEditController: UIViewController {
 
         }
     }
+    
     @IBAction func statusChanged(sender: UISwitch) {
         if let delegate = delegate {
             
-            delegate.StatusChanged( atIndexPath! , objectId: objectId!, status : sender.on  ?PaymentStatus.Paid  : PaymentStatus.Pending)
+            delegate.StatusChanged(  objectId!, status : sender.on  ?PaymentStatus.Paid  : PaymentStatus.Pending)
         }
         
         

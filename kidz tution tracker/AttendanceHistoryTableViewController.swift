@@ -5,15 +5,14 @@
 //  Created by Sendhil kumar Gurunathan on 2/13/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
-
+//  ViewController to display the list of the attendance for a specific tuition
+//
 import UIKit
 import CoreData
 
-class HistoryAttendanceTableViewController: UITableViewController , NSFetchedResultsControllerDelegate , AttendanceChangeControllerDelegate {
+class AttendanceHistoryTableViewController: UITableViewController , NSFetchedResultsControllerDelegate , AttendanceChangeControllerDelegate {
 
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
-
-    var tuitionObjectId : NSManagedObjectID?
     var tuition : Tuition?
     lazy var fetchedResultsController: NSFetchedResultsController = {
         
@@ -21,18 +20,12 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
         fetchRequest.predicate = NSPredicate(format: "relTuition == %@", self.tuition!)
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
     }( )
 
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +33,7 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
 
         if let tuition = tuition{
@@ -55,24 +48,16 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             }
             
         }
-        
         if let  time = tuition.time  {
             header = header + " " + Utils.ToTimeFromString(time)
         }
-     self.navigationItem.title = header
+        self.navigationItem.title = header
         }
 
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
-
-    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         guard let sectionCount = fetchedResultsController.sections?.count else {
             return 0
@@ -88,7 +73,7 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as? HistoryAttenanceHeaderCell
+        let  headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as UITableViewCell?
         return headerCell
     }
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -97,13 +82,13 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cellIdentifier = "historyAttendanceTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! HistoryAttendanceCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AttendanceHistoryCell
         configureCell(cell, atIndexPath: indexPath)
         return cell
         
     }
     
-    func configureCell(cell : HistoryAttendanceCell , atIndexPath indexPath: NSIndexPath){
+    func configureCell(cell : AttendanceHistoryCell , atIndexPath indexPath: NSIndexPath){
         let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
 
         if let date = attendance.date{
@@ -145,7 +130,7 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             
         case .Update:
             if let indexPath = indexPath {
-                let cell = tableView.cellForRowAtIndexPath(indexPath) as! HistoryAttendanceCell
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! AttendanceHistoryCell
                 configureCell(cell, atIndexPath: indexPath)
             }
             break;
@@ -162,8 +147,6 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
         }
     }
     
-
-    
     // MARK: Prepare for Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
@@ -174,7 +157,6 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
                     let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
 
                     controller.attendance = attendance
-                    controller.atIndexPath = indexPath
                     controller.objectId = attendance.objectID
                     controller.delegate = self
                     
@@ -192,7 +174,7 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
         if identifier == "seagueEditTuitionItem"{
             if let cell = sender
             {
-                if let historyCell = cell as? HistoryAttendanceCell
+                if let historyCell = cell as? AttendanceHistoryCell
                 {
                     if historyCell.statusLabel.text != AttendanceStatus.Pending.displaytext{
                         return true
@@ -206,13 +188,11 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
     
     
     //MARK : AttendanceChangeControllerDelegate
-    func StatusChanged(atIndexPath : NSIndexPath ,  objectId : NSManagedObjectID, status : AttendanceStatus)
+    func StatusChanged(  objectId : NSManagedObjectID, status : AttendanceStatus)
     {
         
         do {
-            // Save Record
             let record = try managedObjectContext.existingObjectWithID(objectId )
-            
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
             try record.managedObjectContext?.save()
             
@@ -220,7 +200,7 @@ class HistoryAttendanceTableViewController: UITableViewController , NSFetchedRes
             let saveError = error as NSError
             
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: "Error", message: "error", cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String(saveError.userInfo), cancelButtonTitle: Utils.titleCancel)
         }
     }
 

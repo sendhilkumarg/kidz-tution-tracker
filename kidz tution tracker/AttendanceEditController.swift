@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 3/19/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  View controller to edit the status of a payment
+//
 
 import UIKit
 import CoreData
@@ -14,12 +16,12 @@ class AttendanceEditController: UIViewController
 
     var attendance : Attendance?
     var delegate : AttendanceChangeControllerDelegate?
-    var atIndexPath : NSIndexPath?
     var objectId : NSManagedObjectID?
     
     @IBOutlet weak var tuitionLabel: UILabel!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var attendanceSegemnt: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let attendanceToEdit = attendance {
@@ -43,8 +45,6 @@ class AttendanceEditController: UIViewController
                 self.navigationItem.title = "Edit Attendance"
                 tuitionLabel.text = header
             }
-            
-
             dayLabel.text = Utils.ToLongDateString( attendanceToEdit.date!)
             
             attendanceSegemnt.selected = false ;
@@ -76,7 +76,7 @@ class AttendanceEditController: UIViewController
         
             if let delegate = delegate{
                 
-                delegate.StatusChanged( atIndexPath! , objectId: objectId!, status : sender.selectedSegmentIndex == 0 ?AttendanceStatus.Attended  : AttendanceStatus.Absent)
+                delegate.StatusChanged(  objectId!, status : sender.selectedSegmentIndex == 0 ?AttendanceStatus.Attended  : AttendanceStatus.Absent)
             }
         }
     }

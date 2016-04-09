@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/13/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  ViewController to display the list of the tuitions
+//
 
 import UIKit
 import CoreData
@@ -21,22 +23,15 @@ class AttendanceTuitionListTableViewController: UITableViewController , NSFetche
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
-            Utils.showAlertWithTitle(self, title: "Error", message: String( fetchError), cancelButtonTitle: "Cancel")
+            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
         }
     }
 
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
-        
-        // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -63,8 +58,35 @@ class AttendanceTuitionListTableViewController: UITableViewController , NSFetche
         let cellIdentifier = "HistoryTuitionViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! AttendanceTuitionTableViewCell
         let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-        Utils.configureAttendanceTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
+        configureAttendanceTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
         return cell
+    }
+    
+    func configureAttendanceTuitionTableViewCell(cell: AttendanceTuitionTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
+            }
+            else{
+                cell.tuitionNameLabel.text = name
+                
+            }
+            
+        }
+        
+        if let  time = tuition.time  {
+            cell.timeLabel.text = Utils.ToTimeFromString(time)
+        }
+        else
+        {
+            cell.timeLabel.text = "";
+        }
+        
+        
+        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
+            cell.daysLabel.text  = Utils.GetRepeatLabelInShortFormat(tuition.frequency!)
+        }
+        
     }
     
     // MARK: -  FetchedResultsController Delegate
@@ -81,30 +103,24 @@ class AttendanceTuitionListTableViewController: UITableViewController , NSFetche
         
         switch (type) {
         case .Insert:
-            print("insert")
             if let indexPath = newIndexPath {
                 tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
         case .Delete:
-            print("delete")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
             break;
-            
         case .Update:
-            print("update")
             if let indexPath = indexPath {
                 let cell = tableView.cellForRowAtIndexPath(indexPath) as! AttendanceTuitionTableViewCell
                 let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-                Utils.configureAttendanceTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
+                 configureAttendanceTuitionTableViewCell(cell,tuition: tuition, atIndexPath: indexPath)
 
             }
             break;
-            
         case .Move:
-            print("move")
             if let indexPath = indexPath {
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -113,25 +129,18 @@ class AttendanceTuitionListTableViewController: UITableViewController , NSFetche
                 tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Fade)
             }
             break;
-            
-
         }
     }
     
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "segueShowAttendance" {
-            if let viewController = segue.destinationViewController as? HistoryAttendanceTableViewController {
+            if let viewController = segue.destinationViewController as? AttendanceHistoryTableViewController {
               if let indexPath = tuitionsTableView.indexPathForSelectedRow {
                 let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-                
-                
-                    viewController.tuitionObjectId = record.objectID
                     viewController.tuition = record
                 }
-                }
+            }
             
         }
     }

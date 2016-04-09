@@ -267,16 +267,16 @@
             </objects>
             <point key="canvasLocation" x="3313" y="105"/>
         </scene>
-        <!--History Attendance Table View Controller-->
+        <!--Attendance History Table View Controller-->
         <scene sceneID="ybH-nS-A3T">
             <objects>
-                <tableViewController id="bD3-X8-dGm" customClass="HistoryAttendanceTableViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bD3-X8-dGm" customClass="AttendanceHistoryTableViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="qU8-q6-SiO">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="ghu-TK-Uaj" customClass="HistoryAttenanceHeaderCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="ghu-TK-Uaj">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ghu-TK-Uaj" id="dUu-2h-TDW">
@@ -311,12 +311,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.99195677042007446" green="0.99622899293899536" blue="0.99192315340042114" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <outlet property="dayHeaderLabel" destination="Apb-TJ-lmF" id="LeL-y0-pBE"/>
-                                    <outlet property="statusLabel" destination="dUu-2h-TDW" id="gh6-9o-OAl"/>
-                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyAttendanceTableViewCell" id="iDl-aP-Gep" customClass="HistoryAttendanceCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyAttendanceTableViewCell" id="iDl-aP-Gep" customClass="AttendanceHistoryCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iDl-aP-Gep" id="AmD-lj-UdV">

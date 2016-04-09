@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/16/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  ViewController to display the pending and history views of payments
+//
 
 import UIKit
 
@@ -16,31 +18,12 @@ class PaymentViewController: UIViewController {
     override func viewDidLoad() {
         self.currentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("pendingPayment")
         self.currentViewController!.view.translatesAutoresizingMaskIntoConstraints = false
-        //self.currentViewController!.view.layoutSubviews()
         self.addChildViewController(self.currentViewController!)
-        
         Utils.addSubview(self.currentViewController!.view, toView: self.containerView)
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
-    func cycleFromViewController(oldViewController: UIViewController, toViewController newViewController: UIViewController) {
-        oldViewController.willMoveToParentViewController(nil)
-        self.addChildViewController(newViewController)
-        Utils.addSubview(newViewController.view, toView:self.containerView!)
-        newViewController.view.layoutIfNeeded()
-        
-        UIView.animateWithDuration(0.5, animations: {
-            newViewController.view.layoutIfNeeded()
-            },
-            completion: { finished in
-                oldViewController.view.removeFromSuperview()
-                oldViewController.removeFromParentViewController()
-                newViewController.didMoveToParentViewController(self)
-        })
-    }
-    
+ 
 
     @IBAction func showComponent(sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
@@ -54,6 +37,22 @@ class PaymentViewController: UIViewController {
             self.cycleFromViewController(self.currentViewController!, toViewController: newViewController!)
             self.currentViewController = newViewController
         }
+    }
+
+    func cycleFromViewController(oldViewController: UIViewController, toViewController newViewController: UIViewController) {
+        oldViewController.willMoveToParentViewController(nil)
+        self.addChildViewController(newViewController)
+        Utils.addSubview(newViewController.view, toView:self.containerView!)
+        newViewController.view.layoutIfNeeded()
+        
+        UIView.animateWithDuration(0.5, animations: {
+            newViewController.view.layoutIfNeeded()
+            },
+                                   completion: { finished in
+                                    oldViewController.view.removeFromSuperview()
+                                    oldViewController.removeFromParentViewController()
+                                    newViewController.didMoveToParentViewController(self)
+        })
     }
 
 }

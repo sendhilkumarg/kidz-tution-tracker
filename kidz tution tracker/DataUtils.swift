@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/26/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  Helper class to create the attendance and payment records and schedule notifications
+//
 
 import Foundation
 import CoreData
@@ -13,60 +15,8 @@ public class DataUtils
 {
     static let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     static let calendar = NSCalendar.currentCalendar()
-    
-    //MARK: - Badge
 
-    static func PendingAttendanceAndPaymentCount() -> Int {
-         let attendancefetchRequest = NSFetchRequest(entityName: "Attendance")
-         attendancefetchRequest.predicate = NSPredicate(format: "status == %@", AttendanceStatus.Pending.description)
-         let paymentfetchRequest = NSFetchRequest(entityName: "Payment")
-         paymentfetchRequest.predicate = NSPredicate(format: "status == %@", PaymentStatus.Pending.description)
-         var error: NSError? = nil
-         let attendanceCount =  managedObjectContext.countForFetchRequest(attendancefetchRequest, error: &error)
-         let paymentCount =  managedObjectContext.countForFetchRequest(paymentfetchRequest, error: &error)
-         return (attendanceCount + paymentCount)
-
-    }
-    //MARK: - Scheduling
-    
-    static func schedulePaymentNotification(tuition : Tuition , payment : Payment) {
-        if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
-            settings.types != .None {
-                
-                let payReminderDate =  calendar.dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: []) // This is at UTC 13 houra:. so setting up the reminder for 7 AM in the morning
-                let notification = UILocalNotification()
-                
-                notification.fireDate = payReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
-                notification.alertBody = "Update the payment status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(payment.date!))"
-                notification.alertAction = "open"
-                notification.soundName = UILocalNotificationDefaultSoundName
-                notification.alertTitle = "Tuition Tracker"
-                notification.userInfo = ["action": "payment"]
-                UIApplication.sharedApplication().scheduleLocalNotification(notification)
-
-        }
-    }
-    
-    static func scheduleAttendanceNotification(tuition : Tuition , attendance : Attendance) {
-        if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
-            settings.types != .None {
-                
-                let attendanceReminderDate =  calendar.dateByAddingUnit(.Minute, value: 5, toDate: attendance.date!, options: []) //TODO : this day can be of any hour. so update a logic that might suit . say 7 AM in the morning
-                let notification = UILocalNotification()
-                
-                notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
-                notification.alertBody = "Update the attendance status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(attendance.date!)) \(Utils.ToTimeFromString(tuition.time!)) "
-                notification.alertAction = "open"
-                notification.soundName = UILocalNotificationDefaultSoundName
-                notification.alertTitle = "Tuition Tracker"
-                notification.userInfo = ["action": "payment"]
-                UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                
-        }
-    }
-    
-    //MARK: - Missing Data processing
-    
+    //MARK: - Method used to create the attendance and payment record as a background task or when the user pull to refresh pending attendacne / payment. This will also schedule the notifications
     static func processMissingData( processAttendance : Bool , processPayments : Bool , showErrorMessage : Bool){
 
         
@@ -88,8 +38,6 @@ public class DataUtils
                         {
                             //create attendance from the last attendance date
                             let latestAttendenceCreated = sortedList[0] as! Attendance
-                            
-
                             if let   nextDate  = calendar.dateByAddingUnit(
                                 .Day,        value: 1, toDate: latestAttendenceCreated.date!,
                                 options: NSCalendarOptions(rawValue: 0))
@@ -142,6 +90,8 @@ public class DataUtils
         catch {
             
             let saveError = error as NSError
+            fatalError(String(saveError.userInfo))
+           
         }
     }
     
@@ -265,6 +215,58 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             
         } catch {
             let saveError = error as NSError
+            
+        }
+    }
+
+    //MARK: - Badge
+    
+    static func PendingAttendanceAndPaymentCount() -> Int {
+        let attendancefetchRequest = NSFetchRequest(entityName: "Attendance")
+        attendancefetchRequest.predicate = NSPredicate(format: "status == %@", AttendanceStatus.Pending.description)
+        let paymentfetchRequest = NSFetchRequest(entityName: "Payment")
+        paymentfetchRequest.predicate = NSPredicate(format: "status == %@", PaymentStatus.Pending.description)
+        var error: NSError? = nil
+        let attendanceCount =  managedObjectContext.countForFetchRequest(attendancefetchRequest, error: &error)
+        let paymentCount =  managedObjectContext.countForFetchRequest(paymentfetchRequest, error: &error)
+        return (attendanceCount + paymentCount)
+        
+    }
+    
+    //MARK: - Notifications
+    
+    static func schedulePaymentNotification(tuition : Tuition , payment : Payment) {
+        if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
+            settings.types != .None {
+            
+            let payReminderDate =  calendar.dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: []) // This is at UTC. so setting up the reminder for 7 AM in the morning
+            let notification = UILocalNotification()
+            
+            notification.fireDate = payReminderDate! ;
+            notification.alertBody = "Update the payment status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(payment.date!))"
+            notification.alertAction = "open"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.alertTitle = "Kidz Tuition Tracker"
+            notification.userInfo = ["action": "payment"]
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+        }
+    }
+    
+    static func scheduleAttendanceNotification(tuition : Tuition , attendance : Attendance) {
+        if  let settings = UIApplication.sharedApplication().currentUserNotificationSettings() where
+            settings.types != .None {
+            
+            let attendanceReminderDate =  calendar.dateByAddingUnit(.Minute, value: 5, toDate: attendance.date!, options: []) //TODO : this day can be of any hour. so update a logic that might suit . say 7 AM in the morning
+            let notification = UILocalNotification()
+            
+            notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
+            notification.alertBody = "Update the attendance status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(attendance.date!)) \(Utils.ToTimeFromString(tuition.time!)) "
+            notification.alertAction = "open"
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.alertTitle = "Kidz Tuition Tracker"
+            notification.userInfo = ["action": "attendance"]
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
         }
     }

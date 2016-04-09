@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/16/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  Extension for PaymentStatus
+//
 
 import Foundation
 public enum PaymentStatus: Int32 {

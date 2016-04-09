@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 2/15/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  Extension for AttendanceStatus
+//
 
 import Foundation
  public enum AttendanceStatus: Int32 {

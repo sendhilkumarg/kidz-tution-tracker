@@ -211,7 +211,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="yHM-Xx-qVs" customClass="PaymentHistoryHeaderCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="yHM-Xx-qVs">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yHM-Xx-qVs" id="0cT-Kz-V3E">
@@ -246,10 +246,6 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="5hi-Sm-RTB" secondAttribute="trailing" id="f3D-Y6-B7H"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="dayHeaderLabel" destination="5zy-OW-O8W" id="cM2-oj-env"/>
-                                    <outlet property="statusLabel" destination="sPT-EO-yKk" id="hg5-iF-gvv"/>
-                                </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyPaymentTableViewCell" id="6yZ-4B-Fav" customClass="PaymentHistoryCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="600" height="60"/>
