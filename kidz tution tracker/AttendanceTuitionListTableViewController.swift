@@ -23,7 +23,7 @@ class AttendanceTuitionListTableViewController: UITableViewController , NSFetche
         } catch {
             let fetchError = error as NSError
             print("\(fetchError), \(fetchError.userInfo)")
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String( fetchError))
         }
     }
 

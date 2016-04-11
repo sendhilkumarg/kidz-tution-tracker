@@ -5,11 +5,13 @@
 //  Created by Sendhil kumar Gurunathan on 3/19/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  Viewcontroller to edit a tuition
+//
 
 import UIKit
 import CoreData
 
-class TuitionsEditViewController: UITableViewController , UITextFieldDelegate , //UINavigationControllerDelegate ,
+class TuitionsEditViewController: UITableViewController , UITextFieldDelegate ,
 UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
 
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
@@ -59,20 +61,14 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
             personNameText.text = tutionToEdit.personname
             payPerClassText.text = String( tutionToEdit.amount!)
 
-
-
-
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat =  "HH:mm"
-
             if let date = dateFormatter.dateFromString(tutionToEdit.time!) {
                 tuitionTimePicker.date = date
 
             }
-
             if let frequency = tutionToEdit.frequency {
                 DaysChanged(frequency)
-              //  tutionDayPicker.selectedDays = frequency
             }
 
             if let payOn = tutionToEdit.payon{
@@ -86,19 +82,6 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
     // MARK: UITextFieldDelegate
 
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-     /*   if(textField == tuitionNameText)
-        {
-            tuitionNameText.resignFirstResponder()
-        }
-        else if textField == personNameText
-        {
-            payPerClassText.resignFirstResponder()
-        }
-        else
-        {
-            payPerClassText.resignFirstResponder()
-        }
-        */
         textField.resignFirstResponder()
         return true
     }
@@ -134,9 +117,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
     }
 
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
         if segue.identifier == "daysListSeague" {
             if let controller = segue.destinationViewController as? DayListTableViewController
@@ -148,11 +129,15 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
         }
 
     }
-
+    
+    // MARK: - table view delegates
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
+    
+    // MARK: - IB Actions
+    
     @IBAction func saveAction(sender: UIBarButtonItem) {
 
         let name = tuitionNameText.text
@@ -161,23 +146,23 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
 
 
         if let isEmpty = name?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the tution name", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionNameRequiredPrompt) ;
             return
         }
         if let isEmpty = personName?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the person name attending the tuition ", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.personNameRequiredPrompt) ;
             return
         }
 
 
         if selectedDays.isEmpty
         {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please select the tuition days", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.repeatDaysRequiredPrompt) ;
             return
         }
 
         if let isEmpty = amount?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the fee amount", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionFeeRequiredPrompt) ;
             return
         }
         else
@@ -186,12 +171,10 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
 
             if decimalAmount == NSDecimalNumber.notANumber() {
                 if decimalAmount == NSDecimalNumber.notANumber() {
-                    Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter a valid fee amount", cancelButtonTitle: "OK") ;
+                    Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionFeeIsInvalidPrompt) ;
                     return
             }
         }
-
-
         let formatter = NSDateFormatter()
         formatter.dateFormat =  "HH:mm"
         let time = formatter.stringFromDate(tuitionTimePicker.date)
@@ -206,8 +189,6 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
             tutionToEdit.setValue(personName, forKey: "personname")
             tutionToEdit.setValue(NSDecimalNumber(string: amount), forKey: "amount")
 
-
-
             do {
                 // Save Record
                 try tutionToEdit.managedObjectContext?.save()
@@ -218,8 +199,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
                 let saveError = error as NSError
                 
                 // Show Alert View
-                Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Failed to save the tuition details", cancelButtonTitle: "OK") ;
-
+                Utils.showAlertWithTitle(self, title: Utils.title, message: "\(Utils.failedToUpdateTuition). \(String(saveError.userInfo))") ;
 
             }
         }
@@ -233,7 +213,6 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
         dismissViewControllerAnimated(true, completion: nil)
 
     }
-
 
     // MARK: - Custom Delegates
     func DaysChanged(days :[Int]){

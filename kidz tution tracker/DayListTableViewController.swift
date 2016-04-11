@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 3/16/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  View Controller to display the list of week days for selection
+//
 
 import UIKit
 
@@ -43,23 +45,23 @@ class DayListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let index = indexPath.row
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let newCell = tableView.cellForRowAtIndexPath(indexPath)
-        if selectedDays.contains(index)
+        if let cell = tableView.cellForRowAtIndexPath(indexPath)
         {
-             selectedDays.removeAtIndex(selectedDays.indexOf(index)!)
-             newCell?.accessoryType = .None
-        }
-        else
-        {
-            selectedDays.append(index)
-             newCell?.accessoryType = .Checkmark
-            
-        }
+            if selectedDays.contains(index)
+            {
+                selectedDays.removeAtIndex(selectedDays.indexOf(index)!)
+                cell.accessoryType = .None
+            }
+            else
+            {
+                selectedDays.append(index)
+                cell.accessoryType = .Checkmark
+            }
 
-        if let delegate = delegate {
-            delegate.DaysChanged(selectedDays)
+            if let delegate = delegate {
+                delegate.DaysChanged(selectedDays)
+            }
         }
-       
 
     }
 

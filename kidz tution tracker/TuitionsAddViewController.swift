@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 3/17/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  Controller to capture the tuition information 
+//
 
 import UIKit
 import CoreData
@@ -70,19 +72,6 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
     // MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-     /*   if(textField == tuitionNameText)
-        {
-            tuitionNameText.resignFirstResponder()
-        }
-        else if textField == personNameText
-        {
-            payPerClassText.resignFirstResponder()
-        }
-        else
-        {
-            payPerClassText.resignFirstResponder()
-        }
-        */
         textField.resignFirstResponder();
         return true
     }
@@ -117,8 +106,6 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
     }
     
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "daysListSeague" {
@@ -132,10 +119,13 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         
     }
     
-    @IBAction func cancelAction(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
-        
+    // MARK: - table view delegates
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+
+    
+    // MARK: - IB Actions
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
         let name = tuitionNameText.text
@@ -143,24 +133,22 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         let amount =  payPerClassText.text
         
         if let isEmpty = name?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the tution name", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message:  Utils.tuitionNameRequiredPrompt) ;
             return
         }
         if let isEmpty = personName?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the person name attending the tuition ", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.personNameRequiredPrompt) ;
 
             return
         }
-        
-        
         if selectedDays.isEmpty
         {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please select the tuition days", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.repeatDaysRequiredPrompt) ;
             return
         }
         
         if let isEmpty = amount?.isEmpty where isEmpty == true {
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter the fee amount", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionFeeRequiredPrompt) ;
             return
         }
         else
@@ -168,7 +156,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
             let decimalAmount = NSDecimalNumber(string: amount)
             
             if decimalAmount == NSDecimalNumber.notANumber() {
-                Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Please enter a valid fee amount", cancelButtonTitle: "OK") ;
+                Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionFeeIsInvalidPrompt) ;
                 return
             }
         }
@@ -212,17 +200,20 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
             
         } catch {
             let saveError = error as NSError
-            print("\(saveError), \(saveError.userInfo)")
-            
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Failed to save the tuition details", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: "\(Utils.failedToSaveTuition). \(String(saveError.userInfo))") ;
 
         }
         
         
     }
     
-    // MARK: - Custom Delegates
+    @IBAction func cancelAction(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    // MARK: - DayChangeControllerDelegate
     func DaysChanged(days :[Int]){
         selectedDays = days
         selectedDaysLabel.text = Utils.GetRepeatLabel(days)

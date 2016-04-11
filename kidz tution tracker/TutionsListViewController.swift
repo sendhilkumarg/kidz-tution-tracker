@@ -5,6 +5,8 @@
 //  Created by Sendhil kumar Gurunathan on 1/19/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
 //
+//  View Controller to to display the list of available tuitions
+//
 
 import UIKit
 import CoreData
@@ -12,8 +14,6 @@ import CoreData
 class TutionsListViewController: UIViewController , UITableViewDataSource , UITableViewDelegate , NSFetchedResultsControllerDelegate {
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var deleteTutionsIndexPath: NSIndexPath? = nil
-
-
     @IBOutlet weak var tuitionsTableView: UITableView!
     
     
@@ -25,28 +25,17 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String( fetchError) )
         }
        
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     lazy var fetchedResultsController: NSFetchedResultsController = {
-        // Initialize Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Tuition")
-        
-        // Add Sort Descriptors
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Initialize Fetched Results Controller
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
-        
-        // Configure Fetched Results Controller
         fetchedResultsController.delegate = self
-        
         return fetchedResultsController
         }()
     
@@ -140,10 +129,6 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     //MARK: Construct table cell
     
     func configureTuitionsTableViewCellCell(cell: TuitionsTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
-        // Fetch Record
-        // let tuition = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
-        
-        // Update Cell
         if let name = tuition.name {
             if let personName = tuition.personname {
                 cell.tuitionNameLabel.text = "\(personName)'s \(name)"
@@ -152,7 +137,6 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
                 cell.tuitionNameLabel.text = name
                 
             }
-            
         }
         
         if let  time = tuition.time  {
@@ -198,7 +182,8 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     
     func confirmDelete() {
         let record = fetchedResultsController.objectAtIndexPath(deleteTutionsIndexPath! ) as! Tuition
-        let alert = UIAlertController(title: "Delete Tuition", message: "Are you sure you want to permanently delete \(record.name!)", preferredStyle: .ActionSheet)
+        
+        let alert = UIAlertController(title: "Delete Tuition", message: "Are you sure you want to permanently delete the tuition \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
         
         let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDelete)
         let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDelete)
@@ -224,8 +209,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         }
         catch {
             let saveError = error as NSError
-            // Show Alert View
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: "Failed to delete the tuition details", cancelButtonTitle: "OK") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: "Failed to delete the tuition details. \(saveError.userInfo)") ;
         }
         deleteTutionsIndexPath = nil
 

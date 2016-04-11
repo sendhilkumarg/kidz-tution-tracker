@@ -41,7 +41,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String( fetchError))
         }
 
         if let tuition = tuition{
@@ -213,7 +213,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         } catch {
             let saveError = error as NSError
             // Show Alert View
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String(saveError.userInfo), cancelButtonTitle: Utils.titleCancel)
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String(saveError.userInfo))
         }
     }
     

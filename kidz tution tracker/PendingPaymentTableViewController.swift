@@ -41,7 +41,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel )
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String( fetchError) )
         }
         
     }
@@ -52,7 +52,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String( fetchError), cancelButtonTitle: Utils.titleCancel)
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String( fetchError))
         }
         self.tableView.reloadData()
         refreshControl.endRefreshing()
@@ -250,7 +250,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             
         } catch {
             let saveError = error as NSError
-            Utils.showAlertWithTitle(self, title: Utils.titleError, message: String(saveError.userInfo) , cancelButtonTitle: Utils.titleCancel)
+            Utils.showAlertWithTitle(self, title: Utils.title, message: String(saveError.userInfo) )
         }
         
     }

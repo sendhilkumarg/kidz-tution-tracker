@@ -14,17 +14,24 @@ import UIKit
 class Utils{
     
 
+    static let title = "Kidz Tuition Tracker"
     static let titleError = "Error"
-    static let titleCancel = "Cancel"
     static let failedToSave = "Failed to save the changes"
+    static let tuitionNameRequiredPrompt = "Please enter the tuition name"
+    static let personNameRequiredPrompt = "Please enter the person name attending the tuition"
+    static let repeatDaysRequiredPrompt = "Please select the tuition days"
+    static let tuitionFeeRequiredPrompt = "Please enter the fee amount to be paid per class"
+    static let tuitionFeeIsInvalidPrompt = "Please enter a valid fee amount"
+    static let failedToSaveTuition = "Failed to save the tuition details"
+    static let failedToUpdateTuition = "Failed to update the tuition details"
     
     // MARK: Alert helper Methods
-    static func showAlertWithTitle(viewControler: UIViewController, title: String, message: String, cancelButtonTitle: String) {
+    static func showAlertWithTitle(viewControler: UIViewController, title: String, message: String) {
         // Initialize Alert Controller
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         
         // Configure Alert Controller
-        alertController.addAction(UIAlertAction(title: cancelButtonTitle, style: .Default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         
         
         // Present Alert Controller
