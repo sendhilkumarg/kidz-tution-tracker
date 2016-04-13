@@ -216,7 +216,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
     // MARK: - DayChangeControllerDelegate
     func DaysChanged(days :[Int]){
         selectedDays = days
-        selectedDaysLabel.text = Utils.GetRepeatLabel(days)
+        selectedDaysLabel.text = Utils.getRepeatLabel(days)
 
     }
     

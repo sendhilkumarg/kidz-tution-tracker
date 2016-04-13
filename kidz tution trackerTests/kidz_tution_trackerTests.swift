@@ -33,14 +33,14 @@ class kidz_tution_trackerTests: XCTestCase {
         valentinesDayComponents.day = 1
         let theDay = calendar.dateFromComponents(valentinesDayComponents)!
         
-        print("theDay \(ToLongDateString(theDay))")
+        print("theDay \(toLongDateString(theDay))")
         
         
         if let payOnDateToCheck =  NSCalendar.currentCalendar().dateBySettingUnit(.Day, value: Int(31), ofDate: NSDate(), options: []){
             //this gives the exact date or the first of next month of it exceeeds the 28,29,30,31 for the months. if the number is 32 it ll be invalid
             
              print("valid \(payOnDateToCheck)")
-            print("valid \(ToLongDateString(payOnDateToCheck))")
+            print("valid \(toLongDateString(payOnDateToCheck))")
         }
         else
         {
@@ -50,14 +50,14 @@ class kidz_tution_trackerTests: XCTestCase {
         /*
         let components = calendar.components([.Year, .Month], fromDate: theDay)
         let startOfMonth = calendar.dateFromComponents(components)!
-        print ("startOfMonth \(ToLongDateString(startOfMonth))")
+        print ("startOfMonth \(toLongDateString(startOfMonth))")
         //print ( startOfMonth.dateBySettingUnit(.Month,value: 1,options: []))
         let comps2 = NSDateComponents()
         //comps2.year = 0
         comps2.month = 1
         comps2.day = -1
         let endOfMonth = calendar.dateByAddingComponents(comps2, toDate: startOfMonth, options: [])!
-        print ("endOfMonth \(ToLongDateString(endOfMonth))")
+        print ("endOfMonth \(toLongDateString(endOfMonth))")
         print(  calendar.startOfDayForDate(NSDate()))
         
         
@@ -80,7 +80,7 @@ class kidz_tution_trackerTests: XCTestCase {
             
     }
     
-     func ToLongDateString(date : NSDate) -> String
+     func toLongDateString(date : NSDate) -> String
     {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle

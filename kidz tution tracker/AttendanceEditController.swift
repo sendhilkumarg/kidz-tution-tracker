@@ -25,27 +25,11 @@ class AttendanceEditController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         if let attendanceToEdit = attendance {
-            
             if let tuition = attendanceToEdit.relTuition{
-                var header = ""
-                if let name = tuition.name {
-                    if let personName = tuition.personname {
-                        header = "\(personName)'s \(name)"
-                    }
-                    else{
-                        header = name
-                        
-                    }
-                    
-                }
-                
-                if let  time = tuition.time  {
-                    header = header + " " + Utils.ToTimeFromString(time)
-                }
                 self.navigationItem.title = "Edit Attendance"
-                tuitionLabel.text = header
+                tuitionLabel.text = Utils.getDisplayNameWithTime(tuition)
             }
-            dayLabel.text = Utils.ToLongDateString( attendanceToEdit.date!)
+            dayLabel.text = Utils.toLongDateString( attendanceToEdit.date!)
             
             attendanceSegemnt.selected = false ;
             attendanceSegemnt.selectedSegmentIndex = -1

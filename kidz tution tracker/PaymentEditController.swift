@@ -29,26 +29,13 @@ class PaymentEditController: UIViewController {
         super.viewDidLoad()
         if let paymentToEdit = payment{
             if let tuition = paymentToEdit.relTuition{
-                var header = ""
-                if let name = tuition.name {
-                    if let personName = tuition.personname {
-                        header = "\(personName)'s \(name)"
-                    }
-                    else{
-                        header = name
-                        
-                    }
-                    
-                }
-                
-                if let  time = tuition.time  {
-                    header = header + " " + Utils.ToTimeFromString(time)
-                }
                 self.navigationItem.title = "Edit Payment"
-                tuitionLabel.text = header
+                tuitionLabel.text = Utils.getDisplayNameWithTime(tuition)
             }
             
-            dayLabel.text = Utils.ToLongDateString( paymentToEdit.date!)
+            
+            
+            dayLabel.text = Utils.toLongDateString( paymentToEdit.date!)
             
             if let _ = paymentToEdit.status  {
                 switch paymentToEdit.CurrentStatus

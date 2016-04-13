@@ -54,7 +54,7 @@ class Utils{
     
     //MARK : Formatting
     
-    static func ToLongDateString(date : NSDate) -> String
+    static func toLongDateString(date : NSDate) -> String
     {
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
@@ -63,7 +63,7 @@ class Utils{
         return formatter.stringFromDate(date)
     }
     
-    static func ToTimeFromString(time : String) -> String
+    static func toTimeFromString(time : String) -> String
     {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat =  "HH:mm"
@@ -82,13 +82,17 @@ class Utils{
     }
     
      
-    static func GetRepeatLabel(daysSelected : [Int] ) -> String
+    static func getRepeatLabel(daysSelected : [Int] ) -> String
     {
         var dayText = "Never"
         
         if  !daysSelected.isEmpty {
             
             var days = [String]()
+            if daysSelected.count == 7
+            {
+                return "Every Day"
+            }
             
             for frequency in daysSelected.sort()
             {
@@ -121,46 +125,50 @@ class Utils{
 
     }
     
-    static func GetRepeatLabelInShortFormat(daysSelected : [Int] ) -> String
-    {
-        var dayText = "Days : Never"
-        
-        if  !daysSelected.isEmpty {
-            
-            var days = [String]()
-            
-            for frequency in daysSelected.sort()
-            {
-                
-                switch frequency
-                {
-                case 0 :
-                    dayText = "S"
-                case 1 :
-                    dayText = "M"
-                case 2 :
-                    dayText = "T"
-                case 3 :
-                    dayText = "W"
-                case 4 :
-                    dayText = "T"
-                case 5 :
-                    dayText = "F"
-                case 6 :
-                    dayText = "S"
-                default:
-                    dayText = ""
-                }
-                
-                days.append(dayText)
-            }
-            return "Days : \(days.joinWithSeparator("|"))"
-        }
-        return dayText
+    static func getDisplayName( tuition : String,  personName : String) -> String{
+       return  "\(personName.firstCharacterUpperCase())'s \(tuition.firstCharacterUpperCase())"
         
     }
     
+    static func getDisplayData(tuition :Tuition) -> (String,String,String){
+        var header = ""
+        var displayTime = ""
+        var days = ""
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                header = getDisplayName(name,personName: personName)
+            }
+            else{
+                header = getDisplayName(name,personName: "")
+                
+            }
+        }
+        if let  time = tuition.time  {
+            displayTime = Utils.toTimeFromString(time)
+        }
+        
+        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
+            days  = getRepeatLabel(tuition.frequency!)
+        }
+        return (header,displayTime,days)
+    }
 
-
+    static func getDisplayNameWithTime(tuition :Tuition) -> String{
+        var header = ""
+        if let name = tuition.name {
+            if let personName = tuition.personname {
+                header = getDisplayName(name,personName: personName)
+            }
+            else{
+                header = getDisplayName(name,personName: "")
+                
+            }
+            if let  time = tuition.time  {
+                header = header + " " + toTimeFromString(time)
+            }
+            
+        }
+        return header
+    }
 
 }

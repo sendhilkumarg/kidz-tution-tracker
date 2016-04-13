@@ -19,3 +19,15 @@ extension NSDate {
         }
     }
 }
+
+extension String {
+    func firstCharacterUpperCase() -> String {
+        if self.isEmpty
+        {
+            return "";
+        }
+        let lowercaseString = self.lowercaseString
+        
+        return lowercaseString.stringByReplacingCharactersInRange(lowercaseString.startIndex...lowercaseString.startIndex, withString: String(lowercaseString[lowercaseString.startIndex]).uppercaseString)
+    }
+}

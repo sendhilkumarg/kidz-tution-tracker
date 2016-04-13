@@ -43,7 +43,7 @@ public class DataUtils
                                 options: NSCalendarOptions(rawValue: 0))
                             {
 
-                                DataUtils.processMissingAttendance( nextDate,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                                DataUtils.processMissingAttendance( nextDate,days: days,tuition: tuition,showErrorMessage: showErrorMessage)
                             }
 
                             
@@ -51,7 +51,7 @@ public class DataUtils
                         else
                         {
                             let startDate = calendar.startOfDayForDate( tuition.startdate!)
-                            DataUtils.processMissingAttendance( startDate,days: days,tuition: tuition,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                            DataUtils.processMissingAttendance( startDate,days: days,tuition: tuition, showErrorMessage: showErrorMessage)
 
                         }
                         
@@ -73,14 +73,19 @@ public class DataUtils
                         .Month,        value: 1, toDate: startDate,
                         options: NSCalendarOptions(rawValue: 0))
                         {
-                            processMissingPayments(nextMonthDate, tuition: tuition, managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                            processMissingPayments(nextMonthDate, tuition: tuition,  showErrorMessage: showErrorMessage)
                         }
 
                     }
                     else
                     {
                         let startDate = calendar.startOfDayForDate( tuition.startdate!)
-                        processMissingPayments(startDate, tuition: tuition, managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                        if let   nextMonthDate  = calendar.dateByAddingUnit(
+                            .Month,        value: 1, toDate: startDate,
+                            options: NSCalendarOptions(rawValue: 0))
+                        {
+                            processMissingPayments(nextMonthDate, tuition: tuition,  showErrorMessage: showErrorMessage)
+                        }
 
                     }
                 }
@@ -97,7 +102,7 @@ public class DataUtils
     
     //MARK: -  Payment processing
     
-    static func processMissingPayments(  lastPaymentDate : NSDate , tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
+    static func processMissingPayments(  lastPaymentDate : NSDate , tuition : Tuition, showErrorMessage : Bool){
         let currentDateTime : NSDate = calendar.startOfDayForDate(NSDate())
         let payOn = Int(tuition.payon!)
         if var payOnDateToCheck =  calendar.dateBySettingUnit(.Day, value: payOn, ofDate: lastPaymentDate, options: []){
@@ -107,10 +112,10 @@ public class DataUtils
 
             while (dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending)
             {
-                createNewPayment(tuition,date: payOnDateToCheck,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                createNewPayment(tuition,date: payOnDateToCheck, showErrorMessage: showErrorMessage)
 
                 if let   nextMonthDate  = calendar.dateByAddingUnit(
-                    .Month,        value: 1, toDate: payOnDateToCheck, //options: [])
+                    .Month,        value: 1, toDate: payOnDateToCheck,
                     options: NSCalendarOptions(rawValue: 0))
                 {
                     
@@ -132,7 +137,7 @@ public class DataUtils
     }
 
     
-    static func createNewPayment(tuition : Tuition , date : NSDate, managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)     {
+    static func createNewPayment(tuition : Tuition , date : NSDate, showErrorMessage : Bool)     {
         // Create Entity
         let entity = NSEntityDescription.entityForName("Payment", inManagedObjectContext: managedObjectContext)
         
@@ -153,13 +158,13 @@ public class DataUtils
         } catch {
             _ = error as NSError
             
-            //throw saveError
+
         }
     }
     
 //MARK: - Attendance processing
     
-static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool){
+static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSInteger], tuition : Tuition, showErrorMessage : Bool){
     
 
     let  timeArray = tuition.time!.componentsSeparatedByString(":")
@@ -173,7 +178,7 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             while( dateComparisionResult == NSComparisonResult.OrderedSame || dateComparisionResult == NSComparisonResult.OrderedDescending){
                     
                 if days.contains(dayToProcess.dayOfWeek()! - 1)  {
-                    createNewAttendance(tuition,date: dayToProcess,managedObjectContext: managedObjectContext, showErrorMessage: showErrorMessage)
+                    createNewAttendance(tuition,date: dayToProcess, showErrorMessage: showErrorMessage)
                 }
                 if   let updatedDayToProcess = calendar.dateByAddingUnit(
                         .Day,
@@ -196,7 +201,7 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
 
     }
     
-    static func createNewAttendance(tuition : Tuition , date : NSDate ,managedObjectContext: NSManagedObjectContext, showErrorMessage : Bool)
+    static func createNewAttendance(tuition : Tuition , date : NSDate , showErrorMessage : Bool)
     {
         // Create Entity
         let entity = NSEntityDescription.entityForName("Attendance", inManagedObjectContext: managedObjectContext)
@@ -243,7 +248,7 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             let payReminderDate =  calendar.dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: [])
             let notification = UILocalNotification() // scheduled for 7 AM on payment date
             notification.fireDate = payReminderDate! ;
-            notification.alertBody = "Update the payment status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(payment.date!))"
+            notification.alertBody = "Update the payment status for \(tuition.personname!)'s \(tuition.name!) scheduled \(Utils.toLongDateString(payment.date!))"
             notification.alertAction = "open"
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertTitle = Utils.title
@@ -259,8 +264,9 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             
             let attendanceReminderDate =  calendar.dateByAddingUnit(.Minute, value: 5, toDate: attendance.date!, options: [])
             let notification = UILocalNotification()
-            notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
-            notification.alertBody = "Update the attendance status for \(tuition.personname!)' \(tuition.name!) scheduled \(Utils.ToLongDateString(attendance.date!)) \(Utils.ToTimeFromString(tuition.time!)) "
+           // notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
+            notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+            notification.alertBody = "Update the attendance status for \(tuition.personname!)'s \(tuition.name!) scheduled \(Utils.toLongDateString(attendance.date!)) \(Utils.toTimeFromString(tuition.time!)) "
             notification.alertAction = "open"
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertTitle = Utils.title

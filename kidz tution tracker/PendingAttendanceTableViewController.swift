@@ -66,7 +66,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
             messageLabel!.textColor = UIColor.blackColor() ;
             messageLabel!.numberOfLines = 0;
             messageLabel!.textAlignment = NSTextAlignment.Center;
-            messageLabel!.font = UIFont(name: "Trebuchet MS", size: 16)
+            messageLabel!.font = UIFont(name: "Trebuchet MS", size: 14)
             self.tableView.backgroundView = messageLabel;
         }
         return sectionCount
@@ -104,20 +104,9 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
                 if sectionData.objects != nil && sectionData.objects!.count > 0 {
                    if  let atn = sectionData.objects?[0] as? Attendance , tuition = atn.relTuition
                    {
-                    if let name = tuition.name {
-                        if let personName = tuition.personname {
-                            cell.tuitionLabel.text = "\(personName)'s \(name)"
-                        }
-                        else{
-                            cell.tuitionLabel.text = name
-                            
-                        }
-                        
-                    }
-                    if let time = tuition.time {
-                        cell.timeLabel.text = Utils.ToTimeFromString(time)
-                    }
-                    
+                    let (name,time,_ ) =  Utils.getDisplayData(tuition)
+                    cell.tuitionLabel.text = name
+                    cell.timeLabel.text  = time
                     }
                 }
                 
@@ -145,7 +134,7 @@ class PendingAttendanceTableViewController: UITableViewController  , AttendanceC
         if let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as? Attendance {
             cell.delegate = self
             cell.objectId = attendance.objectID
-            cell.dayLabel.text = Utils.ToLongDateString( attendance.date!)
+            cell.dayLabel.text = Utils.toLongDateString( attendance.date!)
             cell.attendanceSegemnt.selected = false ;
             cell.attendanceSegemnt.selectedSegmentIndex = -1
              if let _ = attendance.status  {

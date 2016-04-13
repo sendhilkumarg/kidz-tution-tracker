@@ -107,7 +107,7 @@
                         <attributedString key="attributedTitle">
                             <fragment content="Pull to refresh payments">
                                 <attributes>
-                                    <font key="NSFont" size="12" name="ArialMT"/>
+                                    <font key="NSFont" size="14" name="TrebuchetMS"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                 </attributes>
                             </fragment>
@@ -137,11 +137,11 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wxK-Ao-XcA">
                                             <rect key="frame" x="8" y="8" width="551" height="44"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9oa-E7-8p4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="551" height="24"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9oa-E7-8p4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="551" height="27"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-Sa-OiH">
-                                                            <rect key="frame" x="0.0" y="0.0" width="551" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p1D-Sa-OiH">
+                                                            <rect key="frame" x="0.0" y="0.0" width="551" height="27"/>
                                                             <color key="tintColor" red="0.07624528557062149" green="0.77416694164276123" blue="0.95813018083572388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <rect key="contentStretch" x="0.050000000000000003" y="0.0" width="1" height="1"/>
                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="19"/>
@@ -151,19 +151,19 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1U2-Pm-7gu">
-                                                    <rect key="frame" x="0.0" y="24" width="551" height="20"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1U2-Pm-7gu">
+                                                    <rect key="frame" x="0.0" y="27" width="551" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy8-Pw-uYD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="505" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="510" height="18"/>
                                                             <color key="tintColor" red="0.07624528557062149" green="0.77416694164276123" blue="0.95813018083572388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                             <color key="textColor" red="0.18483450030000001" green="0.26589486769999998" blue="0.3444911859" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O40-K4-GNN">
-                                                            <rect key="frame" x="510" y="0.0" width="42" height="20"/>
-                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="17"/>
+                                                            <rect key="frame" x="515" y="0.0" width="37" height="18"/>
+                                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                             <color key="textColor" red="1" green="0.56644392619999995" blue="0.053673884849999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>

@@ -372,6 +372,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 						};
 					};
 					BC6905B71C45A94F00B00E35 = {
@@ -639,7 +642,7 @@
 				INFOPLIST_FILE = "kidz tution tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tution-tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tuition-tracker";
 				PRODUCT_NAME = "kidz tuition tracker";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -653,7 +656,7 @@
 				INFOPLIST_FILE = "kidz tution tracker/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tution-tracker";
+				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tuition-tracker";
 				PRODUCT_NAME = "kidz tuition tracker";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

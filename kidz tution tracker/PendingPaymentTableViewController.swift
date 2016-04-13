@@ -73,7 +73,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
             messageLabel!.textColor = UIColor.blackColor() ;
             messageLabel!.numberOfLines = 0;
             messageLabel!.textAlignment = NSTextAlignment.Center;
-            messageLabel!.font = UIFont(name: "Trebuchet MS", size: 16)
+            messageLabel!.font = UIFont(name: "Trebuchet MS", size: 14)
             self.tableView.backgroundView = messageLabel;
         }
 
@@ -104,19 +104,9 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
                 if sectionData.objects != nil && sectionData.objects!.count > 0 {
                     if  let payment = sectionData.objects?[0] as? Payment , tuition = payment.relTuition
                     {
-                        if let name = tuition.name {
-                            if let personName = tuition.personname {
-                                cell.tuitionLabel.text = "\(personName)'s \(name)"
-                            }
-                            else{
-                                cell.tuitionLabel.text = name
-                                
-                            }
-                            
-                        }
-                        if let time = tuition.time {
-                            cell.timeLabel.text = Utils.ToTimeFromString(time)
-                        }
+                        let (name,time,_ ) =  Utils.getDisplayData(tuition)
+                        cell.tuitionLabel.text = name
+                        cell.timeLabel.text  = time
                         
                     }
                 }
@@ -149,7 +139,7 @@ class PendingPaymentTableViewController: UITableViewController, NSFetchedResults
     func configureCell(cell : PendingPaymentCell , atIndexPath indexPath: NSIndexPath){
      if    let payment = fetchedResultsController.objectAtIndexPath(indexPath) as? Payment
      {
-        cell.dayLabel.text = Utils.ToLongDateString( payment.date!)
+        cell.dayLabel.text = Utils.toLongDateString( payment.date!)
         cell.objectId = payment.objectID
         if let _ = payment.status  {
             switch payment.CurrentStatus

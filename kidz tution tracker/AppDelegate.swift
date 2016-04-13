@@ -44,34 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 
-    
-    func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        // Handle any action if the user opens the application throught the notification. i.e., by clicking on the notification when the application is killed/ removed from background.
-        if let aLaunchOptions = launchOptions { // Checking if there are any launch options.
-            // Check if there are any local notification objects.
-            if let notification = (aLaunchOptions as NSDictionary).objectForKey("UIApplicationLaunchOptionsLocalNotificationKey") as? UILocalNotification {
-                // Handle the notification action on opening. Like updating a table or showing an alert.
-               // UIAlertView(title: notification.alertTitle, message: notification.alertBody, delegate: nil, cancelButtonTitle:  "OK").show()
-            /*
-                
-                let alertController = UIAlertController(title: notification.alertTitle, message: notification.alertBody, preferredStyle: .Alert)
-                
-                // Configure Alert Controller
-                alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                
-                UIAlertController.
-                // Present Alert Controller
-                presentViewController(alertController, animated: true, completion: nil)
-*/
-                application.presentLocalNotificationNow(notification)
-            }
-      
-            
-        }
-        return   true
-    }
-    
     //MARK: - Background Fetch
     
     func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {

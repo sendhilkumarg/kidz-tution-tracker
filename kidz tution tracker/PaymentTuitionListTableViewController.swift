@@ -60,31 +60,10 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
         return cell
     }
     func configurePaymentTuitionTableViewCell(cell: PaymentTuitionTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
-        if let name = tuition.name {
-            if let personName = tuition.personname {
-                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
-            }
-            else{
-                cell.tuitionNameLabel.text = name
-                
-            }
-            
-        }
-        
-        if let  time = tuition.time  {
-            cell.timeLabel.text = Utils.ToTimeFromString(time)
-        }
-        else
-        {
-            cell.timeLabel.text = "";
-        }
-        
-        
-        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
-            
-            cell.daysLabel.text  = Utils.GetRepeatLabelInShortFormat(tuition.frequency!)
-        }
-        
+        let (name,time,days ) =  Utils.getDisplayData(tuition)
+        cell.tuitionNameLabel.text = name
+        cell.timeLabel.text  = time
+        cell.daysLabel.text  = days
     }
     
     // MARK: -  FetchedResultsController Delegate
@@ -140,6 +119,7 @@ class PaymentTuitionListTableViewController: UITableViewController, NSFetchedRes
                 if let indexPath = tableView.indexPathForSelectedRow {
                     let record = fetchedResultsController.objectAtIndexPath(indexPath) as! Tuition
                     viewController.tuition = record
+                    
                 }
             }
             

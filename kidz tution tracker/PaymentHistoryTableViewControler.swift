@@ -38,6 +38,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
+
             try self.fetchedResultsController.performFetch()
         } catch {
             let fetchError = error as NSError
@@ -45,22 +46,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         }
 
         if let tuition = tuition{
-            var header = ""
-            if let name = tuition.name {
-                if let personName = tuition.personname {
-                    header = "\(personName)'s \(name)"
-                }
-                else{
-                    header = name
-                    
-                }
-                
-            }
-            
-            if let  time = tuition.time  {
-                header = header + " " + Utils.ToTimeFromString(time)
-            }
-            self.navigationItem.title = header
+            self.navigationItem.title = Utils.getDisplayNameWithTime(tuition)
         }
         
         
@@ -103,7 +89,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         let payment = fetchedResultsController.objectAtIndexPath(indexPath) as! Payment
 
         if let date = payment.date {
-            cell.dayLabel.text = Utils.ToLongDateString( date)
+            cell.dayLabel.text = Utils.toLongDateString( date)
             if let _ = payment.status {
                 cell.statusLabel.text =  payment.CurrentStatus.displaytext;
             }

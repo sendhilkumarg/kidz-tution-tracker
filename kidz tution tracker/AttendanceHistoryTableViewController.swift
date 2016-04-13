@@ -37,21 +37,7 @@ class AttendanceHistoryTableViewController: UITableViewController , NSFetchedRes
         }
 
         if let tuition = tuition{
-            var header = ""
-        if let name = tuition.name {
-            if let personName = tuition.personname {
-                header = "\(personName)'s \(name)"
-            }
-            else{
-               header = name
-                
-            }
-            
-        }
-        if let  time = tuition.time  {
-            header = header + " " + Utils.ToTimeFromString(time)
-        }
-        self.navigationItem.title = header
+            self.navigationItem.title = Utils.getDisplayNameWithTime(tuition)
         }
 
         
@@ -92,7 +78,7 @@ class AttendanceHistoryTableViewController: UITableViewController , NSFetchedRes
         let attendance = fetchedResultsController.objectAtIndexPath(indexPath) as! Attendance
 
         if let date = attendance.date{
-            cell.dayLabel.text = Utils.ToLongDateString( date)
+            cell.dayLabel.text = Utils.toLongDateString( date)
             if let _ = attendance.status {
                 cell.statusLabel.text =  attendance.CurrentStatus.displaytext;
             }

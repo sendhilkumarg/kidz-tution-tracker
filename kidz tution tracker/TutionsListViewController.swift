@@ -129,30 +129,10 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     //MARK: Construct table cell
     
     func configureTuitionsTableViewCellCell(cell: TuitionsTableViewCell, tuition : Tuition , atIndexPath indexPath: NSIndexPath) {
-        if let name = tuition.name {
-            if let personName = tuition.personname {
-                cell.tuitionNameLabel.text = "\(personName)'s \(name)"
-            }
-            else{
-                cell.tuitionNameLabel.text = name
-                
-            }
-        }
-        
-        if let  time = tuition.time  {
-            cell.timeLabel.text = Utils.ToTimeFromString(time)
-        }
-        else
-        {
-            cell.timeLabel.text = "";
-        }
-        
-        
-        if let isEmpty = tuition.frequency?.isEmpty where isEmpty != true {
-            
-            cell.daysLabel.text  =  Utils.GetRepeatLabelInShortFormat(tuition.frequency!)
-            }
-        
+        let (name,time,days ) =  Utils.getDisplayData(tuition)
+        cell.tuitionNameLabel.text = name
+        cell.timeLabel.text  = time
+        cell.daysLabel.text  = days
     }
 
     
