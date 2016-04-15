@@ -110,7 +110,7 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
     }
 
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attribute = [ NSFontAttributeName: UIFont(name: "Trebuchet MS", size: 17.0)! ]
+        let attribute = [ NSFontAttributeName: UIFont(name: "Trebuchet MS", size: 14)! ]
 
         let result = NSAttributedString(string: String( dayPickerData[component][row]) , attributes: attribute);
         return result

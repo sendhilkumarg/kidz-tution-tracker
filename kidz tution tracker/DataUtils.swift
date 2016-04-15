@@ -248,7 +248,8 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             let payReminderDate =  calendar.dateByAddingUnit(.Hour, value: 7, toDate: payment.date!, options: [])
             let notification = UILocalNotification() // scheduled for 7 AM on payment date
             notification.fireDate = payReminderDate! ;
-            notification.alertBody = "Update the payment status for \(tuition.personname!)'s \(tuition.name!) scheduled \(Utils.toLongDateString(payment.date!))"
+            let (name,time,_ ) =  Utils.getDisplayData(tuition)
+            notification.alertBody = "Update the payment status for  \(name) scheduled at \(time)"
             notification.alertAction = "open"
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertTitle = Utils.title
@@ -264,9 +265,9 @@ static func processMissingAttendance( lastAttendenceDate : NSDate , days : [NSIn
             
             let attendanceReminderDate =  calendar.dateByAddingUnit(.Minute, value: 5, toDate: attendance.date!, options: [])
             let notification = UILocalNotification()
-           // notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
-            notification.fireDate = NSDate(timeIntervalSinceNow: 1)
-            notification.alertBody = "Update the attendance status for \(tuition.personname!)'s \(tuition.name!) scheduled \(Utils.toLongDateString(attendance.date!)) \(Utils.toTimeFromString(tuition.time!)) "
+            notification.fireDate = attendanceReminderDate! ;// NSDate(timeIntervalSinceNow: 5)
+            let (name,time,_ ) =  Utils.getDisplayData(tuition)
+            notification.alertBody = "Update the attendance status for \(name) scheduled at \(time) "
             notification.alertAction = "open"
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertTitle = Utils.title
