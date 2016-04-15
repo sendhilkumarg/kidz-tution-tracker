@@ -467,7 +467,7 @@
         <!--Attendance-->
         <scene sceneID="4V6-S4-McE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bAI-zU-INE" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Attendance" automaticallyAdjustsScrollViewInsets="NO" id="bAI-zU-INE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Attendance" image="attendanceIcon" selectedImage="attendanceIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -490,7 +490,7 @@
         <!--Navigation Controller-->
         <scene sceneID="CCr-dY-cOg">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YeK-af-eBl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AttendanceHistory" automaticallyAdjustsScrollViewInsets="NO" id="YeK-af-eBl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0FZ-sg-sxj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

@@ -459,7 +459,7 @@
         <!--Navigation Controller-->
         <scene sceneID="f94-6u-gcm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8az-R5-ums" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PaymentHistory" automaticallyAdjustsScrollViewInsets="NO" id="8az-R5-ums" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kMK-FU-OUA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
