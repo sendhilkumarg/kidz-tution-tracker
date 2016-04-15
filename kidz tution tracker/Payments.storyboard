@@ -154,17 +154,17 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="1U2-Pm-7gu">
                                                     <rect key="frame" x="0.0" y="27" width="551" height="27"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy8-Pw-uYD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="510" height="27"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oy8-Pw-uYD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="481" height="27"/>
                                                             <color key="tintColor" red="0.07624528557062149" green="0.77416694164276123" blue="0.95813018083572388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                             <color key="textColor" red="0.18483450030000001" green="0.26589486769999998" blue="0.3444911859" alpha="1" colorSpace="calibratedRGB"/>
                                                             <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O40-K4-GNN">
-                                                            <rect key="frame" x="515" y="0.0" width="37" height="27"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O40-K4-GNN">
+                                                            <rect key="frame" x="486" y="0.0" width="65" height="27"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="1uc-Ff-3fS"/>
+                                                                <constraint firstAttribute="width" constant="65" id="vwg-83-YnD"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                                             <color key="textColor" red="1" green="0.56644392619999995" blue="0.053673884849999999" alpha="1" colorSpace="calibratedRGB"/>

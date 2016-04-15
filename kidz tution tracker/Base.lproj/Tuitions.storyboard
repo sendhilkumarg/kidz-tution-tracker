@@ -398,7 +398,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgY-ZY-NwD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2366" y="669"/>
+            <point key="canvasLocation" x="2366" y="721"/>
         </scene>
         <!--Day List Table View Controller-->
         <scene sceneID="Oeq-Rn-L8U">
@@ -467,7 +467,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4m-tT-BBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4044" y="1117"/>
+            <point key="canvasLocation" x="3298" y="1015"/>
         </scene>
         <!--Tuitions-->
         <scene sceneID="zLC-kr-qfA">
