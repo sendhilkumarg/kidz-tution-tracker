@@ -14,16 +14,17 @@ import UIKit
 class Utils{
     
 
-    static let title = "Kidz Tuition Tracker"
+    static let title = "Activity Tracker"
     static let titleError = "Error"
     static let failedToSave = "Failed to save the changes"
-    static let tuitionNameRequiredPrompt = "Please enter the tuition name"
-    static let personNameRequiredPrompt = "Please enter the person name attending the tuition"
-    static let repeatDaysRequiredPrompt = "Please select the tuition days"
+    static let tuitionNameRequiredPrompt = "Please enter the activity name"
+    static let personNameRequiredPrompt = "Please enter the name of ther person attending the activity"
+    static let repeatDaysRequiredPrompt = "Please select the activity days"
     static let tuitionFeeRequiredPrompt = "Please enter the fee amount to be paid per class"
     static let tuitionFeeIsInvalidPrompt = "Please enter a valid fee amount"
-    static let failedToSaveTuition = "Failed to save the tuition details"
-    static let failedToUpdateTuition = "Failed to update the tuition details"
+    static let failedToSaveTuition = "Failed to save the activity details"
+    static let failedToUpdateTuition = "Failed to update the activity details"
+    static let failedToDeleteTuition = "Failed to delete the attendance details"
     
     // MARK: Alert helper Methods
     static func showAlertWithTitle(viewControler: UIViewController, title: String, message: String) {
@@ -59,6 +60,15 @@ class Utils{
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .NoStyle
+        
+        return formatter.stringFromDate(date)
+    }
+    
+    static func toLongDateWithTimeString(date : NSDate) -> String
+    {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .ShortStyle
         
         return formatter.stringFromDate(date)
     }

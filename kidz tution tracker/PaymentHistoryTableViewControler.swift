@@ -194,6 +194,7 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
             let record = try managedObjectContext.existingObjectWithID(objectId )
             
             record.setValue(NSInteger( status.rawValue), forKeyPath: "status")
+            record.setValue(NSDate(), forKeyPath: "updatedon")
             try record.managedObjectContext?.save()
             
         } catch {

@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Tuitions-->
+        <!--Activities-->
         <scene sceneID="dgj-Tn-9QT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3IQ-eI-if4"/>
                         <viewControllerLayoutGuide type="bottom" id="kY7-8P-enX"/>
@@ -21,11 +21,11 @@
                                 <rect key="frame" x="20" y="69" width="560" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="Activity_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krY-jg-Idq" id="K5V-G1-8Ql">
-                                            <rect key="frame" x="0.0" y="0.0" width="527" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="527" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CkF-zM-swY">
@@ -95,7 +95,7 @@
                             <constraint firstItem="EdV-Gj-zWN" firstAttribute="leading" secondItem="LEr-1F-uaH" secondAttribute="leadingMargin" id="Zg4-U9-pNS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tuitions" id="dUT-Hh-Wzf">
+                    <navigationItem key="navigationItem" title="Activities" id="dUT-Hh-Wzf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iX9-sH-7NO">
                             <connections>
                                 <segue destination="3ww-j8-qYC" kind="presentation" identifier="segueAddTutions" id="0gq-kr-V61"/>
@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="892" y="1065"/>
         </scene>
-        <!--Add Tuition-->
+        <!--Add Activity-->
         <scene sceneID="7GX-Ma-5y6">
             <objects>
-                <tableViewController id="dlK-Xq-1p4" customClass="TuitionsAddViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dlK-Xq-1p4" customClass="TuitionsAddViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="km0-Qm-SsU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jqU-Ns-zas">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYP-yI-VdT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYP-yI-VdT">
                                                             <rect key="frame" x="0.0" y="5" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="0W3-yG-dTm"/>
@@ -140,7 +140,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the tuition" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9X-Vx-YGp">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the activity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9X-Vx-YGp">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -166,7 +166,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cBo-8E-zFJ">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-GJ-atS">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdf-GJ-atS">
                                                             <rect key="frame" x="0.0" y="5" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="L9B-Js-DZI"/>
@@ -175,7 +175,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Person name attending the tuition " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5x-gw-j4j">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the person attending the activity " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5x-gw-j4j">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -251,22 +251,11 @@
                                                         </label>
                                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cyh-hs-3TM">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="80"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="Ckh-br-EZb"/>
-                                                            </constraints>
                                                             <date key="date" timeIntervalSinceReferenceDate="479904641.23956501">
                                                                 <!--2016-03-17 10:50:41 +0000-->
                                                             </date>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="Ckh-br-EZb"/>
-                                                                </mask>
-                                                            </variation>
                                                         </datePicker>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="hXw-l0-kkP"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -276,9 +265,6 @@
                                                 <constraint firstItem="QdY-G1-sZX" firstAttribute="leading" secondItem="CGp-j4-anW" secondAttribute="leadingMargin" id="ldg-bl-nT9"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="Cyh-hs-3TM" firstAttribute="height" secondItem="yOL-fO-uwe" secondAttribute="height" id="19C-Nq-bpL"/>
-                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="PaT-fb-L41">
                                         <rect key="frame" x="0.0" y="321" width="600" height="64"/>
@@ -334,20 +320,17 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-FP-PB2">
                                                     <rect key="frame" x="8" y="8" width="584" height="72"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every Month On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-im-d6A">
-                                                            <rect key="frame" x="0.0" y="27" width="120" height="19"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Every Month On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-im-d6A">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="72"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="120" id="om4-wA-iRK"/>
+                                                                <constraint firstAttribute="width" constant="120" id="cTV-kH-Nk5"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lah-iH-4v0">
-                                                            <rect key="frame" x="125" y="1" width="459" height="70"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="70" id="jBX-df-JMW"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="125" y="0.0" width="459" height="72"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="dlK-Xq-1p4" id="UhA-Z7-gSr"/>
                                                             </connections>
@@ -371,7 +354,7 @@
                             <outlet property="delegate" destination="dlK-Xq-1p4" id="OZW-9F-ARx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Tuition" id="pIe-dI-8QG">
+                    <navigationItem key="navigationItem" title="Add Activity" id="pIe-dI-8QG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3a3-u1-Ima">
                             <color key="tintColor" red="0.076245285570000002" green="0.77416694159999999" blue="0.95813018080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -403,7 +386,7 @@
         <!--Day List Table View Controller-->
         <scene sceneID="Oeq-Rn-L8U">
             <objects>
-                <tableViewController id="AzT-f6-apy" customClass="DayListTableViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="AzT-f6-apy" customClass="DayListTableViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rw6-yV-taU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -411,7 +394,7 @@
                         <color key="tintColor" red="0.2666666667" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexColor" red="1" green="0.55228611080000001" blue="0.09885414528" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayCell" id="PPn-dO-xLU" customClass="DayTableViewCell" customModule="kidz_tuition_tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayCell" id="PPn-dO-xLU" customClass="DayTableViewCell" customModule="Activity_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PPn-dO-xLU" id="FiG-gU-rZ7">
@@ -419,10 +402,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="r5r-hh-nmz">
-                                            <rect key="frame" x="18" y="18" width="584" height="34"/>
+                                            <rect key="frame" x="18" y="18" width="564" height="24"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0p-bI-Qym">
-                                                    <rect key="frame" x="0.0" y="8" width="584" height="19"/>
+                                                    <rect key="frame" x="0.0" y="2.5" width="564" height="19"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                     <color key="textColor" red="0.36240455510000003" green="0.66617798809999995" blue="0.91147774459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -432,25 +415,11 @@
                                     </subviews>
                                     <color key="tintColor" red="0.2666666667" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="r5r-hh-nmz" secondAttribute="trailing" constant="10" id="9w0-lw-pam"/>
-                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="trailing" secondItem="FiG-gU-rZ7" secondAttribute="trailingMargin" constant="10" id="FmH-Hl-vdX"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="r5r-hh-nmz" secondAttribute="trailing" id="GGt-yw-l2h"/>
-                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="trailing" secondItem="FiG-gU-rZ7" secondAttribute="trailingMargin" constant="10" id="J0R-ah-lnq"/>
-                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="leading" secondItem="FiG-gU-rZ7" secondAttribute="leadingMargin" constant="10" id="JCe-II-ZFk"/>
-                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="top" secondItem="FiG-gU-rZ7" secondAttribute="topMargin" id="PAW-Pj-asa"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="r5r-hh-nmz" secondAttribute="bottom" id="XXH-nU-oW4"/>
-                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="leading" secondItem="FiG-gU-rZ7" secondAttribute="leadingMargin" id="ebf-eq-e6O"/>
-                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="top" secondItem="FiG-gU-rZ7" secondAttribute="topMargin" constant="10" id="mJV-SD-wg7"/>
+                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="top" secondItem="FiG-gU-rZ7" secondAttribute="topMargin" constant="10" id="3Jv-SM-Xxg"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="r5r-hh-nmz" secondAttribute="trailing" constant="10" id="HS4-A7-Xyp"/>
+                                        <constraint firstItem="r5r-hh-nmz" firstAttribute="leading" secondItem="FiG-gU-rZ7" secondAttribute="leadingMargin" constant="10" id="kZQ-4K-wan"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="r5r-hh-nmz" secondAttribute="bottom" constant="10" id="odj-tT-yxA"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="9w0-lw-pam"/>
-                                            <exclude reference="GGt-yw-l2h"/>
-                                            <exclude reference="J0R-ah-lnq"/>
-                                            <exclude reference="PAW-Pj-asa"/>
-                                            <exclude reference="ebf-eq-e6O"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="1" green="0.55228611080000001" blue="0.09885414528" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -469,11 +438,11 @@
             </objects>
             <point key="canvasLocation" x="3298" y="1015"/>
         </scene>
-        <!--Tuitions-->
+        <!--Activities-->
         <scene sceneID="zLC-kr-qfA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rws-2s-1jK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tuitions" image="tuitionsIcon" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
+                    <tabBarItem key="tabBarItem" title="Activities" image="tuitionsIcon" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="91G-5v-VUv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -518,10 +487,10 @@
             </objects>
             <point key="canvasLocation" x="1642" y="721"/>
         </scene>
-        <!--Edit Tuition-->
+        <!--Edit Activity-->
         <scene sceneID="gtF-5k-Ajr">
             <objects>
-                <tableViewController id="oSw-Mh-8ba" customClass="TuitionsEditViewController" customModule="kidz_tuition_tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oSw-Mh-8ba" customClass="TuitionsEditViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GOn-i7-WVJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -539,7 +508,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ycS-PY-tHC">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-em-4rV">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-em-4rV">
                                                             <rect key="frame" x="0.0" y="5" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="Zxl-6N-Gx1"/>
@@ -548,7 +517,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the tuition" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDX-mp-dT3">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the activity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDX-mp-dT3">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -574,7 +543,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IIj-OW-3cb">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAn-9P-Qi3">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAn-9P-Qi3">
                                                             <rect key="frame" x="0.0" y="5" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="EOB-8M-vAq"/>
@@ -583,7 +552,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Person name attending the tuition " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irE-eR-Meo">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the person attending the activity " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irE-eR-Meo">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -646,7 +615,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="mB7-UX-Wif">
-                                                    <rect key="frame" x="8" y="8" width="584" height="80"/>
+                                                    <rect key="frame" x="8" y="8" width="584" height="81"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Q-vH-gm3">
                                                             <rect key="frame" x="0.0" y="31" width="120" height="19"/>
@@ -658,23 +627,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="N42-nf-AzX">
-                                                            <rect key="frame" x="125" y="0.0" width="459" height="80"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="50" id="GRT-nV-QNH"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="125" y="0.0" width="459" height="81"/>
                                                             <date key="date" timeIntervalSinceReferenceDate="479904641.23956501">
                                                                 <!--2016-03-17 10:50:41 +0000-->
                                                             </date>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="GRT-nV-QNH"/>
-                                                                </mask>
-                                                            </variation>
                                                         </datePicker>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="EGo-Lx-6Ps"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -684,9 +642,6 @@
                                                 <constraint firstItem="mB7-UX-Wif" firstAttribute="top" secondItem="my0-iU-eP6" secondAttribute="topMargin" id="lhr-Y0-r0S"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="N42-nf-AzX" firstAttribute="height" secondItem="FD4-9n-zwW" secondAttribute="height" id="EZ3-nb-hji"/>
-                                        </constraints>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="64" id="bVt-Qc-SeX">
                                         <rect key="frame" x="0.0" y="324" width="600" height="64"/>
@@ -742,21 +697,18 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aQt-GL-gXh">
                                                     <rect key="frame" x="8" y="8" width="584" height="80"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Every Month On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGj-Jb-H9r">
-                                                            <rect key="frame" x="0.0" y="31" width="120" height="19"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay Every Month On" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGj-Jb-H9r">
+                                                            <rect key="frame" x="0.0" y="0.0" width="120" height="80"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="120" id="CXa-eX-p0g"/>
+                                                                <constraint firstAttribute="width" constant="120" id="I33-nQ-XP4"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="16"/>
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YPG-eJ-d73">
-                                                            <rect key="frame" x="125" y="5" width="459" height="70"/>
+                                                            <rect key="frame" x="125" y="0.0" width="459" height="80"/>
                                                             <color key="tintColor" red="1" green="0.55228611080000001" blue="0.09885414528" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="70" id="p6f-Eb-NF9"/>
-                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="delegate" destination="oSw-Mh-8ba" id="eQc-aQ-eOt"/>
                                                             </connections>
@@ -780,7 +732,7 @@
                             <outlet property="delegate" destination="oSw-Mh-8ba" id="oLN-ZS-YAQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Tuition" id="Y5W-TK-Qhr">
+                    <navigationItem key="navigationItem" title="Edit Activity" id="Y5W-TK-Qhr">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nxe-Ah-Xhp">
                             <color key="tintColor" red="0.076245285570000002" green="0.77416694159999999" blue="0.95813018080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -837,6 +789,6 @@
         <image name="tuitionsIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="szR-zW-ZEl"/>
+        <segue reference="NtJ-HD-LZd"/>
     </inferredMetricsTieBreakers>
 </document>

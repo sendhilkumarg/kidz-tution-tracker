@@ -19,6 +19,7 @@ class PaymentEditController: UIViewController {
 
     @IBOutlet weak var dayLabel: UILabel!
 
+    @IBOutlet weak var updatedOnLabel: UILabel!
     @IBOutlet weak var tuitionLabel: UILabel!
     @IBOutlet weak var paymentStatusSwitch: UISwitch!
     override func awakeFromNib() {
@@ -36,6 +37,9 @@ class PaymentEditController: UIViewController {
             
             
             dayLabel.text = Utils.toLongDateString( paymentToEdit.date!)
+            if let updatedOnDate = paymentToEdit.updatedon {
+                updatedOnLabel.text = "last updated on \( Utils.toLongDateWithTimeString(updatedOnDate))"
+            }
             
             if let _ = paymentToEdit.status  {
                 switch paymentToEdit.CurrentStatus

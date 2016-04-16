@@ -15,6 +15,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     let managedObjectContext = TuitionTrackerDataController.sharedInstance.managedObjectContext
     var deleteTutionsIndexPath: NSIndexPath? = nil
     @IBOutlet weak var tuitionsTableView: UITableView!
+    var messageLabel : UILabel?
     
     
     override func viewDidLoad() {
@@ -43,20 +44,38 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
 
     // MARK: Table View Data Source Methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if let sections = fetchedResultsController.sections {
-            return sections.count
+        guard let sectionCount = fetchedResultsController.sections?.count else {
+            return 0
         }
         
-        return 0
+        return sectionCount
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections {
             let sectionInfo = sections[section]
+            if (sectionInfo.numberOfObjects == 0){
+                messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width , self.view.bounds.size.height))
+                messageLabel!.text = "No activities currently configured. Please add an activity.";
+                messageLabel!.textColor = UIColor.blackColor() ;
+                messageLabel!.numberOfLines = 0;
+                messageLabel!.textAlignment = NSTextAlignment.Center;
+                messageLabel!.font = UIFont(name: "Trebuchet MS", size: 14)
+                tuitionsTableView.backgroundView = messageLabel;
+
+            }
+            else if let label = messageLabel
+            {
+                label.hidden = true;
+               
+            }
             return sectionInfo.numberOfObjects
         }
+        else{
+                    return 0
+        }
+
         
-        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -163,7 +182,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     func confirmDelete() {
         let record = fetchedResultsController.objectAtIndexPath(deleteTutionsIndexPath! ) as! Tuition
         
-        let alert = UIAlertController(title: "Delete Tuition", message: "Are you sure you want to permanently delete the tuition \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Delete Activity", message: "Are you sure you want to permanently delete the activity \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
         
         let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDelete)
         let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDelete)
@@ -189,7 +208,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
         }
         catch {
             let saveError = error as NSError
-            Utils.showAlertWithTitle(self, title: Utils.title, message: "Failed to delete the tuition details. \(saveError.userInfo)") ;
+            Utils.showAlertWithTitle(self, title: Utils.title, message: "\(Utils.failedToDeleteTuition). \(saveError.userInfo)") ;
         }
         deleteTutionsIndexPath = nil
 

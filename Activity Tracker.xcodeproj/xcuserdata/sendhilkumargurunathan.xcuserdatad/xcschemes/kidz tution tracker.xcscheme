@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0700"
-   version = "2.0">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-               BuildableName = "kidz tuition tracker.app"
-               BlueprintName = "kidz tuition tracker"
-               ReferencedContainer = "container:kidz tuition tracker.xcodeproj">
+               BuildableName = "Activity Tracker.app"
+               BlueprintName = "Activity Tracker"
+               ReferencedContainer = "container:Activity Tracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905B71C45A94F00B00E35"
-               BuildableName = "kidz tuition tracker.xctest"
-               BlueprintName = "kidz tuition trackerTests"
-               ReferencedContainer = "container:kidz tuition tracker.xcodeproj">
+               BuildableName = "Activity Tracker.xctest"
+               BlueprintName = "Activity TrackerTests"
+               ReferencedContainer = "container:Activity Tracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905C21C45A94F00B00E35"
-               BuildableName = "kidz tuition tracker.xctest"
-               BlueprintName = "kidz tuition trackerUITests"
-               ReferencedContainer = "container:kidz tuition tracker.xcodeproj">
+               BuildableName = "Activity Tracker.xctest"
+               BlueprintName = "Activity TrackerUITests"
+               ReferencedContainer = "container:Activity Tracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-            BuildableName = "kidz tuition tracker.app"
-            BlueprintName = "kidz tuition tracker"
-            ReferencedContainer = "container:kidz tuition tracker.xcodeproj">
+            BuildableName = "Activity Tracker.app"
+            BlueprintName = "Activity Tracker"
+            ReferencedContainer = "container:Activity Tracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -70,16 +70,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      launchAutomaticallySubstyle = "1">
+      allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-            BuildableName = "kidz tuition tracker.app"
-            BlueprintName = "kidz tuition tracker"
-            ReferencedContainer = "container:kidz tuition tracker.xcodeproj">
+            BuildableName = "Activity Tracker.app"
+            BlueprintName = "Activity Tracker"
+            ReferencedContainer = "container:Activity Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-            BuildableName = "kidz tuition tracker.app"
-            BlueprintName = "kidz tuition tracker"
-            ReferencedContainer = "container:kidz tuition tracker.xcodeproj">
+            BuildableName = "Activity Tracker.app"
+            BlueprintName = "Activity Tracker"
+            ReferencedContainer = "container:Activity Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
