@@ -1,6 +1,6 @@
 //
 //  Tuition.swift
-//  kidz tuition tracker
+//  Activity Tracker
 //
 //  Created by Sendhil kumar Gurunathan on 4/2/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
