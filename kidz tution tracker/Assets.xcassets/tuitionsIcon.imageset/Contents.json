@@ -7,12 +7,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "tab1-50x50.png",
+      "filename" : "tab1-75x75.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "tab1-75x75.png",
+      "filename" : "tab1-75x75-1.png",
       "scale" : "3x"
     }
   ],
