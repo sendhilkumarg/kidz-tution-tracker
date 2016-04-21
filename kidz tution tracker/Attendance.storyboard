@@ -468,7 +468,7 @@
         <scene sceneID="4V6-S4-McE">
             <objects>
                 <navigationController storyboardIdentifier="Attendance" automaticallyAdjustsScrollViewInsets="NO" id="bAI-zU-INE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Attendance" image="attendanceIcon" selectedImage="attendanceIcon" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Attendance" image="attendanceFlatNotSelected" selectedImage="attendanceIcon" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IV0-Zf-rPX">
@@ -515,6 +515,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="attendanceFlatNotSelected" width="50" height="50"/>
         <image name="attendanceIcon" width="50" height="50"/>
     </resources>
     <color key="tintColor" red="0.07624528557062149" green="0.77416694164276123" blue="0.95813018083572388" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

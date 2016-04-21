@@ -402,7 +402,7 @@
         <scene sceneID="IT1-nc-enw">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vln-ED-YUm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Payments" image="paymentIcon" selectedImage="paymentIcon" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Payments" image="paymentFlatNotSelected" selectedImage="paymentIcon" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WcL-iZ-Lbr">
@@ -495,6 +495,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="paymentFlatNotSelected" width="50" height="50"/>
         <image name="paymentIcon" width="50" height="50"/>
     </resources>
 </document>
