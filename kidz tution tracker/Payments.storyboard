@@ -8,13 +8,13 @@
         <!--Pending Payment Table View Controller-->
         <scene sceneID="aKY-Nw-eXO">
             <objects>
-                <tableViewController storyboardIdentifier="pendingPayment" automaticallyAdjustsScrollViewInsets="NO" id="Q3f-Eg-cpp" customClass="PendingPaymentTableViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="pendingPayment" automaticallyAdjustsScrollViewInsets="NO" id="Q3f-Eg-cpp" customClass="PendingPaymentTableViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="RI9-hL-RuA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="JIr-EK-fWG" customClass="PendingPaymentHeaderCell" customModule="Activity_Tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" id="JIr-EK-fWG" customClass="PendingPaymentHeaderCell" customModule="Kidz_Tuition_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JIr-EK-fWG" id="1ou-qb-0xs">
@@ -56,7 +56,7 @@
                                     <outlet property="tuitionLabel" destination="qTP-7X-td7" id="LSP-EK-czY"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pendingPaymentTableViewCell" id="80x-e7-q5e" customClass="PendingPaymentCell" customModule="Activity_Tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pendingPaymentTableViewCell" id="80x-e7-q5e" customClass="PendingPaymentCell" customModule="Kidz_Tuition_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="80x-e7-q5e" id="kzF-EP-DPW">
@@ -121,13 +121,13 @@
         <!--Payment Tuition List Table View Controller-->
         <scene sceneID="uvM-m0-ykZ">
             <objects>
-                <tableViewController storyboardIdentifier="historyPayment" id="kcA-e8-WeN" customClass="PaymentTuitionListTableViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="historyPayment" id="kcA-e8-WeN" customClass="PaymentTuitionListTableViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" id="kbg-2L-R1W">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HistoryTuitionViewCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HistoryTuitionViewCell" id="zSF-VM-RJ2" customClass="PaymentTuitionTableViewCell" customModule="Activity_Tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="HistoryTuitionViewCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="HistoryTuitionViewCell" id="zSF-VM-RJ2" customClass="PaymentTuitionTableViewCell" customModule="Kidz_Tuition_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zSF-VM-RJ2" id="Kg4-6G-11e">
@@ -204,7 +204,7 @@
         <!--Payment History Table View Controler-->
         <scene sceneID="Vkd-yg-Raa">
             <objects>
-                <tableViewController id="vth-wg-RB7" customClass="PaymentHistoryTableViewControler" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="vth-wg-RB7" customClass="PaymentHistoryTableViewControler" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="rSk-6C-QVi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -249,7 +249,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyPaymentTableViewCell" id="6yZ-4B-Fav" customClass="PaymentHistoryCell" customModule="Activity_Tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historyPaymentTableViewCell" id="6yZ-4B-Fav" customClass="PaymentHistoryCell" customModule="Kidz_Tuition_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="152" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6yZ-4B-Fav" id="l56-GQ-154">
@@ -306,7 +306,7 @@
         <!--Payment Edit Controller-->
         <scene sceneID="GBS-DQ-mrz">
             <objects>
-                <viewController id="byf-SC-Jw6" customClass="PaymentEditController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="byf-SC-Jw6" customClass="PaymentEditController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VQB-3G-U8B"/>
                         <viewControllerLayoutGuide type="bottom" id="F6Y-0K-AIJ"/>
@@ -425,7 +425,7 @@
         <!--Payment View Controller-->
         <scene sceneID="xeG-49-eWY">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9xZ-Px-DN8" customClass="PaymentViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9xZ-Px-DN8" customClass="PaymentViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M0H-h2-7kg"/>
                         <viewControllerLayoutGuide type="bottom" id="A86-NG-dO4"/>
