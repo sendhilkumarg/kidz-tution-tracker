@@ -182,7 +182,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     func confirmDelete() {
         let record = fetchedResultsController.objectAtIndexPath(deleteTutionsIndexPath! ) as! Tuition
         
-        let alert = UIAlertController(title: "Delete Activity", message: "Are you sure you want to permanently delete the tuition \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Delete Tuition", message: "Are you sure you want to permanently delete the tuition \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
         
         let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDelete)
         let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDelete)

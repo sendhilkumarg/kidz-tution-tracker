@@ -141,28 +141,27 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate{
     
     @IBAction func saveAction(sender: UIBarButtonItem) {
 
-        let name = tuitionNameText.text
-        let personName = personNameText.text
-        let amount =  payPerClassText.text
+        let name = tuitionNameText.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let personName = personNameText.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        let amount =  payPerClassText.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
 
 
-        if let isEmpty = name?.isEmpty where isEmpty == true {
+        if name.isEmpty {
             Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionNameRequiredPrompt) ;
             return
         }
-        if let isEmpty = personName?.isEmpty where isEmpty == true {
+
+        if  personName.isEmpty {
             Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.personNameRequiredPrompt) ;
             return
         }
-
 
         if selectedDays.isEmpty
         {
             Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.repeatDaysRequiredPrompt) ;
             return
         }
-
-        if let isEmpty = amount?.isEmpty where isEmpty == true {
+        if amount.isEmpty {
             Utils.showAlertWithTitle(self, title: Utils.title, message: Utils.tuitionFeeRequiredPrompt) ;
             return
         }
