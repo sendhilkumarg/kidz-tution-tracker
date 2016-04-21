@@ -88,17 +88,17 @@
 		BC101C431C9CC82800995966 /* TuitionsEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TuitionsEditViewController.swift; sourceTree = "<group>"; };
 		BC101C451C9D1B8800995966 /* AttendanceEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttendanceEditController.swift; sourceTree = "<group>"; };
 		BC101C471C9D3A7100995966 /* PaymentEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentEditController.swift; sourceTree = "<group>"; };
-		BC6905A21C45A94F00B00E35 /* Activity Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Activity Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6905A21C45A94F00B00E35 /* Kidz Tuition Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kidz Tuition Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6905A51C45A94F00B00E35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC6905A71C45A94F00B00E35 /* AttendanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttendanceViewController.swift; sourceTree = "<group>"; };
 		BC6905AC1C45A94F00B00E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC6905AE1C45A94F00B00E35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC6905B11C45A94F00B00E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC6905B31C45A94F00B00E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC6905B81C45A94F00B00E35 /* Activity Tracker.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Activity Tracker.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6905B81C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kidz Tuition Tracker.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6905BC1C45A94F00B00E35 /* kidz_tution_trackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kidz_tution_trackerTests.swift; sourceTree = "<group>"; };
 		BC6905BE1C45A94F00B00E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BC6905C31C45A94F00B00E35 /* Activity Tracker.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Activity Tracker.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC6905C31C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kidz Tuition Tracker.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC6905C71C45A94F00B00E35 /* kidz_tution_trackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kidz_tution_trackerUITests.swift; sourceTree = "<group>"; };
 		BC6905C91C45A94F00B00E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC6905D61C46FBF700B00E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tuitions.storyboard; sourceTree = "<group>"; };
@@ -193,9 +193,9 @@
 		BC6905A31C45A94F00B00E35 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC6905A21C45A94F00B00E35 /* Activity Tracker.app */,
-				BC6905B81C45A94F00B00E35 /* Activity Tracker.xctest */,
-				BC6905C31C45A94F00B00E35 /* Activity Tracker.xctest */,
+				BC6905A21C45A94F00B00E35 /* Kidz Tuition Tracker.app */,
+				BC6905B81C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */,
+				BC6905C31C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -303,9 +303,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BC6905A11C45A94F00B00E35 /* Activity Tracker */ = {
+		BC6905A11C45A94F00B00E35 /* Kidz Tuition Tracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC6905CC1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Activity Tracker" */;
+			buildConfigurationList = BC6905CC1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Kidz Tuition Tracker" */;
 			buildPhases = (
 				BC69059E1C45A94F00B00E35 /* Sources */,
 				BC69059F1C45A94F00B00E35 /* Frameworks */,
@@ -315,14 +315,14 @@
 			);
 			dependencies = (
 			);
-			name = "Activity Tracker";
+			name = "Kidz Tuition Tracker";
 			productName = "kidz tution tracker";
-			productReference = BC6905A21C45A94F00B00E35 /* Activity Tracker.app */;
+			productReference = BC6905A21C45A94F00B00E35 /* Kidz Tuition Tracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BC6905B71C45A94F00B00E35 /* Activity TrackerTests */ = {
+		BC6905B71C45A94F00B00E35 /* Kidz Tuition TrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC6905CF1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Activity TrackerTests" */;
+			buildConfigurationList = BC6905CF1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Kidz Tuition TrackerTests" */;
 			buildPhases = (
 				BC6905B41C45A94F00B00E35 /* Sources */,
 				BC6905B51C45A94F00B00E35 /* Frameworks */,
@@ -333,14 +333,14 @@
 			dependencies = (
 				BC6905BA1C45A94F00B00E35 /* PBXTargetDependency */,
 			);
-			name = "Activity TrackerTests";
+			name = "Kidz Tuition TrackerTests";
 			productName = "kidz tution trackerTests";
-			productReference = BC6905B81C45A94F00B00E35 /* Activity Tracker.xctest */;
+			productReference = BC6905B81C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BC6905C21C45A94F00B00E35 /* Activity TrackerUITests */ = {
+		BC6905C21C45A94F00B00E35 /* Kidz Tuition TrackerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BC6905D21C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Activity TrackerUITests" */;
+			buildConfigurationList = BC6905D21C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Kidz Tuition TrackerUITests" */;
 			buildPhases = (
 				BC6905BF1C45A94F00B00E35 /* Sources */,
 				BC6905C01C45A94F00B00E35 /* Frameworks */,
@@ -351,9 +351,9 @@
 			dependencies = (
 				BC6905C51C45A94F00B00E35 /* PBXTargetDependency */,
 			);
-			name = "Activity TrackerUITests";
+			name = "Kidz Tuition TrackerUITests";
 			productName = "kidz tution trackerUITests";
-			productReference = BC6905C31C45A94F00B00E35 /* Activity Tracker.xctest */;
+			productReference = BC6905C31C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -387,7 +387,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BC69059D1C45A94F00B00E35 /* Build configuration list for PBXProject "Activity Tracker" */;
+			buildConfigurationList = BC69059D1C45A94F00B00E35 /* Build configuration list for PBXProject "Kidz Tuition Tracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -400,9 +400,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BC6905A11C45A94F00B00E35 /* Activity Tracker */,
-				BC6905B71C45A94F00B00E35 /* Activity TrackerTests */,
-				BC6905C21C45A94F00B00E35 /* Activity TrackerUITests */,
+				BC6905A11C45A94F00B00E35 /* Kidz Tuition Tracker */,
+				BC6905B71C45A94F00B00E35 /* Kidz Tuition TrackerTests */,
+				BC6905C21C45A94F00B00E35 /* Kidz Tuition TrackerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -509,12 +509,12 @@
 /* Begin PBXTargetDependency section */
 		BC6905BA1C45A94F00B00E35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BC6905A11C45A94F00B00E35 /* Activity Tracker */;
+			target = BC6905A11C45A94F00B00E35 /* Kidz Tuition Tracker */;
 			targetProxy = BC6905B91C45A94F00B00E35 /* PBXContainerItemProxy */;
 		};
 		BC6905C51C45A94F00B00E35 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BC6905A11C45A94F00B00E35 /* Activity Tracker */;
+			target = BC6905A11C45A94F00B00E35 /* Kidz Tuition Tracker */;
 			targetProxy = BC6905C41C45A94F00B00E35 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -643,7 +643,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tuition-tracker";
-				PRODUCT_NAME = "Activity Tracker";
+				PRODUCT_NAME = "Kidz Tuition Tracker";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -657,7 +657,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tuition-tracker";
-				PRODUCT_NAME = "Activity Tracker";
+				PRODUCT_NAME = "Kidz Tuition Tracker";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -669,8 +669,8 @@
 				INFOPLIST_FILE = "kidz tution trackerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tution-trackerTests";
-				PRODUCT_NAME = "Activity Tracker";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Activity Tracker.app/Activity Tracker";
+				PRODUCT_NAME = "Kidz Tuition Tracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kidz Tuition Tracker.app/Kidz Tuition Tracker";
 			};
 			name = Debug;
 		};
@@ -681,8 +681,8 @@
 				INFOPLIST_FILE = "kidz tution trackerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tution-trackerTests";
-				PRODUCT_NAME = "Activity Tracker";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Activity Tracker.app/Activity Tracker";
+				PRODUCT_NAME = "Kidz Tuition Tracker";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Kidz Tuition Tracker.app/Kidz Tuition Tracker";
 			};
 			name = Release;
 		};
@@ -692,7 +692,7 @@
 				INFOPLIST_FILE = "kidz tution trackerUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tution-trackerUITests";
-				PRODUCT_NAME = "Activity Tracker";
+				PRODUCT_NAME = "Kidz Tuition Tracker";
 				TEST_TARGET_NAME = "kidz tution tracker";
 				USES_XCTRUNNER = YES;
 			};
@@ -704,7 +704,7 @@
 				INFOPLIST_FILE = "kidz tution trackerUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gs.kidz-tution-trackerUITests";
-				PRODUCT_NAME = "Activity Tracker";
+				PRODUCT_NAME = "Kidz Tuition Tracker";
 				TEST_TARGET_NAME = "kidz tution tracker";
 				USES_XCTRUNNER = YES;
 			};
@@ -713,7 +713,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BC69059D1C45A94F00B00E35 /* Build configuration list for PBXProject "Activity Tracker" */ = {
+		BC69059D1C45A94F00B00E35 /* Build configuration list for PBXProject "Kidz Tuition Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6905CA1C45A94F00B00E35 /* Debug */,
@@ -722,7 +722,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC6905CC1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Activity Tracker" */ = {
+		BC6905CC1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Kidz Tuition Tracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6905CD1C45A94F00B00E35 /* Debug */,
@@ -731,7 +731,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC6905CF1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Activity TrackerTests" */ = {
+		BC6905CF1C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Kidz Tuition TrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6905D01C45A94F00B00E35 /* Debug */,
@@ -740,7 +740,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BC6905D21C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Activity TrackerUITests" */ = {
+		BC6905D21C45A94F00B00E35 /* Build configuration list for PBXNativeTarget "Kidz Tuition TrackerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC6905D31C45A94F00B00E35 /* Debug */,

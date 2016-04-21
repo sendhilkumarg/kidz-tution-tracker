@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Activities-->
+        <!--Tuitions-->
         <scene sceneID="dgj-Tn-9QT">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="AUO-A1-Apg" customClass="TutionsListViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3IQ-eI-if4"/>
                         <viewControllerLayoutGuide type="bottom" id="kY7-8P-enX"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="20" y="69" width="560" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="Activity_Tracker" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" showsReorderControl="YES" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TuitionsTableViewCell" id="krY-jg-Idq" customClass="TuitionsTableViewCell" customModule="Kidz_Tuition_Tracker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="krY-jg-Idq" id="K5V-G1-8Ql">
@@ -95,7 +95,7 @@
                             <constraint firstItem="EdV-Gj-zWN" firstAttribute="leading" secondItem="LEr-1F-uaH" secondAttribute="leadingMargin" id="Zg4-U9-pNS"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Activities" id="dUT-Hh-Wzf">
+                    <navigationItem key="navigationItem" title="Tuitions" id="dUT-Hh-Wzf">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="iX9-sH-7NO">
                             <connections>
                                 <segue destination="3ww-j8-qYC" kind="presentation" identifier="segueAddTutions" id="0gq-kr-V61"/>
@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="892" y="1065"/>
         </scene>
-        <!--Add Activity-->
+        <!--Add Tuition-->
         <scene sceneID="7GX-Ma-5y6">
             <objects>
-                <tableViewController id="dlK-Xq-1p4" customClass="TuitionsAddViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dlK-Xq-1p4" customClass="TuitionsAddViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="km0-Qm-SsU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,7 +131,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="jqU-Ns-zas">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYP-yI-VdT">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYP-yI-VdT">
                                                             <rect key="frame" x="0.0" y="5" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="0W3-yG-dTm"/>
@@ -140,7 +140,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the activity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9X-Vx-YGp">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the tuition" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y9X-Vx-YGp">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -175,7 +175,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the person attending the activity " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5x-gw-j4j">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the person attending the tuition " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a5x-gw-j4j">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -354,7 +354,7 @@
                             <outlet property="delegate" destination="dlK-Xq-1p4" id="OZW-9F-ARx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Activity" id="pIe-dI-8QG">
+                    <navigationItem key="navigationItem" title="Add Tuition" id="pIe-dI-8QG">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3a3-u1-Ima">
                             <color key="tintColor" red="0.076245285570000002" green="0.77416694159999999" blue="0.95813018080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -386,7 +386,7 @@
         <!--Day List Table View Controller-->
         <scene sceneID="Oeq-Rn-L8U">
             <objects>
-                <tableViewController id="AzT-f6-apy" customClass="DayListTableViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="AzT-f6-apy" customClass="DayListTableViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rw6-yV-taU">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -394,7 +394,7 @@
                         <color key="tintColor" red="0.2666666667" green="0.70196078429999997" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexColor" red="1" green="0.55228611080000001" blue="0.09885414528" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayCell" id="PPn-dO-xLU" customClass="DayTableViewCell" customModule="Activity_Tracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayCell" id="PPn-dO-xLU" customClass="DayTableViewCell" customModule="Kidz_Tuition_Tracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PPn-dO-xLU" id="FiG-gU-rZ7">
@@ -438,11 +438,11 @@
             </objects>
             <point key="canvasLocation" x="3298" y="1015"/>
         </scene>
-        <!--Activities-->
+        <!--Tuitions-->
         <scene sceneID="zLC-kr-qfA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rws-2s-1jK" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activities" image="tuitionsFlatNotSelected" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
+                    <tabBarItem key="tabBarItem" title="Tuitions" image="tuitionsFlatNotSelected" selectedImage="tuitionsIcon" id="b8y-5k-PF5"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="91G-5v-VUv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -487,10 +487,10 @@
             </objects>
             <point key="canvasLocation" x="1642" y="721"/>
         </scene>
-        <!--Edit Activity-->
+        <!--Edit Tuition-->
         <scene sceneID="gtF-5k-Ajr">
             <objects>
-                <tableViewController id="oSw-Mh-8ba" customClass="TuitionsEditViewController" customModule="Activity_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oSw-Mh-8ba" customClass="TuitionsEditViewController" customModule="Kidz_Tuition_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GOn-i7-WVJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -508,7 +508,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ycS-PY-tHC">
                                                     <rect key="frame" x="8" y="8" width="584" height="28"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-em-4rV">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuition Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vIA-em-4rV">
                                                             <rect key="frame" x="0.0" y="5" width="120" height="19"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="120" id="Zxl-6N-Gx1"/>
@@ -517,7 +517,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the activity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDX-mp-dT3">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the tuition" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gDX-mp-dT3">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -552,7 +552,7 @@
                                                             <color key="textColor" red="0.36240455508232117" green="0.66617798805236816" blue="0.91147774457931519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the person attending the activity " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irE-eR-Meo">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the person attending the tuition " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="irE-eR-Meo">
                                                             <rect key="frame" x="125" y="0.0" width="459" height="28"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits"/>
@@ -732,7 +732,7 @@
                             <outlet property="delegate" destination="oSw-Mh-8ba" id="oLN-ZS-YAQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Edit Activity" id="Y5W-TK-Qhr">
+                    <navigationItem key="navigationItem" title="Edit Tuition" id="Y5W-TK-Qhr">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="nxe-Ah-Xhp">
                             <color key="tintColor" red="0.076245285570000002" green="0.77416694159999999" blue="0.95813018080000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -790,6 +790,6 @@
         <image name="tuitionsIcon" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="NtJ-HD-LZd"/>
+        <segue reference="szR-zW-ZEl"/>
     </inferredMetricsTieBreakers>
 </document>

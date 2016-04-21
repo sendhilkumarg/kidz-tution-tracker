@@ -14,16 +14,16 @@ import UIKit
 class Utils{
     
 
-    static let title = "Activity Tracker"
+    static let title = "Kidz Tuition Tracker"
     static let titleError = "Error"
     static let failedToSave = "Failed to save the changes"
-    static let tuitionNameRequiredPrompt = "Please enter the activity name"
-    static let personNameRequiredPrompt = "Please enter the name of ther person attending the activity"
-    static let repeatDaysRequiredPrompt = "Please select the activity days"
+    static let tuitionNameRequiredPrompt = "Please enter the tuition name"
+    static let personNameRequiredPrompt = "Please enter the name of ther person attending the tuition"
+    static let repeatDaysRequiredPrompt = "Please select the tuition days"
     static let tuitionFeeRequiredPrompt = "Please enter the fee amount to be paid per class"
     static let tuitionFeeIsInvalidPrompt = "Please enter a valid fee amount"
     static let failedToSaveTuition = "Failed to save the activity details"
-    static let failedToUpdateTuition = "Failed to update the activity details"
+    static let failedToUpdateTuition = "Failed to update the tuition details"
     static let failedToDeleteTuition = "Failed to delete the attendance details"
     
     // MARK: Alert helper Methods

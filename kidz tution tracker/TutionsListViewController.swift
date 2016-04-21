@@ -56,7 +56,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
             let sectionInfo = sections[section]
             if (sectionInfo.numberOfObjects == 0){
                 messageLabel = UILabel(frame: CGRectMake(0, 0, self.view.bounds.size.width , self.view.bounds.size.height))
-                messageLabel!.text = "No activities currently configured. Please add an activity.";
+                messageLabel!.text = "No tuitions currently configured. Please add a tuition.";
                 messageLabel!.textColor = UIColor.blackColor() ;
                 messageLabel!.numberOfLines = 0;
                 messageLabel!.textAlignment = NSTextAlignment.Center;
@@ -182,7 +182,7 @@ class TutionsListViewController: UIViewController , UITableViewDataSource , UITa
     func confirmDelete() {
         let record = fetchedResultsController.objectAtIndexPath(deleteTutionsIndexPath! ) as! Tuition
         
-        let alert = UIAlertController(title: "Delete Activity", message: "Are you sure you want to permanently delete the activity \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
+        let alert = UIAlertController(title: "Delete Activity", message: "Are you sure you want to permanently delete the tuition \"\(record.name!)\" of \"\(record.personname!)\"? ", preferredStyle: .ActionSheet)
         
         let DeleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: handleDelete)
         let CancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelDelete)

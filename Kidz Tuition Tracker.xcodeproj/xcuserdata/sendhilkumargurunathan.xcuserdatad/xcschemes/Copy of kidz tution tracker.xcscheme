@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
                BuildableName = "Activity Tracker.app"
-               BlueprintName = "Activity Tracker"
-               ReferencedContainer = "container:Activity Tracker.xcodeproj">
+               BlueprintName = "Kidz Tuition Tracker"
+               ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905B71C45A94F00B00E35"
-               BuildableName = "Activity Tracker.xctest"
-               BlueprintName = "Activity TrackerTests"
-               ReferencedContainer = "container:Activity Tracker.xcodeproj">
+               BuildableName = "Kidz Tuition Tracker.xctest"
+               BlueprintName = "Kidz Tuition TrackerTests"
+               ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905C21C45A94F00B00E35"
-               BuildableName = "Activity Tracker.xctest"
-               BlueprintName = "Activity TrackerUITests"
-               ReferencedContainer = "container:Activity Tracker.xcodeproj">
+               BuildableName = "Kidz Tuition Tracker.xctest"
+               BlueprintName = "Kidz Tuition TrackerUITests"
+               ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,8 +54,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
             BuildableName = "Activity Tracker.app"
-            BlueprintName = "Activity Tracker"
-            ReferencedContainer = "container:Activity Tracker.xcodeproj">
+            BlueprintName = "Kidz Tuition Tracker"
+            ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,8 +78,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
             BuildableName = "Activity Tracker.app"
-            BlueprintName = "Activity Tracker"
-            ReferencedContainer = "container:Activity Tracker.xcodeproj">
+            BlueprintName = "Kidz Tuition Tracker"
+            ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,8 +97,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
             BuildableName = "Activity Tracker.app"
-            BlueprintName = "Activity Tracker"
-            ReferencedContainer = "container:Activity Tracker.xcodeproj">
+            BlueprintName = "Kidz Tuition Tracker"
+            ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
