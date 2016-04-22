@@ -1,6 +1,6 @@
 //
 //  DayListTableViewController.swift
-//  Activity Tracker
+//  Kidz Tuition Tracker
 //
 //  Created by Sendhil kumar Gurunathan on 3/16/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.

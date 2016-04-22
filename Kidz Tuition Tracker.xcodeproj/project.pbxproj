@@ -183,9 +183,9 @@
 		BC6905991C45A94F00B00E35 = {
 			isa = PBXGroup;
 			children = (
-				BC6905A41C45A94F00B00E35 /* activity tracker */,
-				BC6905BB1C45A94F00B00E35 /* activity trackerTests */,
-				BC6905C61C45A94F00B00E35 /* activity trackerUITests */,
+				BC6905A41C45A94F00B00E35 /* kidz tuition tracker */,
+				BC6905BB1C45A94F00B00E35 /* kidz tuition trackerTests */,
+				BC6905C61C45A94F00B00E35 /* kidz tuition trackerUITests */,
 				BC6905A31C45A94F00B00E35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -200,7 +200,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC6905A41C45A94F00B00E35 /* activity tracker */ = {
+		BC6905A41C45A94F00B00E35 /* kidz tuition tracker */ = {
 			isa = PBXGroup;
 			children = (
 				BCFF26D81C72857C00E2838E /* Payments */,
@@ -214,27 +214,27 @@
 				BC6905B01C45A94F00B00E35 /* LaunchScreen.storyboard */,
 				BC6905B31C45A94F00B00E35 /* Info.plist */,
 			);
-			name = "activity tracker";
+			name = "kidz tuition tracker";
 			path = "kidz tution tracker";
 			sourceTree = "<group>";
 		};
-		BC6905BB1C45A94F00B00E35 /* activity trackerTests */ = {
+		BC6905BB1C45A94F00B00E35 /* kidz tuition trackerTests */ = {
 			isa = PBXGroup;
 			children = (
 				BC6905BC1C45A94F00B00E35 /* kidz_tution_trackerTests.swift */,
 				BC6905BE1C45A94F00B00E35 /* Info.plist */,
 			);
-			name = "activity trackerTests";
+			name = "kidz tuition trackerTests";
 			path = "kidz tution trackerTests";
 			sourceTree = "<group>";
 		};
-		BC6905C61C45A94F00B00E35 /* activity trackerUITests */ = {
+		BC6905C61C45A94F00B00E35 /* kidz tuition trackerUITests */ = {
 			isa = PBXGroup;
 			children = (
 				BC6905C71C45A94F00B00E35 /* kidz_tution_trackerUITests.swift */,
 				BC6905C91C45A94F00B00E35 /* Info.plist */,
 			);
-			name = "activity trackerUITests";
+			name = "kidz tuition trackerUITests";
 			path = "kidz tution trackerUITests";
 			sourceTree = "<group>";
 		};

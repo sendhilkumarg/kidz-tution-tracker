@@ -1,6 +1,6 @@
 //
 //  TuitionsEditViewController.swift
-//  Activity Tracker
+//  Kidz Tuition Tracker
 //
 //  Created by Sendhil kumar Gurunathan on 3/19/16.
 //  Copyright © 2016 Sendhil kumar Gurunathan. All rights reserved.
