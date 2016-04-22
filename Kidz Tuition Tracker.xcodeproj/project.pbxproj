@@ -22,8 +22,6 @@
 		BC6905AD1C45A94F00B00E35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6905AB1C45A94F00B00E35 /* Main.storyboard */; };
 		BC6905AF1C45A94F00B00E35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC6905AE1C45A94F00B00E35 /* Assets.xcassets */; };
 		BC6905B21C45A94F00B00E35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6905B01C45A94F00B00E35 /* LaunchScreen.storyboard */; };
-		BC6905BD1C45A94F00B00E35 /* kidz_tution_trackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905BC1C45A94F00B00E35 /* kidz_tution_trackerTests.swift */; };
-		BC6905C81C45A94F00B00E35 /* kidz_tution_trackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6905C71C45A94F00B00E35 /* kidz_tution_trackerUITests.swift */; };
 		BC6905D71C46FBF700B00E35 /* Tuitions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6905D51C46FBF700B00E35 /* Tuitions.storyboard */; };
 		BC6905D91C46FC2E00B00E35 /* Attendance.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6905D81C46FC2E00B00E35 /* Attendance.storyboard */; };
 		BC6905DB1C46FCB800B00E35 /* Payments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC6905DA1C46FCB800B00E35 /* Payments.storyboard */; };
@@ -96,11 +94,7 @@
 		BC6905B11C45A94F00B00E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC6905B31C45A94F00B00E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC6905B81C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kidz Tuition Tracker.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC6905BC1C45A94F00B00E35 /* kidz_tution_trackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kidz_tution_trackerTests.swift; sourceTree = "<group>"; };
-		BC6905BE1C45A94F00B00E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC6905C31C45A94F00B00E35 /* Kidz Tuition Tracker.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kidz Tuition Tracker.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BC6905C71C45A94F00B00E35 /* kidz_tution_trackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kidz_tution_trackerUITests.swift; sourceTree = "<group>"; };
-		BC6905C91C45A94F00B00E35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC6905D61C46FBF700B00E35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tuitions.storyboard; sourceTree = "<group>"; };
 		BC6905D81C46FC2E00B00E35 /* Attendance.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Attendance.storyboard; sourceTree = "<group>"; };
 		BC6905DA1C46FCB800B00E35 /* Payments.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Payments.storyboard; sourceTree = "<group>"; };
@@ -184,8 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				BC6905A41C45A94F00B00E35 /* kidz tuition tracker */,
-				BC6905BB1C45A94F00B00E35 /* kidz tuition trackerTests */,
-				BC6905C61C45A94F00B00E35 /* kidz tuition trackerUITests */,
 				BC6905A31C45A94F00B00E35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -216,26 +208,6 @@
 			);
 			name = "kidz tuition tracker";
 			path = "kidz tution tracker";
-			sourceTree = "<group>";
-		};
-		BC6905BB1C45A94F00B00E35 /* kidz tuition trackerTests */ = {
-			isa = PBXGroup;
-			children = (
-				BC6905BC1C45A94F00B00E35 /* kidz_tution_trackerTests.swift */,
-				BC6905BE1C45A94F00B00E35 /* Info.plist */,
-			);
-			name = "kidz tuition trackerTests";
-			path = "kidz tution trackerTests";
-			sourceTree = "<group>";
-		};
-		BC6905C61C45A94F00B00E35 /* kidz tuition trackerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BC6905C71C45A94F00B00E35 /* kidz_tution_trackerUITests.swift */,
-				BC6905C91C45A94F00B00E35 /* Info.plist */,
-			);
-			name = "kidz tuition trackerUITests";
-			path = "kidz tution trackerUITests";
 			sourceTree = "<group>";
 		};
 		BC6905E71C4A2B0D00B00E35 /* Tuitions */ = {
@@ -492,7 +464,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6905BD1C45A94F00B00E35 /* kidz_tution_trackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,7 +471,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC6905C81C45A94F00B00E35 /* kidz_tution_trackerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

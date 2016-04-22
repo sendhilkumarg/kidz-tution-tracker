@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-               BuildableName = "Activity Tracker.app"
+               BuildableName = "Kidz Tuition Tracker.app"
                BlueprintName = "Kidz Tuition Tracker"
                ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
             </BuildableReference>
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-            BuildableName = "Activity Tracker.app"
+            BuildableName = "Kidz Tuition Tracker.app"
             BlueprintName = "Kidz Tuition Tracker"
             ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-            BuildableName = "Activity Tracker.app"
+            BuildableName = "Kidz Tuition Tracker.app"
             BlueprintName = "Kidz Tuition Tracker"
             ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
          </BuildableReference>
@@ -95,7 +95,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BC6905A11C45A94F00B00E35"
-            BuildableName = "Activity Tracker.app"
+            BuildableName = "Kidz Tuition Tracker.app"
             BlueprintName = "Kidz Tuition Tracker"
             ReferencedContainer = "container:Kidz Tuition Tracker.xcodeproj">
          </BuildableReference>
