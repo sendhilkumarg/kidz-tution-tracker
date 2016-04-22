@@ -169,21 +169,6 @@ class PaymentHistoryTableViewControler: UITableViewController , NSFetchedResults
         
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "seagueEditPaymentItem"{
-            if let cell = sender
-            {
-                if let historyCell = cell as? PaymentHistoryCell
-                {
-                    if historyCell.statusLabel.text != PaymentStatus.Pending.displaytext{
-                        return true
-                    }
-                }
-            }
-        }
-        return false
-    }
-    
         //MARK : PaymentChangeControllerDelegate
 
     func StatusChanged(objectId : NSManagedObjectID, status : PaymentStatus)

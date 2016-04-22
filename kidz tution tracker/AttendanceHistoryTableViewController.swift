@@ -156,23 +156,7 @@ class AttendanceHistoryTableViewController: UITableViewController , NSFetchedRes
  
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == "seagueEditTuitionItem"{
-            if let cell = sender
-            {
-                if let historyCell = cell as? AttendanceHistoryCell
-                {
-                    if historyCell.statusLabel.text != AttendanceStatus.Pending.displaytext{
-                        return true
-                    }
-                }
-            }
-            return false
-        }
-        return false
-    }
-    
-    
+
     //MARK : AttendanceChangeControllerDelegate
     func StatusChanged(  objectId : NSManagedObjectID, status : AttendanceStatus)
     {

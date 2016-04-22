@@ -40,6 +40,9 @@ class PaymentEditController: UIViewController {
             if let updatedOnDate = paymentToEdit.updatedon {
                 updatedOnLabel.text = "last updated on \( Utils.toLongDateWithTimeString(updatedOnDate))"
             }
+            else{
+                updatedOnLabel.text = ""
+            }
             
             if let _ = paymentToEdit.status  {
                 switch paymentToEdit.CurrentStatus
