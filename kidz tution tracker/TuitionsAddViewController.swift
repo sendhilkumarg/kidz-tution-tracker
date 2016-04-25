@@ -181,15 +181,9 @@ UIPickerViewDataSource , UIPickerViewDelegate ,  DayChangeControllerDelegate {
         record.setValue(day, forKey: "payon")
         record.setValue(personName, forKey: "personname")
         record.setValue( NSDecimalNumber(string: amount), forKey: "amount")
-        //record.setValue(NSDate(), forKey: "startdate")
+        record.setValue(NSDate(), forKey: "startdate")
         
-        let dayToProcess = NSCalendar.currentCalendar().dateByAddingUnit(
-            .Month,
-            value: -8,
-            toDate: NSDate(),
-            options: NSCalendarOptions(rawValue: 0))
-        record.setValue(dayToProcess, forKey: "startdate")
-        
+
         
         do {
             // Save Record

@@ -22,10 +22,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="uBu-3W-SIf" secondAttribute="bottom" id="dTx-SC-xAO"/>
-                            <constraint firstItem="uBu-3W-SIf" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="dyx-Tn-oXy"/>
-                            <constraint firstAttribute="trailing" secondItem="uBu-3W-SIf" secondAttribute="trailing" id="jVJ-Uu-OQb"/>
-                            <constraint firstItem="uBu-3W-SIf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="oFD-1R-uua"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="uBu-3W-SIf" secondAttribute="bottom" id="Lej-Qp-Z26"/>
+                            <constraint firstItem="uBu-3W-SIf" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="R32-sN-24x"/>
+                            <constraint firstAttribute="trailing" secondItem="uBu-3W-SIf" secondAttribute="trailing" id="VYD-vd-VA7"/>
+                            <constraint firstItem="uBu-3W-SIf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="WY4-xc-Dix"/>
                         </constraints>
                     </view>
                 </viewController>
